@@ -27,6 +27,8 @@
     background-color: rgba(255, 255, 255, 0.500);
     padding: 20px;
     border-radius: 20px;
+    width: 325px;
+    max-width: 491.8px;
 }
 
 .photonest-label {
@@ -37,7 +39,7 @@
     background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-blue) 90%, var(--splash-green) 99.7%);
     background-clip: text;
     color: transparent;
-    padding: 40px;
+    padding: 10px;
 }
 
 .splash-input-div {
