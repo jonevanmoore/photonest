@@ -11,8 +11,12 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 15vh;
-    z-index: 1;
+    top: 20vh;
+}
+
+.splash-left-right-div>* {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .displayed {
@@ -25,23 +29,23 @@
 
 .form-div {
     background-color: rgba(255, 255, 255, 0.500);
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 20px;
-    width: 325px;
-    max-width: 491.8px;
+    width: 320px;
+
 }
 
 .photonest-label {
     font-family: 'Raleway', sans-serif;
-    display: flex;
-    justify-content: center;
     font-size: 50px;
     background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-blue) 90%, var(--splash-green) 99.7%);
     background-clip: text;
     color: transparent;
-    padding: 10px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgba(0, 0, 0, 0.486);
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .splash-input-div {
