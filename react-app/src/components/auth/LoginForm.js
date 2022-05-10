@@ -39,7 +39,7 @@ const LoginForm = ({ formDisplay }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className='splash-input-div'>
           <input
             name='email'
             type='text'
@@ -49,7 +49,7 @@ const LoginForm = ({ formDisplay }) => {
             className="splash-input"
           />
         </div>
-        <div>
+        <div className='splash-input-div'>
           <input
             name='password'
             type='password'

@@ -62,7 +62,7 @@ const SignUpForm = ({ formDisplay }) => {
           ))}
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='text'
             name='firstName'
@@ -73,7 +73,7 @@ const SignUpForm = ({ formDisplay }) => {
           ></input>
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='text'
             name='lastName'
@@ -84,7 +84,7 @@ const SignUpForm = ({ formDisplay }) => {
           ></input>
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='text'
             name='username'
@@ -95,7 +95,7 @@ const SignUpForm = ({ formDisplay }) => {
           ></input>
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='text'
             name='email'
@@ -106,7 +106,7 @@ const SignUpForm = ({ formDisplay }) => {
           ></input>
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='password'
             name='password'
@@ -117,7 +117,7 @@ const SignUpForm = ({ formDisplay }) => {
           ></input>
         </div>
 
-        <div>
+        <div className='splash-input-div'>
           <input
             type='password'
             name='repeat_password'
