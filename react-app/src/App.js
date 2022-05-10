@@ -36,7 +36,7 @@ function App() {
           {sessionUser ? <UsersList /> : <SplashPage />}
         </Route>
         <Route path='/' exact={true} >
-          {sessionUser ? <Home /> : <SplashPage />}
+          <SplashPage />
         </Route>
       </Switch>
     </BrowserRouter>
