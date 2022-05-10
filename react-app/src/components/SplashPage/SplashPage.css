@@ -1,0 +1,48 @@
+.login-signup-div {
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, rgba(61, 241, 254, 0.509) 90%, rgba(254, 211, 252, 0.517) 99.7%);
+    height: 100vh;
+    opacity: 100%;
+}
+
+.reflection {
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.3)));
+}
+
+.splash-left-right-div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 15vh;
+}
+
+.displayed {
+    display: block;
+}
+
+.not-displayed {
+    display: none;
+}
+
+.form-div {
+    background-color: rgba(255, 255, 255, 0.500);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.photonest-label {
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-blue) 90%, var(--splash-green) 99.7%);
+    background-clip: text;
+    color: transparent;
+}
+
+.splash-input {
+    height: 25px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    width: 100%;
+}
