@@ -32,17 +32,8 @@ function App() {
     <BrowserRouter>
       {sessionUser && (<NavBar />)}
       <Switch>
-        {/* <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route> */}
-        {/* <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route> */}
         <Route path='/users' exact={true} >
-          <UsersList />
-        </Route>
-        <Route path='/users/:userId' exact={true} >
-          <User />
+          {sessionUser ? <UsersList /> : <SplashPage />}
         </Route>
         <Route path='/' exact={true} >
           {sessionUser ? <Home /> : <SplashPage />}
