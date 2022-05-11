@@ -1,9 +1,28 @@
+const ALL_POSTS = 'posts/ALL_POSTS'
 const CREATE_POST = 'post/CREATE_POST'
+
+const getAllPosts = (posts) => ({
+    type: ALL_POSTS,
+    posts
+})
 
 const createPost = (post) => ({
     type: CREATE_POST,
     post
 })
+
+
+export const allPosts = () => async (dispatch) => {
+    const response = await fetch('/api/posts/', {
+        method: 'GET'
+    })
+    if (response.ok) {
+        const posts = await response.json()
+
+        dispatch(getAllPosts(posts))
+        return posts;
+    }
+}
 
 export const postCreate = (post) => async (dispatch) => {
     const response = await fetch(`/api/posts/`, {
@@ -26,8 +45,15 @@ export const postCreate = (post) => async (dispatch) => {
 const initialState = {};
 
 const userPostsReducer = (state = initialState, action) => {
-    let newState = { ...state };
+    let newState;
     switch (action.type) {
+        case ALL_POSTS: {
+            newState = { ...state }
+            action.posts.map(post => {
+                return newState[post.id] = post
+            })
+            return newState;
+        }
         case CREATE_POST:
             newState = { ...state }
             newState[action.post.id] = action.post
