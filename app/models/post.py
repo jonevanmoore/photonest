@@ -1,9 +1,8 @@
 from .db import db
 from sqlalchemy.sql import func
-from flask_login import UserMixin
 
 
-class Post(db.Model, UserMixin):
+class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,13 +20,26 @@ class Post(db.Model, UserMixin):
     comments = db.relationship(
         "Comment", back_populates="post", cascade="all, delete")
 
+    def to_dict_lite(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'post_image': self.post_image,
+            'caption': self.caption,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user': self.user.to_dict_lite()
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
             'post_image': self.post_image,
             'caption': self.caption,
-            'post_likes': self.post_likes,
-            'comments': self.comments,
-            'user': self.user.to_dict(),
+            'post_likes': [post_like.to_dict_lite() for post_like in self.post_likes],
+            'comments': [comment.to_dict_lite() for comment in self.comments],
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user': self.user.to_dict_lite()
         }
