@@ -1,6 +1,9 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
+from sqlalchemy.schema import Column, ForeignKey
+from .post import Post
 
 
 class User(db.Model, UserMixin):
@@ -15,6 +18,8 @@ class User(db.Model, UserMixin):
         db.String, nullable=False, default='/default_pi.png')
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    posts = relationship("Post", back_populates="user")
 
     @property
     def password(self):
