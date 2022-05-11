@@ -8,15 +8,18 @@ const createPost = (post) => ({
 export const postCreate = (data, userId) => async (dispatch) => {
     const response = await fetch(`/api/posts/create/${userId}`, {
         method: 'POST',
-        body: data
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     });
 
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(createPost(data))
-    }
 
-    return response
+    if (response.ok) {
+        const newPost = await response.json();
+        dispatch(createPost(newPost));
+        return newPost;
+    }
 }
 
 

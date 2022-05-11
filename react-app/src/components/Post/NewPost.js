@@ -20,7 +20,7 @@ const NewPost = () => {
         setImageLoading(true)
         const data = await dispatch(postCreate(formData, userId))
         if (data) {
-            console.log(postImage)
+            console.log("caught it")
         } else {
             setImageLoading(false);
             console.log(":(")
