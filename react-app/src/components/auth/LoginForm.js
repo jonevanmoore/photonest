@@ -60,7 +60,7 @@ const LoginForm = ({ formDisplay }) => {
               className="splash-input"
             />
           </div>
-          <button type='submit' className='login-btn'>Login</button>
+          <button type='submit' className='login-btn form-btn'>Login</button>
         </form>
       </div>
       <div className='switch-form-btn-div'>

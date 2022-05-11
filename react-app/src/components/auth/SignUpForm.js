@@ -144,7 +144,7 @@ const SignUpForm = ({ formDisplay }) => {
             ></input>
           </div>
 
-          <button type='submit' className='sign-up-btn'>Sign Up</button>
+          <button type='submit' className='sign-up-btn form-btn'>Sign Up</button>
         </form>
       </div>
       <div className='switch-form-btn-div'>

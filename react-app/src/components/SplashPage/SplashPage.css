@@ -38,8 +38,8 @@
 }
 
 .splash-left-right-div>* {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .displayed {
@@ -72,14 +72,15 @@
 
 .photonest-label {
     font-family: 'Raleway', sans-serif;
-    font-size: 50px;
+    font-size: 60px;
     background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-blue) 90%, var(--splash-green) 99.7%);
     background-clip: text;
     color: transparent;
     display: block;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 10px;
+    cursor: text;
 }
 
 .splash-input-div {
@@ -105,6 +106,10 @@
 .splash-input::placeholder {
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
+}
+
+.form-btn {
+    margin-top: 5px;
 }
 
 .sign-up-btn {
