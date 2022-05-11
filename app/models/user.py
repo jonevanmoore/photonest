@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.sql import func
 from .post import Post
 from .post_likes import PostLike
 
@@ -19,10 +20,16 @@ class User(db.Model, UserMixin):
         db.String, nullable=False, default='/default_pi.png')
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now(), nullable=False)
+    updated_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now(), nullable=False)
 
     posts = relationship("Post", back_populates="user", cascade="all, delete")
     post_likes = relationship(
         "PostLike", back_populates="user", cascade="all, delete")
+    comments = relationship(
+        "Comment", back_populates="user", cascade="all, delete")
 
     @property
     def password(self):
