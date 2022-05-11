@@ -10,19 +10,17 @@ const NewPost = () => {
 
     const [postImage, setPostImage] = useState('')
     const [caption, setCaption] = useState('')
-    const [imageLoading, setImageLoading] = useState(false);
 
     const handleSubmit = async (e) => {
-        const formData = new FormData()
-        formData.append("post_image", postImage)
-        formData.append("caption", caption)
-
-        setImageLoading(true)
-        const data = await dispatch(postCreate(formData, userId))
+        const post = {
+            post_image: postImage,
+            caption,
+            user_id: userId
+        }
+        const data = await dispatch(postCreate(post))
         if (data) {
             console.log("caught it")
         } else {
-            setImageLoading(false);
             console.log(":(")
         }
     }
@@ -31,15 +29,14 @@ const NewPost = () => {
         <div>
             {postImage && (
                 <>
-                    <img src={URL.createObjectURL(postImage)} style={{ width: '200px' }} alt='preview' id='image-preview' />
+                    <img src={postImage} style={{ width: '200px' }} alt='preview' id='image-preview' />
                 </>
 
             )}
 
             <input
-                type='file'
-                accept='image/*'
-                onChange={e => setPostImage(e.target.files[0])}
+                type='text'
+                onChange={e => setPostImage(e.target.value)}
                 required />
 
             <textarea
