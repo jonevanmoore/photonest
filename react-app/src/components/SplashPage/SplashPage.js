@@ -42,17 +42,21 @@ const SplashPage = () => {
                         <img src="./static/splash_page.PNG" style={{ width: '325px' }} className="reflection"></img>
                     </div>
                     <div>
-                        <button onClick={demoLogin}>Demo User</button>
-                        <div className={`${loginDisplay}`}>
+                        <div className={`${loginDisplay} login-form`}>
+                            <div className="btn-div">
+                                <button onClick={demoLogin} className="demo-btn">Demo User</button>
+                            </div>
                             <LoginForm formDisplay={formDisplay} />
-
                         </div>
-                        <div className={`${signUpDisplay}`}>
+                        <div className={`${signUpDisplay} sign-up-form`}>
+                            <div className="btn-div">
+                                <button onClick={demoLogin} className="demo-btn">Demo User</button>
+                            </div>
                             <SignUpForm formDisplay={formDisplay} />
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 

@@ -31,38 +31,43 @@ const LoginForm = ({ formDisplay }) => {
   // }
 
   return (
-    <div className='form-div'>
-      <label className='photonest-label'>photonest</label>
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div className='splash-input-div'>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-            className="splash-input"
-          />
-        </div>
-        <div className='splash-input-div'>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-            className="splash-input"
-          />
-        </div>
-        <button type='submit'>Login</button>
-      </form>
-      <button onClick={formDisplay}>switch</button>
-    </div>
+    <>
+      <div className='form-div'>
+        <label className='photonest-label'>photonest</label>
+        <form onSubmit={onLogin}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='splash-input-div'>
+            <input
+              name='email'
+              type='text'
+              placeholder='email'
+              value={email}
+              onChange={updateEmail}
+              className="splash-input"
+            />
+          </div>
+          <div className='splash-input-div'>
+            <input
+              name='password'
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={updatePassword}
+              className="splash-input"
+            />
+          </div>
+          <button type='submit' className='login-btn'>Login</button>
+        </form>
+      </div>
+      <div className='switch-form-btn-div'>
+        <labe className="bottom-q">Not a member yet?</labe>
+        <button onClick={formDisplay} className='switch-form-btn'>Sign up</button>
+      </div>
+    </>
   );
 };
 

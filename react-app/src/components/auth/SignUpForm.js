@@ -24,6 +24,20 @@ const SignUpForm = ({ formDisplay }) => {
     }
   };
 
+  const randomizeColor = () => {
+    const colorClasses = [
+      'blue-hover',
+      'green-hover',
+      'purple-hover',
+      'true-purple-hover',
+      'lime-green-hover',
+      'aqua-hover',
+      'white-hover'
+    ]
+
+    return colorClasses[Math.floor(Math.random() * colorClasses.length)];
+  }
+
   const updateFirstName = (e) => {
     setFirstName(e.target.value)
   }
@@ -53,86 +67,91 @@ const SignUpForm = ({ formDisplay }) => {
   }
 
   return (
-    <div className='form-div'>
-      <label className='photonest-label'>photonest</label>
-      <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+    <>
+      <div className='form-div'>
+        <label className='photonest-label'>photonest</label>
+        <form onSubmit={onSignUp}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='text'
-            name='firstName'
-            placeholder='first name'
-            onChange={updateFirstName}
-            value={firstName}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className={`splash-input-div`}>
+            <input
+              type='text'
+              name='firstName'
+              placeholder='first name'
+              onChange={updateFirstName}
+              value={firstName}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='text'
-            name='lastName'
-            placeholder='last name'
-            onChange={updateLastName}
-            value={lastName}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className='splash-input-div'>
+            <input
+              type='text'
+              name='lastName'
+              placeholder='last name'
+              onChange={updateLastName}
+              value={lastName}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='text'
-            name='username'
-            placeholder='username'
-            onChange={updateUsername}
-            value={username}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className='splash-input-div'>
+            <input
+              type='text'
+              name='username'
+              placeholder='username'
+              onChange={updateUsername}
+              value={username}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='text'
-            name='email'
-            placeholder='email'
-            onChange={updateEmail}
-            value={email}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className='splash-input-div'>
+            <input
+              type='text'
+              name='email'
+              placeholder='email'
+              onChange={updateEmail}
+              value={email}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='password'
-            name='password'
-            placeholder='password'
-            onChange={updatePassword}
-            value={password}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className='splash-input-div'>
+            <input
+              type='password'
+              name='password'
+              placeholder='password'
+              onChange={updatePassword}
+              value={password}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <div className='splash-input-div'>
-          <input
-            type='password'
-            name='repeat_password'
-            placeholder='confirm password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-            className="splash-input"
-          ></input>
-        </div>
+          <div className='splash-input-div'>
+            <input
+              type='password'
+              name='repeat_password'
+              placeholder='confirm password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+              className={`splash-input ${randomizeColor()}`}
+            ></input>
+          </div>
 
-        <button type='submit'>Sign Up</button>
-      </form>
-      <button onClick={formDisplay}>switch</button>
-    </div>
+          <button type='submit' className='sign-up-btn'>Sign Up</button>
+        </form>
+      </div>
+      <div className='switch-form-btn-div'>
+        <label className="bottom-q">Already have an account?</label>
+        <button onClick={formDisplay} className='switch-form-btn'>Sign in</button>
+      </div>
+    </>
   );
 };
 
