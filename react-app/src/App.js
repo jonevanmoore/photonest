@@ -40,9 +40,6 @@ function App() {
         <Route path='/users' exact={true} >
           {sessionUser ? <UsersList /> : <Redirect to='/' />}
         </Route>
-        <Route path='/new_post'>
-          {sessionUser ? <NewPost /> : <Redirect to='/' />}
-        </Route>
       </Switch>
     </BrowserRouter>
   );
