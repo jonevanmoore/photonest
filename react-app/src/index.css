@@ -1,9 +1,8 @@
 body {
     margin: 0 auto;
     font-family: 'Raleway', sans-serif;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, rgba(61, 241, 254, 0.509) 90%, rgba(254, 211, 252, 0.517) 99.7%);
-    height: 100vh;
-
+    background-color: rgb(237, 237, 237);
+    text-align: center;
 }
 
 button {

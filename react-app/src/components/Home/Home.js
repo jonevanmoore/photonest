@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAllPosts } from "../../store/post"
+import EditPost from '../Post/EditPost'
+import './Home.css'
 
 
 const Home = () => {
     const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
 
     const posts = Object.values(useSelector(state => state.posts))
-    console.log(posts)
 
     useEffect(() => {
         dispatch(fetchAllPosts())
     }, [dispatch])
 
     return (
-        <div>
-            <h1>HOME</h1>
-            {posts.map(post => (
-                <img key={post.id} src={post.post_image} style={{ width: '200px' }} alt='preview' id='image-preview' />
-            ))}
+        <div className="home-page-div">
+            <div className="posts-suggestions-div">
+
+                <div className="posts-div">
+                    {posts.map(post => (
+                        <EditPost post={post} key={post.id} />
+
+                    ))}
+                </div>
+                <div className="suggestions-div">
+                    <span>suggestions for you</span>
+                </div>
+            </div>
         </div>
     )
 }

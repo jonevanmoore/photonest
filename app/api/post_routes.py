@@ -34,3 +34,14 @@ def create_post():
         db.session.add(post)
         db.session.commit()
         return post.to_dict()
+
+
+# UPDATE POST
+@post_routes.route('/<int:id>', methods=['PUT'])
+def update_post(id):
+
+    post = Post.query.get(id)
+    post.caption = request.json['caption']
+
+    db.session.commit()
+    return post.to_dict()
