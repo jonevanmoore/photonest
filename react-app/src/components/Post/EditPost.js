@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { editPost } from "../../store/post"
+import { editPost, destroyPost } from "../../store/post"
 
 const EditPost = ({ post }) => {
     const dispatch = useDispatch()
@@ -19,6 +19,10 @@ const EditPost = ({ post }) => {
         await dispatch(editPost(updatedCaption))
     }
 
+    const deletePost = async () => {
+        await dispatch(destroyPost(post.id))
+    }
+
     return (
         <div>
             <div className="indie-post-div">
@@ -30,15 +34,23 @@ const EditPost = ({ post }) => {
 
                     <span>{post.caption}</span>
                     {sessionUser.id === post.user_id && (
-                        <div>
-                            <input
-                                value={editedCaption}
-                                onChange={e => setEditedCaption(e.target.value)}
-                            >
+                        <>
+                            <div className="edit-post-div">
+                                <input
+                                    value={editedCaption}
+                                    onChange={e => setEditedCaption(e.target.value)}
+                                >
 
-                            </input>
-                            <button onClick={handleUpdate}>Update</button>
-                        </div>
+                                </input>
+                                <button onClick={handleUpdate}>Update</button>
+                            </div>
+
+                            <div className="delete-post-div">
+                                <button onClick={deletePost}>Delete</button>
+
+                            </div>
+                        </>
+
                     )}
                 </div>
             </div>
