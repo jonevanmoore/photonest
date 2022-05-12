@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { postCreate } from "../../store/post"
 
-const NewPost = () => {
+const NewPost = ({ closeModalFunc }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
@@ -13,6 +13,7 @@ const NewPost = () => {
     const [caption, setCaption] = useState('')
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
         const post = {
             post_image: postImage,
             caption,
@@ -25,7 +26,12 @@ const NewPost = () => {
             console.log(":(")
         }
         history.push('/')
+        closeModalFunc()
     }
+
+
+
+    const stopTheProp = e => e.stopPropagation();
 
     return (
         <div>
@@ -33,13 +39,12 @@ const NewPost = () => {
                 <>
                     <img src={postImage} style={{ width: '200px' }} alt='preview' id='image-preview' />
                 </>
-
             )}
-
             <input
                 type='text'
                 onChange={e => setPostImage(e.target.value)}
-                required />
+                required
+            />
 
             <textarea
                 type="text"
