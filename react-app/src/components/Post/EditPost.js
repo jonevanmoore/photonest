@@ -28,7 +28,7 @@ const EditPost = ({ post }) => {
             <div className="indie-post-div">
                 <span>username</span>
                 <div className="img-div">
-                    <img key={post.id} src={post.post_image} style={{ maxWidth: '400px' }} alt='preview' id='image-preview' />
+                    <img key={post.id} src={post.post_image} style={{ maxHeight: '400px', maxWidth: '500px' }} alt='preview' />
                 </div>
                 <div className="caption-div">
 

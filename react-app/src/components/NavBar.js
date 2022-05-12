@@ -31,12 +31,13 @@ const NavBar = () => {
           <div
             onClick={stopTheProp}
             onMouseDown={stopTheProp}
-            style={{ backgroundColor: 'green' }}>
+            style={{ backgroundColor: 'white', borderRadius: '10px' }}>
             <NewPost closeModalFunc={closeModalFunc} />
           </div>
         </Modal>
-      )}
-    </nav>
+      )
+      }
+    </nav >
   );
 }
 

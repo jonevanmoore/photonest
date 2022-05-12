@@ -9,6 +9,12 @@ button {
     cursor: pointer;
 }
 
+input,
+textarea {
+    font-family: 'Raleway', sans-serif;
+    padding-left: 10px;
+}
+
 @font-face {
     font-family: 'Raleway', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600&display=swap');

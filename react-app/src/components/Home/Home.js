@@ -16,16 +16,16 @@ const Home = () => {
     }, [dispatch])
 
     return (
-        <div className="home-page-div">
+        <div className="home-page-div" >
             <div className="posts-suggestions-div">
 
-                <div className="posts-div">
+                <div className="posts-div" style={{ marginTop: '90px' }}>
                     {posts.map(post => (
                         <EditPost post={post} key={post.id} />
 
                     ))}
                 </div>
-                <div className="suggestions-div">
+                <div className="suggestions-div" style={{ marginTop: '90px' }}>
                     <span>suggestions for you</span>
                 </div>
             </div>

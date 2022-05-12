@@ -1,3 +1,10 @@
+nav {
+    position: fixed;
+    width: 100vw;
+    background-color: white;
+    box-shadow: 1px 1px 20px -5px rgb(0, 0, 0);
+}
+
 .navbar {
     padding: 20px;
     display: flex;
@@ -8,9 +15,10 @@
 
 .photonest-nav-label {
     font-family: 'Raleway', sans-serif;
-    font-size: 30px;
+    font-size: 45px;
     background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-blue) 90%, var(--splash-green) 99.7%);
     background-clip: text;
     color: transparent;
-    /* display: block; */
+    position: absolute;
+    top: 0%;
 }
