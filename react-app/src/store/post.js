@@ -45,17 +45,15 @@ export const postCreate = (post) => async (dispatch) => {
 const initialState = {};
 
 const userPostsReducer = (state = initialState, action) => {
-    let newState;
+    let newState = { ...state }
     switch (action.type) {
         case ALL_POSTS: {
-            newState = { ...state }
             action.posts.map(post => {
                 return newState[post.id] = post
             })
             return newState;
         }
         case CREATE_POST:
-            newState = { ...state }
             newState[action.post.id] = action.post
             return newState;
         default:

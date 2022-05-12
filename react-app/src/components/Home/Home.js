@@ -17,7 +17,7 @@ const Home = () => {
         <div>
             <h1>HOME</h1>
             {posts.map(post => (
-                <img src={post.post_image} style={{ width: '200px' }} alt='preview' id='image-preview' />
+                <img key={post.id} src={post.post_image} style={{ width: '200px' }} alt='preview' id='image-preview' />
             ))}
         </div>
     )
