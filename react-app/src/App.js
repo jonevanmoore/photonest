@@ -11,6 +11,7 @@ import User from './components/User';
 import SplashPage from './components/SplashPage/SplashPage'
 import NewPost from './components/Post/NewPost';
 import { authenticate } from './store/session';
+import { Redirect } from 'react-router-dom';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,14 +34,14 @@ function App() {
     <BrowserRouter>
       {sessionUser && (<NavBar />)}
       <Switch>
-        <Route path='/users' exact={true} >
-          {sessionUser ? <UsersList /> : <SplashPage />}
-        </Route>
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
+        <Route path='/users' exact={true} >
+          {sessionUser ? <UsersList /> : <Redirect to='/' />}
+        </Route>
         <Route path='/new_post'>
-          <NewPost />
+          {sessionUser ? <NewPost /> : <Redirect to='/' />}
         </Route>
       </Switch>
     </BrowserRouter>

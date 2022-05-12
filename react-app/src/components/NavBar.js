@@ -11,8 +11,8 @@ const NavBar = () => {
         <NavLink to='/' exact={true} className='active photonest-nav-label'>photonest</NavLink>
       </div>
       <div className='right-side-nav'>
-        home
-        post
+        <NavLink to='/'>home</NavLink>
+        <NavLink to='/new_post'>post</NavLink>
         profile
         <LogoutButton />
       </div>

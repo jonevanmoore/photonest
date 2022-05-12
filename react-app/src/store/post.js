@@ -1,7 +1,7 @@
 const ALL_POSTS = 'posts/ALL_POSTS'
 const CREATE_POST = 'post/CREATE_POST'
 
-const getAllPosts = (posts) => ({
+const fetchPosts = (posts) => ({
     type: ALL_POSTS,
     posts
 })
@@ -12,14 +12,14 @@ const createPost = (post) => ({
 })
 
 
-export const allPosts = () => async (dispatch) => {
+export const fetchAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/', {
         method: 'GET'
     })
     if (response.ok) {
         const posts = await response.json()
 
-        dispatch(getAllPosts(posts))
+        dispatch(fetchPosts(posts))
         return posts;
     }
 }

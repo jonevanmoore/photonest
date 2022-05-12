@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { allPosts } from "../../store/post"
+import { fetchAllPosts } from "../../store/post"
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
     console.log(posts)
 
     useEffect(() => {
-        dispatch(allPosts())
+        dispatch(fetchAllPosts())
     }, [dispatch])
 
     return (
