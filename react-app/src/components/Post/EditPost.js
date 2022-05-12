@@ -20,7 +20,7 @@ const EditPost = ({ post }) => {
     }
 
     const deletePost = async () => {
-        await dispatch(destroyPost(post.id))
+        await dispatch(destroyPost(postId))
     }
 
     return (

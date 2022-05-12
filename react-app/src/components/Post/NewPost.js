@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { postCreate } from "../../store/post"
 
 const NewPost = () => {
     const dispatch = useDispatch()
-
+    const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
 
@@ -23,6 +24,7 @@ const NewPost = () => {
         } else {
             console.log(":(")
         }
+        history.push('/')
     }
 
     return (
