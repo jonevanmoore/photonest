@@ -9,7 +9,7 @@ const Home = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
 
-    const posts = Object.values(useSelector(state => state.posts))
+    const posts = Object.values(useSelector(state => state.posts)).reverse()
 
     useEffect(() => {
         dispatch(fetchAllPosts())
