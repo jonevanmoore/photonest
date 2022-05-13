@@ -8,16 +8,6 @@
     justify-content: center;
 }
 
-
-.indie-post-div {
-    display: flex;
-    flex-direction: column;
-    border: 1px gray solid;
-    border-radius: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 .suggestions-div {
     background-color: aquamarine;
 }

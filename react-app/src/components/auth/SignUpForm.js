@@ -47,7 +47,7 @@ const SignUpForm = ({ formDisplay }) => {
   }
 
   const updateUsername = (e) => {
-    setUsername(e.target.value);
+    setUsername(`${e.target.value}`.toLocaleLowerCase());
   };
 
   const updateEmail = (e) => {
