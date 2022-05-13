@@ -24,7 +24,6 @@ const Home = () => {
                 <div className="posts-div" style={{ marginTop: '90px' }}>
                     {posts.map(post => (
                         <DisplayPost post={post} key={post.id} comments={comments} />
-
                     ))}
                 </div>
                 <div className="suggestions-div" style={{ marginTop: '90px' }}>

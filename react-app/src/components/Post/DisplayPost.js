@@ -25,11 +25,13 @@ const EditPost = ({ post, comments }) => {
 
     return (
         <div>
-            {comments.map(comment => (
-                <span>{comment.content}</span>
-            ))}
             <div className="indie-post-div">
-                <span>username</span>
+                {sessionUser.id === post.user_id && (
+                    <div>
+                        <img src={sessionUser.profile_image} />
+                        <span>{sessionUser.username}</span>
+                    </div>
+                )}
                 <div className="img-div">
                     <img key={post.id} src={post.post_image} style={{ maxHeight: '400px', maxWidth: '500px' }} alt='preview' />
                 </div>
@@ -47,14 +49,31 @@ const EditPost = ({ post, comments }) => {
                                 </input>
                                 <button onClick={handleUpdate}>Update</button>
                             </div>
-
                             <div className="delete-post-div">
                                 <button onClick={deletePost}>Delete</button>
-
                             </div>
                         </>
 
                     )}
+                </div>
+                <div className="comment-section" style={{ display: 'flex', flexDirection: 'column' }}>
+                    {comments.map(comment => {
+                        if (postId === comment.post_id) {
+                            return (
+                                <span>{comment.content}</span>
+                            )
+                        }
+                        if (sessionUser.id === comment.user_id) {
+                            return (
+                                <div>
+                                    <button>Edit Comment</button>
+                                    <button>Delete Comment</button>
+                                </div>
+                            )
+                        }
+                    })}
+                    {
+                    }
                 </div>
             </div>
         </div>
