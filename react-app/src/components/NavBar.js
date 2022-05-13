@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
@@ -7,7 +8,8 @@ import Modal from './Modal/Modal';
 import NewPost from './Post/NewPost';
 
 const NavBar = () => {
-
+  const sessionUser = useSelector(state => state.session.user)
+  const username = sessionUser.username
   const [showModal, setShowModal] = useState(false);
   const closeModalFunc = () => setShowModal(false);
   const showModalFunc = () => setShowModal(true);
@@ -22,7 +24,7 @@ const NavBar = () => {
       <div className='right-side-nav'>
         <NavLink to='/'><i className="fa-solid fa-house-chimney"></i></NavLink>
         <span onClick={showModalFunc} className='new-post-nav-btn'><i className="fa-solid fa-square-plus"></i></span>
-        <NavLink to='/'><i className="fa-solid fa-user"></i></NavLink>
+        <NavLink to={`/${username}`}><i className="fa-solid fa-user"></i></NavLink>
         <LogoutButton />
       </div>
 
