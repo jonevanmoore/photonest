@@ -22,3 +22,29 @@ nav {
     position: absolute;
     top: 0%;
 }
+
+.new-post-nav-btn {
+    cursor: pointer;
+}
+
+.fa-solid {
+    color: white;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 20px;
+    -webkit-text-stroke: 1px black;
+    transition: .3s;
+
+}
+
+.fa-solid:hover {
+    color: black;
+    -webkit-text-stroke: 1px white;
+
+}
+
+.logout-btn {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 10px;
+}

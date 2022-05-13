@@ -20,9 +20,9 @@ const NavBar = () => {
         <NavLink to='/' exact={true} className='active photonest-nav-label'>photonest</NavLink>
       </div>
       <div className='right-side-nav'>
-        <NavLink to='/'>home</NavLink>
-        <button onClick={showModalFunc}>post</button>
-        profile
+        <NavLink to='/'><i className="fa-solid fa-house-chimney"></i></NavLink>
+        <span onClick={showModalFunc} className='new-post-nav-btn'><i className="fa-solid fa-square-plus"></i></span>
+        <NavLink to='/'><i className="fa-solid fa-user"></i></NavLink>
         <LogoutButton />
       </div>
 
