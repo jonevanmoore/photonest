@@ -1,7 +1,8 @@
 .indie-post-div {
     display: flex;
     flex-direction: column;
-    border: 1px gray solid;
+    border: 1px lightgray solid;
+    background-color: white;
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -24,4 +25,109 @@
     font-size: 12px;
     position: relative;
     top: 7px;
+}
+
+.delete-post-div {
+    float: right;
+    margin-right: 30px;
+    margin-top: 7px;
+}
+
+.fa-trash-can {
+    color: rgb(235, 235, 235);
+    -webkit-text-stroke: 1px gray;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.fa-trash-can:hover {
+    color: lightgray;
+    -webkit-text-stroke: 1px gray;
+    transition: .3s;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(400px);
+        animation-timing-function: ease-out;
+    }
+
+    60% {
+        transform: translateY(-30px);
+        animation-timing-function: ease-in;
+    }
+
+    80% {
+        transform: translateY(10px);
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        transform: translateY(0px);
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.delete-confirmation-div {
+    background-color: var(--transparent-white);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    animation: slideIn .3s, fadeIn .1s linear;
+}
+
+.delete-confirmation-div>* {
+    margin: 5px;
+}
+
+.confirmation-action-div {
+    background-color: var(--transparent-white);
+    border: 1px solid white
+}
+
+.confirmation-action-div>* {
+    margin-top: 75px;
+}
+
+.delete-btn {
+    background-color: rgb(255, 94, 94);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Raleway';
+    transition: .2s;
+    border: 1px solid white;
+}
+
+.delete-btn:hover {
+    background-color: rgb(181, 0, 0);
+    border-color: gray;
+}
+
+.cancel-btn {
+    margin-top: 5px;
+    background-color: rgb(207, 207, 207);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Raleway';
+    transition: .2s;
+    border: 1px solid black
+}
+
+.cancel-btn:hover {
+    background-color: gray;
+    color: white;
+    border-color: white;
 }

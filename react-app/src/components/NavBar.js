@@ -22,9 +22,9 @@ const NavBar = () => {
         <NavLink to='/' exact={true} className='active photonest-nav-label'>photonest</NavLink>
       </div>
       <div className='right-side-nav'>
-        <NavLink to='/'><i className="fa-solid fa-house-chimney"></i></NavLink>
-        <span onClick={showModalFunc} className='new-post-nav-btn'><i className="fa-solid fa-square-plus"></i></span>
-        <NavLink to={`/${username}`}><i className="fa-solid fa-user"></i></NavLink>
+        <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink>
+        <span onClick={showModalFunc}><i className="fa-solid fa-square-plus fa-navbar"></i></span>
+        <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar"></i></NavLink>
         <LogoutButton />
       </div>
 
@@ -33,7 +33,7 @@ const NavBar = () => {
           <div
             onClick={stopTheProp}
             onMouseDown={stopTheProp}
-            style={{ backgroundColor: 'white', borderRadius: '10px' }}>
+            style={{ backgroundColor: 'white', borderRadius: '10px', animation: 'animation: slideIn .5s, fadeIn .1s' }}>
             <NewPost closeModalFunc={closeModalFunc} />
           </div>
         </Modal>

@@ -30,20 +30,6 @@ const NewPost = ({ closeModalFunc }) => {
         closeModalFunc()
     }
 
-    // useEffect(() => {
-    //     if (postImage.split('.')) {
-    //         const imgType = postImage.split('.')[1]
-    //         const extensions = ["pdf", "png", "jpg", "jpeg", "gif"]
-    //         if (imgType.toLowerCase().includes(extensions)) {
-    //             setAccepted('Good file')
-    //         } else {
-    //             setAccepted('Bad File')
-    //         }
-
-    //     } else {
-    //         setAccepted('Bad File')
-    //     }
-    // }, [postImage])
 
     return (
         <div className="new-post-div" style={{ border: '1px solid white' }}>

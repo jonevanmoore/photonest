@@ -24,11 +24,7 @@ nav {
     top: 0%;
 }
 
-.new-post-nav-btn {
-    cursor: pointer;
-}
-
-.fa-solid {
+.fa-navbar {
     color: white;
     margin-left: 8px;
     margin-right: 8px;
@@ -38,7 +34,7 @@ nav {
 
 }
 
-.fa-solid:hover {
+.fa-navbar:hover {
     color: black;
     -webkit-text-stroke: 1px white;
 
