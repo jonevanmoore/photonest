@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { editPost, destroyPost } from "../../store/post"
 
-const EditPost = ({ post }) => {
+const EditPost = ({ post, comments }) => {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
@@ -25,6 +25,9 @@ const EditPost = ({ post }) => {
 
     return (
         <div>
+            {comments.map(comment => (
+                <span>{comment.content}</span>
+            ))}
             <div className="indie-post-div">
                 <span>username</span>
                 <div className="img-div">
