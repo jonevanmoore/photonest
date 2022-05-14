@@ -6,6 +6,7 @@
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 .username-post-display>* {
@@ -25,6 +26,9 @@
     font-size: 12px;
     position: relative;
     top: 7px;
+    color: var(--blue-theme);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .delete-post-div {
@@ -45,6 +49,147 @@
     -webkit-text-stroke: 1px gray;
     transition: .3s;
 }
+
+.username-on-caption {
+    font-size: 12px;
+    position: relative;
+    color: var(--blue-theme);
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 3px;
+}
+
+.caption-div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.edit-cap-btn {
+    font-size: 12px;
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+    color: var(--blue-theme);
+    animation: fadeIn .5s;
+}
+
+.edit-cap-btn:hover {
+    font-weight: bold;
+}
+
+.caption-display {
+    float: left;
+    margin-left: 5px;
+    inline-size: 480px;
+    overflow-wrap: break-word;
+    animation: fadeIn .5s;
+}
+
+.caption-text {
+    font-size: 12px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: start;
+}
+
+.edit-post-div {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn .5s;
+}
+
+.edit-cap-input {
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    resize: none;
+    border: 1px solid lightgray;
+}
+
+.below-edit-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.char-count {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.update-btn-divs>* {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+    float: right;
+    padding-right: 10px;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.update-btn-divs>*:hover {
+    color: var(--splash-blue);
+}
+
+.view-comment {
+    font-size: 14px;
+    color: gray;
+    float: left;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.leave-comment-div {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.leave-com-input-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.leave-com-input {
+    height: 20px;
+    resize: both;
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+.leave-com-input:focus {
+    outline: none;
+}
+
+.post-comment-btn {
+    background: transparent;
+    border: none;
+    color: var(--blue-theme);
+    margin-right: 5px;
+    transition: .3s;
+    font-family: 'Raleway';
+}
+
+.disabled {
+    opacity: 50%;
+    transition: .3s;
+}
+
+.created-at-div {
+    margin-top: 10px;
+}
+
+.created-at {
+    float: left;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
 
 @keyframes slideIn {
     0% {
@@ -131,3 +276,9 @@
     color: white;
     border-color: white;
 }
+
+
+
+
+
+/*  */

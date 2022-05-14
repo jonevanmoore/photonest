@@ -12,7 +12,29 @@ const DisplayPost = ({ post, comments }) => {
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
     const postId = post.id
+    const postComments = []
+    comments.map(comment => {
+        if (postId === comment.post_id) {
+            postComments.push(comment)
+        }
+    })
     const [editedCaption, setEditedCaption] = useState(post.caption)
+    const [newComment, setNewComment] = useState('')
+    const [postDisabled, setPostDisabled] = useState('disabled')
+
+
+    const [captionDisplay, setCaptionDisplay] = useState(true)
+    const [editCaptionDisplay, setEditCaptionDisplay] = useState(false)
+    const closeEditCaption = () => {
+        setEditCaptionDisplay(false)
+        setCaptionDisplay(true)
+        setEditedCaption(post.caption)
+    }
+    const showEditCaption = () => {
+        setEditCaptionDisplay(true)
+        setCaptionDisplay(false)
+    }
+
 
     const [showModal, setShowModal] = useState(false);
     const closeModalFunc = () => setShowModal(false);
@@ -24,6 +46,14 @@ const DisplayPost = ({ post, comments }) => {
         dispatch(fetchUsers())
     }, [dispatch])
 
+    useEffect(() => {
+        if (newComment.length > 0) {
+            setPostDisabled('able')
+        } else {
+            setPostDisabled('disabled')
+        }
+    }, [newComment])
+
     const handleUpdate = async () => {
         const updatedCaption = {
             id: postId,
@@ -32,6 +62,7 @@ const DisplayPost = ({ post, comments }) => {
             caption: editedCaption
         }
         await dispatch(editPost(updatedCaption))
+        closeEditCaption()
     }
 
     const deletePost = async () => {
@@ -39,91 +70,116 @@ const DisplayPost = ({ post, comments }) => {
     }
 
     return (
-        <div>
-            <div className="indie-post-div">
-                {users.map(user => {
-                    if (user.id === post.user_id) {
-                        return (
-                            <div className="username-post-display">
-                                <Link to={`/${user.username}`}>
-                                    <img src={`./static${user.profile_image}`} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
-                                </Link>
-                                <Link to={`/${user.username}`}>
-                                    <span className="username-display">{user.username}</span>
-                                </Link>
-                                {sessionUser.id === post.user_id && (
-                                    <div className="delete-post-div">
-                                        <span onClick={showModalFunc}><i className="fa-solid fa-trash-can"></i></span>
-                                        {showModal && (
-                                            <Modal closeModalFunc={closeModalFunc}>
-                                                <div className="delete-confirmation-div"
-                                                    onClick={stopTheProp}
-                                                    onMouseDown={stopTheProp}
-                                                    style={{ display: 'flex' }}
-                                                >
-                                                    <img src={`${post.post_image}`} style={{ border: '1px solid white', maxWidth: '300px' }} />
-                                                    <div className='confirmation-action-div' style={{ padding: '10px', borderRadius: '10px' }}>
-                                                        <div>
-                                                            <span>Are you sure you want to delete this post?</span>
-                                                        </div>
-                                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                                            <button onClick={deletePost} className='delete-btn'>Delete</button>
-                                                            <button onClick={closeModalFunc} className='cancel-btn'>Cancel</button>
+        <div className="indie-post-div">
+            {users.map(user => {
+                if (user.id === post.user_id) {
+                    return (
+                        <div className="username-post-display">
+                            <Link to={`/${user.username}`}>
+                                <img src={`./static${user.profile_image}`} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
+                            </Link>
+                            <Link to={`/${user.username}`} className='username-display'>
+                                <span>{user.username}</span>
+                            </Link>
+                            {/* DELETE POST MODAL */}
+                            {sessionUser.id === post.user_id && (
+                                < div className="delete-post-div">
+                                    <span onClick={showModalFunc}><i className="fa-solid fa-trash-can"></i></span>
+                                    {showModal && (
+                                        <Modal closeModalFunc={closeModalFunc}>
+                                            <div className="delete-confirmation-div"
+                                                onClick={stopTheProp}
+                                                onMouseDown={stopTheProp}
+                                                style={{ display: 'flex' }}
+                                            >
+                                                <img src={`${post.post_image}`} style={{ border: '1px solid white', maxWidth: '300px' }} />
+                                                <div className='confirmation-action-div' style={{ padding: '10px', borderRadius: '10px' }}>
+                                                    <div>
+                                                        <span>Are you sure you want to delete this post?</span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                        <button onClick={deletePost} className='delete-btn'>Delete</button>
+                                                        <button onClick={closeModalFunc} className='cancel-btn'>Cancel</button>
 
-                                                        </div>
                                                     </div>
                                                 </div>
-                                            </Modal>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        )
-                    }
-                })}
-                <div className="img-div">
-                    <img key={post.id} src={post.post_image} style={{ maxHeight: '400px', maxWidth: '500px', minWidth: '500px' }} alt='preview' />
-                </div>
-                <div className="caption-div">
-                    <Link to={`/${users[post.user_id - 1]?.username}`}>{users[post.user_id - 1]?.username}</Link>
-                    <span>{post.caption}</span>
-                    {sessionUser.id === post.user_id && (
-                        <>
-                            <div className="edit-post-div">
-                                <textarea
-                                    value={editedCaption}
-                                    onChange={e => setEditedCaption(e.target.value)}
-                                >
-
-                                </textarea>
-                                <button onClick={handleUpdate}>Update</button>
-                            </div>
-                        </>
-
-                    )}
-                </div>
-                <div className="comment-section" style={{ display: 'flex', flexDirection: 'column' }}>
-                    {comments.map(comment => {
-                        if (postId === comment.post_id) {
-                            const user = users[comment?.user_id]?.username
-                            return (
-                                <>
-                                    <Link to={`/${user}`}>{user}</Link>
-                                    <span>{comment.content}</span>
-                                </>
-                            )
-                        }
-                        if (sessionUser.id === comment.user_id) {
-                            return (
-                                <div>
-                                    <button>Edit Comment</button>
-                                    <button>Delete Comment</button>
+                                            </div>
+                                        </Modal>
+                                    )}
                                 </div>
                             )
-                        }
-                    })}
-                    {
-                    }
+                            }
+                        </div>
+                    )
+                }
+            })}
+            <div className="img-div">
+                <img key={post.id} src={post.post_image} style={{ maxHeight: '400px', maxWidth: '500px', minWidth: '500px' }} alt='preview' />
+            </div>
+            <div className="caption-div">
+                {sessionUser.id === post.user_id && captionDisplay && (
+                    <div className="edit-cap-div">
+                        <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
+                    </div>
+                )}
+                {post.caption && captionDisplay && (
+                    <div className='caption-display'>
+                        <span className="caption-text"><Link to={`/${users[post.user_id - 1]?.username}`} className="username-on-caption">{users[post.user_id - 1]?.username}</Link>{`${post.caption}`}</span>
+                    </div>
+
+                )}
+                {sessionUser.id === post.user_id && editCaptionDisplay && (
+                    <>
+                        <div className="edit-post-div">
+                            <textarea
+                                value={editedCaption}
+                                onChange={e => setEditedCaption(e.target.value)}
+                                maxLength={200}
+                                className='edit-cap-input'
+                            >
+                            </textarea>
+                            <div className="below-edit-div">
+                                <div className="char-count">
+                                    <span>{`${editedCaption.length}/200`}</span>
+                                </div>
+                                <div className="update-btn-divs">
+                                    <span onClick={closeEditCaption}>Cancel</span>
+                                    <span onClick={handleUpdate}>Update</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </>
+
+                )}
+            </div>
+            <div className="comment-section" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="view-comment-div">
+
+                    {postComments.length === 1 && (
+                        <span className="view-comment">View 1 comment</span>
+                    )}
+                    {postComments.length > 1 && (
+                        <span className="view-comment">{`View all ${postComments.length} comments`}</span>
+                    )}
+                </div>
+                <div className="created-at-div">
+                    <span className="created-at">{post.created_at}</span>
+                </div>
+                <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
+                    <div className="leave-com-input-div">
+                        <input
+                            placeholder="Add a comment..."
+                            maxLength={200}
+                            className='leave-com-input'
+                            onChange={e => setNewComment(e.target.value)}
+                        >
+                        </input>
+                        <button
+                            disabled={newComment.length < 1}
+                            className={`${postDisabled} post-comment-btn`}
+                        >Post</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,4 +187,7 @@ const DisplayPost = ({ post, comments }) => {
 
 }
 
+// {postComments.map(comment => (
+//     <span><Link to={`/${users[comment.user_id - 1].username}`}>{users[comment.user_id - 1].username}</Link>{comment.content}</span>
+// ))}
 export default DisplayPost;
