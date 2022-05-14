@@ -85,28 +85,54 @@ const DisplayPost = ({ post, comments }) => {
 
         var seconds = Math.floor((new Date() - date) / 1000);
 
+        //YEARS
         var interval = seconds / 31536000;
-
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + " YEAR AGO";
+        }
         if (interval > 1) {
             return Math.floor(interval) + " YEARS AGO";
         }
+
+        //MONTHS
         interval = seconds / 2592000;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + " MONTH AGO";
+        }
         if (interval > 1) {
             return Math.floor(interval) + " MONTHS AGO";
         }
+
+        //DAYS
         interval = seconds / 86400;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + " DAY AGO";
+        }
         if (interval > 1) {
             return Math.floor(interval) + " DAYS AGO";
         }
+
+        //HOURS
         interval = seconds / 3600;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + " HOUR AGO";
+        }
         if (interval > 1) {
             return Math.floor(interval) + " HOURS AGO";
         }
+
+        // MINUTES
         interval = seconds / 60;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + " MINUTE AGO";
+        }
         if (interval > 1) {
             return Math.floor(interval) + " MINUTES AGO";
         }
 
+        if (Math.floor(seconds) === 1) {
+            return Math.floor(seconds) + " SECOND AGO";
+        }
         return Math.floor(seconds) + " SECONDS AGO";
     }
 
