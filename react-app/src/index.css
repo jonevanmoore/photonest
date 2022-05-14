@@ -16,6 +16,10 @@ textarea {
     padding-left: 10px;
 }
 
+input:focus {
+    outline: none;
+}
+
 @font-face {
     font-family: 'Raleway', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600&display=swap');
