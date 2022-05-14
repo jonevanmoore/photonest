@@ -173,6 +173,7 @@
     margin-right: 5px;
     transition: .3s;
     font-family: 'Raleway';
+    font-weight: bold;
 }
 
 .disabled {
@@ -187,7 +188,9 @@
 .created-at {
     float: left;
     margin-left: 10px;
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: rgb(166, 166, 166);
 }
 
 

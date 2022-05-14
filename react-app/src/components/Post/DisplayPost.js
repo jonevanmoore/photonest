@@ -22,7 +22,6 @@ const DisplayPost = ({ post, comments }) => {
     const [newComment, setNewComment] = useState('')
     const [postDisabled, setPostDisabled] = useState('disabled')
 
-
     const [captionDisplay, setCaptionDisplay] = useState(true)
     const [editCaptionDisplay, setEditCaptionDisplay] = useState(false)
     const closeEditCaption = () => {
@@ -68,6 +67,39 @@ const DisplayPost = ({ post, comments }) => {
     const deletePost = async () => {
         await dispatch(destroyPost(postId))
     }
+
+    //
+    function timeSince(date) {
+
+        var seconds = Math.floor((new Date() - date) / 1000);
+
+        var interval = seconds / 31536000;
+
+        if (interval > 1) {
+            return Math.floor(interval) + " YEARS AGO";
+        }
+        interval = seconds / 2592000;
+        if (interval > 1) {
+            return Math.floor(interval) + " MONTHS AGO";
+        }
+        interval = seconds / 86400;
+        if (interval > 1) {
+            return Math.floor(interval) + " DAYS AGO";
+        }
+        interval = seconds / 3600;
+        if (interval > 1) {
+            return Math.floor(interval) + " HOURS AGO";
+        }
+        interval = seconds / 60;
+        if (interval > 1) {
+            return Math.floor(interval) + " MINUTES AGO";
+        }
+
+        return Math.floor(seconds) + " SECONDS AGO";
+    }
+
+    const data_posted = new Date(post.created_at).toUTCString()
+    const [realTime, setRealTime] = useState(timeSince(new Date(data_posted)))
 
     return (
         <div className="indie-post-div">
@@ -164,7 +196,7 @@ const DisplayPost = ({ post, comments }) => {
                     )}
                 </div>
                 <div className="created-at-div">
-                    <span className="created-at">{post.created_at}</span>
+                    <span className="created-at">{realTime}</span>
                 </div>
                 <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
                     <div className="leave-com-input-div">
@@ -186,6 +218,8 @@ const DisplayPost = ({ post, comments }) => {
     )
 
 }
+
+//post.created_at.slice(0, 17)
 
 // {postComments.map(comment => (
 //     <span><Link to={`/${users[comment.user_id - 1].username}`}>{users[comment.user_id - 1].username}</Link>{comment.content}</span>
