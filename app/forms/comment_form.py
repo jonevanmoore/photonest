@@ -6,6 +6,8 @@ from wtforms.validators import DataRequired, URL, ValidationError
 
 
 class CreateCommentForm(FlaskForm):
+    user_id = StringField('user_id')
+    post_id = StringField('post_id')
     content = StringField('Content', validators=[DataRequired()])
 
 

@@ -21,6 +21,10 @@ textarea {
     src: url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600&display=swap');
 }
 
+img {
+    object-fit: cover;
+}
+
 :root {
     --blue-theme: #0c75ffd0;
     --purple-theme: #ff44ffd6;

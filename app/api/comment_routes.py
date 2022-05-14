@@ -20,11 +20,11 @@ def create_comment():
 
     if form.validate_on_submit():
         comment = Comment(
+            post_id=form.data['post_id'],
             user_id=form.data['user_id'],
-            post_it=form.data['post_id'],
             content=form.data['content']
         )
 
         db.session.add(comment)
         db.session.commit()
-        return comment.to_dict()
+        return jsonify(comment.to_dict())

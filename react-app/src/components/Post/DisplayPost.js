@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { editPost, destroyPost } from "../../store/post"
 import { fetchUsers } from "../../store/user"
 import Modal from "../Modal/Modal"
+import { postComment } from "../../store/comment"
 import './DisplayPost.css'
 
 const DisplayPost = ({ post, comments }) => {
@@ -66,6 +67,17 @@ const DisplayPost = ({ post, comments }) => {
 
     const deletePost = async () => {
         await dispatch(destroyPost(postId))
+    }
+
+    const createComment = async () => {
+        const commentBody = {
+            post_id: postId,
+            user_id: sessionUser.id,
+            content: newComment
+        }
+
+        await dispatch(postComment(commentBody))
+        setNewComment('')
     }
 
     //
@@ -146,7 +158,7 @@ const DisplayPost = ({ post, comments }) => {
                 }
             })}
             <div className="img-div">
-                <img key={post.id} src={post.post_image} style={{ maxHeight: '400px', maxWidth: '500px', minWidth: '500px' }} alt='preview' />
+                <img key={post.id} src={post.post_image} style={{ maxHeight: '600px', maxWidth: '500px', minWidth: '500px' }} alt='preview' />
             </div>
             <div className="caption-div">
                 {sessionUser.id === post.user_id && captionDisplay && (
@@ -201,6 +213,7 @@ const DisplayPost = ({ post, comments }) => {
                 <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
                     <div className="leave-com-input-div">
                         <input
+                            value={newComment}
                             placeholder="Add a comment..."
                             maxLength={200}
                             className='leave-com-input'
@@ -210,6 +223,7 @@ const DisplayPost = ({ post, comments }) => {
                         <button
                             disabled={newComment.length < 1}
                             className={`${postDisabled} post-comment-btn`}
+                            onClick={createComment}
                         >Post</button>
                     </div>
                 </div>
