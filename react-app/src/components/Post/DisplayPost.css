@@ -37,14 +37,14 @@
     margin-top: 7px;
 }
 
-.fa-trash-can {
+.fa-trash {
     color: rgb(235, 235, 235);
     -webkit-text-stroke: 1px gray;
     font-size: 18px;
     transition: .3s;
 }
 
-.fa-trash-can:hover {
+.fa-trash:hover {
     color: lightgray;
     -webkit-text-stroke: 1px gray;
     transition: .3s;
@@ -59,11 +59,29 @@
     margin-right: 3px;
 }
 
-.caption-div {
+.edit-cap-div {
     display: flex;
     flex-direction: column;
+
 }
 
+.icon-btns>* {
+    float: left;
+    font-size: 25px;
+    margin: 10px;
+}
+
+.fa-heart,
+.fa-comment {
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+    transition: .3s;
+}
+
+.fa-heart:hover,
+.fa-comment:hover {
+    -webkit-text-stroke: 2px rgb(125, 125, 125);
+}
 
 .edit-cap-btn {
     font-size: 12px;
@@ -104,7 +122,7 @@
     height: 50px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     border-radius: 10px;
     resize: none;
     border: 1px solid lightgray;

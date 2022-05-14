@@ -128,7 +128,7 @@ const DisplayPost = ({ post, comments }) => {
                             {/* DELETE POST MODAL */}
                             {sessionUser.id === post.user_id && (
                                 < div className="delete-post-div">
-                                    <span onClick={showModalFunc}><i className="fa-solid fa-trash-can"></i></span>
+                                    <span onClick={showModalFunc}><i className="fa-solid fa-trash"></i></span>
                                     {showModal && (
                                         <Modal closeModalFunc={closeModalFunc}>
                                             <div className="delete-confirmation-div"
@@ -160,12 +160,17 @@ const DisplayPost = ({ post, comments }) => {
             <div className="img-div">
                 <img key={post.id} src={post.post_image} style={{ maxHeight: '600px', maxWidth: '500px', minWidth: '500px' }} alt='preview' />
             </div>
-            <div className="caption-div">
-                {sessionUser.id === post.user_id && captionDisplay && (
-                    <div className="edit-cap-div">
-                        <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
+            <div className="icon-caption-div">
+                <div className="edit-cap-div">
+                    <div className="icon-btns">
+                        <i className="fa-solid fa-heart"></i>
+                        <i className="fa-solid fa-comment"></i>
+                        {sessionUser.id === post.user_id && captionDisplay && (
+                            <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
+                        )}
                     </div>
-                )}
+
+                </div>
                 {post.caption && captionDisplay && (
                     <div className='caption-display'>
                         <span className="caption-text"><Link to={`/${users[post.user_id - 1]?.username}`} className="username-on-caption">{users[post.user_id - 1]?.username}</Link>{`${post.caption}`}</span>
