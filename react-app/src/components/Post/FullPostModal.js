@@ -112,23 +112,29 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                     )}
 
                     {comments.map(comment => {
-
                         return (
-                            <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between' }}>
-                                <div style={{ display: 'flex' }}>
-                                    <Link>
-                                        <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
-                                    </Link>
-                                    <Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px', marginLeft: '10px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>
-                                    <span className="caption-text" style={{ marginTop: '7px', paddingLeft: '0px' }}>{comment.content}</span>
+                            <>
+                                <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between' }}>
+                                    <div style={{ display: 'flex' }}>
+                                        <Link>
+                                            <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
+                                        </Link>
+                                        <Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px', marginLeft: '10px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>
+                                        <span className="caption-text" style={{ marginTop: '7px', paddingLeft: '0px' }}>{comment.content}</span>
+                                    </div>
+                                    <div >
+                                        <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }}></i>
+                                    </div>
                                 </div>
-                                <div >
-                                    <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }}></i>
+                                <div>
+                                    {sessionUser.id === comment.user_id && (
+                                        <span>edit</span>
+                                    )}
+                                    <span>1h</span>
+                                    <span>2 likes</span>
                                 </div>
-                            </div>
+                            </>
                         )
-
-
                     })}
                 </div>
                 <div className="comment-section-bottom-div">
