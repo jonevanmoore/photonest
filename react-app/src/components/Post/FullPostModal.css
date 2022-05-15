@@ -1,5 +1,5 @@
 .full-post-body {
-    width: 85vw;
+    width: 80vw;
 }
 
 .img-left {
@@ -17,7 +17,7 @@
 
 .img-info-right {
     background-color: white;
-    width: 550px;
+    width: 80vw;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -55,7 +55,10 @@
 
 .comment-section-div {
     border-bottom: 1px solid lightgray;
-    height: 540px;
+    height: 68vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-bottom: 10px;
 }
 
 .edit-post-div {

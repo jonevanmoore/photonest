@@ -5,7 +5,7 @@ import { updateComment, destroyComment } from "../../store/comment";
 
 import './Comment.css'
 
-const Comment = ({ comment, users }) => {
+const Comment = ({ comment, users, post }) => {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
@@ -40,7 +40,7 @@ const Comment = ({ comment, users }) => {
 
     return (
         <>
-            {sessionUser.id === comment.user_id && commentInfoDisplay && (
+            {commentInfoDisplay && (
                 <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between', animation: 'fadeIn .3s' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex' }}>
@@ -50,15 +50,20 @@ const Comment = ({ comment, users }) => {
                             <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>{comment.content}</span>
                         </div>
                         <div className="comment-info">
-                            {comment.created_at !== comment.updated_at && (
-                                <span>edited</span>
-                            )}
                             <span>1h</span>
                             <span>2 likes</span>
-                            <>
-                                <span className='update-comment' onClick={showEditComment}>edit</span>
-                                <span className='update-comment' onClick={deleteComment}>delete</span>
-                            </>
+                            {sessionUser.id === comment.user_id && (
+                                <>
+                                    <span className='update-comment' onClick={showEditComment}>edit</span>
+                                    <span className='update-comment' onClick={deleteComment}>delete</span>
+                                </>
+                            )}
+                            {sessionUser.id === post.user_id && sessionUser.id !== comment.user_id && (
+                                <>
+                                    <span className='update-comment' onClick={deleteComment}>delete</span>
+
+                                </>
+                            )}
                         </div>
                     </div>
                     <div >

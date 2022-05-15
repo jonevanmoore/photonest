@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Comment from "../Comment/Comment";
 import './FullPostModal.css'
 
-const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate }) => {
+const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
@@ -124,11 +124,12 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             <Comment
                                 comment={comment}
                                 users={users}
+                                post={post}
                             />
                         )
                     })}
                 </div>
-                <div className="comment-section-bottom-div">
+                <div className="like-section-bottom-div" style={{ height: '11vh' }}>
                     <div className="icon-caption-div">
                         <div className="edit-cap-div">
                             <div className="icon-btns">
@@ -137,7 +138,24 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
 
                         </div>
                     </div>
-
+                </div>
+                <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
+                    <div className="leave-com-input-div">
+                        <input
+                            value={newComment}
+                            placeholder="Add a comment..."
+                            maxLength={200}
+                            className='leave-com-input'
+                            onChange={e => setNewComment(e.target.value)}
+                            style={{ marginTop: '5px' }}
+                        >
+                        </input>
+                        <button
+                            disabled={newComment.length < 1}
+                            className={`${postDisabled} post-comment-btn`}
+                            onClick={createComment}
+                        >Post</button>
+                    </div>
                 </div>
             </div>
         </div>

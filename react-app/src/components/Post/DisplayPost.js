@@ -171,7 +171,7 @@ const DisplayPost = ({ post, comments }) => {
                                                 <img src={`${post.post_image}`} style={{ border: '1px solid white', maxWidth: '300px' }} />
                                                 <div className='confirmation-action-div' style={{ padding: '10px', borderRadius: '10px' }}>
                                                     <div>
-                                                        <span>Are you sure you want to delete this post?</span>
+                                                        <span style={{ color: 'white' }}>Are you sure you want to delete this post?</span>
                                                     </div>
                                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                                         <button onClick={deletePost} className='delete-btn'>Delete</button>
@@ -286,6 +286,9 @@ const DisplayPost = ({ post, comments }) => {
                         editedCaption={editedCaption}
                         closeEditCaption={closeEditCaption}
                         handleUpdate={handleUpdate}
+                        newComment={newComment}
+                        setNewComment={setNewComment}
+                        postDisabled={postDisabled}
                     />
                 </Modal>
             )}
