@@ -7,6 +7,12 @@
     margin-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 15px;
+    animation: fadeIn .3s;
+}
+
+.username-post-display {
+    border-bottom: 1px solid lightgray;
+
 }
 
 .username-post-display>* {
@@ -118,7 +124,7 @@
 .edit-post-div {
     display: flex;
     flex-direction: column;
-    animation: fadeIn .5s;
+    animation: fadeIn .3s;
 }
 
 .edit-cap-input {
@@ -150,7 +156,7 @@
     float: right;
     padding-right: 10px;
     font-size: 12px;
-    transition: .3s;
+    transition: .2s;
 }
 
 .update-btn-divs>*:hover {
@@ -253,7 +259,7 @@
 }
 
 .delete-confirmation-div {
-    background-color: var(--transparent-white);
+    background-color: white;
     padding: 30px;
     border-radius: 10px;
     border: 1px solid rgb(0, 0, 0);
@@ -265,7 +271,7 @@
 }
 
 .confirmation-action-div {
-    background-color: var(--transparent-white);
+    background-color: rgba(0, 0, 0, 0.401);
     border: 1px solid white
 }
 

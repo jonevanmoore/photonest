@@ -48,7 +48,7 @@ const NewPost = ({ closeModalFunc }) => {
             </div>
             <div className="img-upload">
                 <label className="img-file">
-                    <label htmlFor='img-upload' id='select-file-button'>Choose an image from your computer...</label>
+                    <label htmlFor='img-upload' id='select-file-button'>Select from computer...</label>
                     <input
                         type='file'
                         onChange={e => setImage(e.target.files[0])}

@@ -1,0 +1,10 @@
+.edit-comment-btns-div>* {
+    margin-right: 10px;
+    cursor: pointer;
+    transition: .2s;
+    color: black;
+}
+
+.edit-comment-btns-div>*:hover {
+    color: var(--splash-purple);
+}

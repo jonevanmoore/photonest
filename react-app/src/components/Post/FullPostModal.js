@@ -1,14 +1,15 @@
 import { useSelector, useDispatch } from "react-redux"
+import { useState } from "react";
 import { Link } from "react-router-dom"
+import Comment from "../Comment/Comment";
 import './FullPostModal.css'
 
-const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate }) => {
+const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
 
     const user = useSelector(state => state.users[post.user_id])
-
 
 
     return (
@@ -36,9 +37,8 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                                             </Link>
                                         </div>
                                         <div>
-
                                             <Link to={`/${user.username}`} className='username-modal-display'>
-                                                <span>{user.username}</span>
+                                                <span style={{ marginLeft: '-5px' }}>{user.username}</span>
                                             </Link>
                                         </div>
                                     </div>
@@ -80,8 +80,16 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             <Link to={`/${user.username}`} className='img-link'>
                                 <img src={user.profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
                             </Link>
-                            <div className='caption-display' style={{ marginTop: '7px' }}>
-                                <span className="caption-text"><Link to={`/${user.username}`} className="username-on-caption">{user.username}</Link>{`${post.caption}`}</span>
+                            <div className='caption-display' style={{ marginTop: '7px', display: 'flex', flexDirection: 'column' }}>
+                                <div>
+                                    <span className="caption-text" style={{ marginLeft: '-5px' }}><Link to={`/${user.username}`} className="username-on-caption">{user.username}</Link>{`${post.caption}`}</span>
+                                </div>
+                                <div>
+
+                                    {sessionUser.id === post.user_id && captionDisplay && (
+                                        <span className="edit-cap-btn" onClick={showEditCaption} style={{ float: 'left' }}>edit caption</span>
+                                    )}
+                                </div>
                             </div>
                         </div>
 
@@ -113,44 +121,41 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
 
                     {comments.map(comment => {
                         return (
-                            <>
-                                <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between' }}>
-                                    <div style={{ display: 'flex' }}>
-                                        <Link>
-                                            <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
-                                        </Link>
-                                        <Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px', marginLeft: '10px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>
-                                        <span className="caption-text" style={{ marginTop: '7px', paddingLeft: '0px' }}>{comment.content}</span>
-                                    </div>
-                                    <div >
-                                        <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }}></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    {sessionUser.id === comment.user_id && (
-                                        <span>edit</span>
-                                    )}
-                                    <span>1h</span>
-                                    <span>2 likes</span>
-                                </div>
-                            </>
+                            <Comment
+                                comment={comment}
+                                users={users}
+                                post={post}
+                            />
                         )
                     })}
                 </div>
-                <div className="comment-section-bottom-div">
+                <div className="like-section-bottom-div" style={{ height: '11vh' }}>
                     <div className="icon-caption-div">
                         <div className="edit-cap-div">
                             <div className="icon-btns">
                                 <i className="fa-solid fa-heart"></i>
-
-                                {sessionUser.id === post.user_id && captionDisplay && (
-                                    <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
-                                )}
                             </div>
 
                         </div>
                     </div>
-
+                </div>
+                <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
+                    <div className="leave-com-input-div">
+                        <input
+                            value={newComment}
+                            placeholder="Add a comment..."
+                            maxLength={200}
+                            className='leave-com-input'
+                            onChange={e => setNewComment(e.target.value)}
+                            style={{ marginTop: '5px' }}
+                        >
+                        </input>
+                        <button
+                            disabled={newComment.length < 1}
+                            className={`${postDisabled} post-comment-btn`}
+                            onClick={createComment}
+                        >Post</button>
+                    </div>
                 </div>
             </div>
         </div>
