@@ -1,12 +1,18 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { updateComment } from "../../store/comment";
 import './Comment.css'
 
 const Comment = ({ comment, users }) => {
+    const dispatch = useDispatch()
+
     const sessionUser = useSelector(state => state.session.user)
+    const singleComment = useSelector(state => state.comments[comment.id])
 
     const [editedComment, setEditedComment] = useState(comment.content)
+
+
 
     const [commentInfoDisplay, setCommentInfoDisplay] = useState(true)
     const [editCommentDisplay, setEditCommentDisplay] = useState(false)
@@ -18,6 +24,15 @@ const Comment = ({ comment, users }) => {
     const showEditComment = () => {
         setEditCommentDisplay(true)
         setCommentInfoDisplay(false)
+    }
+
+    const editComment = async () => {
+        const updatedComment = {
+            content: editedComment
+        }
+        await dispatch(updateComment(updatedComment, singleComment.id))
+        setEditedComment(comment.content)
+        showCommentInfo()
     }
 
     return (
@@ -51,14 +66,14 @@ const Comment = ({ comment, users }) => {
                         value={editedComment}
                         onChange={e => setEditedComment(e.target.value)}
                         maxLength={200}
+                        minLength={1}
                         className='edit-cap-input'
                     >
-
                     </textarea>
                     <div>
 
                         <div className='edit-comment-btns-div' style={{ float: 'right' }}>
-                            <span>update</span>
+                            <span onClick={editComment}>update</span>
                             <span onClick={showCommentInfo}>cancel</span>
                         </div>
                     </div>

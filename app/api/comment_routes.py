@@ -28,3 +28,14 @@ def create_comment():
         db.session.add(comment)
         db.session.commit()
         return jsonify(comment.to_dict())
+
+
+# UPDATE COMMENT
+@comment_routes.route('/<int:id>', methods=['PUT'])
+def update_comment(id):
+
+    comment = Comment.query.get(id)
+    comment.content = request.json['content']
+
+    db.session.commit()
+    return comment.to_dict()

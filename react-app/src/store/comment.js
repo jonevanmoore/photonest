@@ -1,5 +1,7 @@
 const ALL_COMMENTS = 'comments/ALL_COMMENTS'
 const CREATE_COMMENT = 'comments/CREATE_COMMENT'
+const UPDATE_COMMENT = 'comments/UPDATE_COMMENT'
+
 
 const fetchComments = (comments) => ({
     type: ALL_COMMENTS,
@@ -9,6 +11,11 @@ const createComment = (comment) => ({
     type: CREATE_COMMENT,
     comment
 })
+const editComment = (comment) => ({
+    type: UPDATE_COMMENT,
+    comment
+})
+
 
 export const fetchAllComments = () => async (dispatch) => {
     const response = await fetch('/api/comments', {
@@ -36,9 +43,27 @@ export const postComment = (comment) => async dispatch => {
         return data;
     } else {
         console.log(data.errors);
-        console.log('ruh-roh')
     }
 }
+
+export const updateComment = (comment, commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comment)
+    });
+
+    const newComment = await response.json();
+
+    if (response.ok) {
+        await dispatch(editComment(newComment));
+        return newComment
+    } else {
+        console.log(newComment.errors)
+    }
+}
+
+
 
 const initialState = {};
 
@@ -51,6 +76,9 @@ const userCommentsReducer = (state = initialState, action) => {
             })
             return newState
         case CREATE_COMMENT:
+            newState[action.comment.id] = action.comment
+            return newState;
+        case UPDATE_COMMENT:
             newState[action.comment.id] = action.comment
             return newState;
         default:
