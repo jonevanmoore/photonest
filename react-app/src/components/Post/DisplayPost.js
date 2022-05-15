@@ -145,7 +145,7 @@ const DisplayPost = ({ post, comments }) => {
                 if (user.id === post.user_id) {
                     return (
                         <div className="username-post-display">
-                            <Link to={`/${user.username}`}>
+                            <Link to={`/${user.username}`} className='img-link'>
                                 <img src={user.profile_image} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
                             </Link>
                             <Link to={`/${user.username}`} className='username-display'>
