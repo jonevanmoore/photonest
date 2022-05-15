@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     bio = db.Column(db.String(200), nullable=True)
     profile_image = db.Column(
-        db.String, nullable=False, default='/default_pi.png')
+        db.String, nullable=False, default='https://myphotonestbucket.s3.us-east-2.amazonaws.com/default_pi.png')
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True),

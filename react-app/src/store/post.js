@@ -36,21 +36,18 @@ export const fetchAllPosts = () => async (dispatch) => {
     }
 }
 
-export const postCreate = (post) => async (dispatch) => {
-    const response = await fetch(`/api/posts/`, {
+export const postCreate = (post, userId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${userId}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(post)
+        body: post
     });
 
 
     if (response.ok) {
         const newPost = await response.json();
         dispatch(createPost(newPost));
-        return newPost;
     }
+    return response;
 }
 
 export const editPost = (post) => async (dispatch) => {
