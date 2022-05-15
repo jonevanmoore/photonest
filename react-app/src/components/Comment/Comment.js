@@ -1,17 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
-import { updateComment } from "../../store/comment";
+import { updateComment, destroyComment } from "../../store/comment";
+
 import './Comment.css'
 
 const Comment = ({ comment, users }) => {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
-    const singleComment = useSelector(state => state.comments[comment.id])
 
     const [editedComment, setEditedComment] = useState(comment.content)
-
 
 
     const [commentInfoDisplay, setCommentInfoDisplay] = useState(true)
@@ -24,15 +23,19 @@ const Comment = ({ comment, users }) => {
     const showEditComment = () => {
         setEditCommentDisplay(true)
         setCommentInfoDisplay(false)
+        setEditedComment(comment.content)
     }
 
     const editComment = async () => {
         const updatedComment = {
-            content: editedComment
+            content: editedComment,
         }
-        await dispatch(updateComment(updatedComment, singleComment.id))
-        setEditedComment(comment.content)
+        await dispatch(updateComment(updatedComment, comment.id))
         showCommentInfo()
+    }
+
+    const deleteComment = async () => {
+        await dispatch(destroyComment(comment.id))
     }
 
     return (
@@ -47,11 +50,14 @@ const Comment = ({ comment, users }) => {
                             <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>{comment.content}</span>
                         </div>
                         <div className="comment-info">
+                            {comment.created_at !== comment.updated_at && (
+                                <span>edited</span>
+                            )}
                             <span>1h</span>
                             <span>2 likes</span>
                             <>
                                 <span className='update-comment' onClick={showEditComment}>edit</span>
-                                <span className='update-comment'>delete</span>
+                                <span className='update-comment' onClick={deleteComment}>delete</span>
                             </>
                         </div>
                     </div>
@@ -66,12 +72,11 @@ const Comment = ({ comment, users }) => {
                         value={editedComment}
                         onChange={e => setEditedComment(e.target.value)}
                         maxLength={200}
-                        minLength={1}
                         className='edit-cap-input'
                     >
                     </textarea>
                     <div>
-
+                        <span style={{ float: 'left', marginLeft: '10px' }}>{`${editedComment.length}/200`}</span>
                         <div className='edit-comment-btns-div' style={{ float: 'right' }}>
                             <span onClick={editComment}>update</span>
                             <span onClick={showCommentInfo}>cancel</span>

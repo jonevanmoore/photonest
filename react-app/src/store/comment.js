@@ -1,6 +1,7 @@
 const ALL_COMMENTS = 'comments/ALL_COMMENTS'
 const CREATE_COMMENT = 'comments/CREATE_COMMENT'
-const UPDATE_COMMENT = 'comments/UPDATE_COMMENT'
+const UPDATE_COMMENT = 'comment/UPDATE_COMMENT'
+const DELETE_COMMENT = 'comment/DELETE_COMMENT'
 
 
 const fetchComments = (comments) => ({
@@ -14,6 +15,10 @@ const createComment = (comment) => ({
 const editComment = (comment) => ({
     type: UPDATE_COMMENT,
     comment
+})
+const deleteComment = (commentId) => ({
+    type: DELETE_COMMENT,
+    commentId
 })
 
 
@@ -63,6 +68,15 @@ export const updateComment = (comment, commentId) => async dispatch => {
     }
 }
 
+export const destroyComment = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        const deletedComment = await response.json();
+        await dispatch(deleteComment(deletedComment))
+    }
+}
 
 
 const initialState = {};
@@ -81,6 +95,9 @@ const userCommentsReducer = (state = initialState, action) => {
         case UPDATE_COMMENT:
             newState[action.comment.id] = action.comment
             return newState;
+        case DELETE_COMMENT:
+            delete newState[action.commentId]
+            return newState
         default:
             return state
     }

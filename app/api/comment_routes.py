@@ -39,3 +39,14 @@ def update_comment(id):
 
     db.session.commit()
     return comment.to_dict()
+
+
+# DELETE COMMENT
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+def delete_comment(id):
+
+    comment = Comment.query.get(id)
+
+    db.session.delete(comment)
+    db.session.commit()
+    return jsonify(id)
