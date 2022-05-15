@@ -118,7 +118,7 @@
 .edit-post-div {
     display: flex;
     flex-direction: column;
-    animation: fadeIn .5s;
+    animation: fadeIn .3s;
 }
 
 .edit-cap-input {
@@ -150,7 +150,7 @@
     float: right;
     padding-right: 10px;
     font-size: 12px;
-    transition: .3s;
+    transition: .2s;
 }
 
 .update-btn-divs>*:hover {

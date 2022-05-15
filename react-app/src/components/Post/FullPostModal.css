@@ -74,3 +74,29 @@
     resize: none;
     border: 1px solid lightgray;
 }
+
+.comment-info {
+    float: left;
+    margin-left: 35px;
+    position: relative;
+    /* bottom: 5px; */
+}
+
+.comment-info>* {
+    font-size: 12px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: rgb(177, 177, 177);
+    float: left;
+}
+
+.update-comment {
+    font-weight: normal;
+    color: var(--purple-theme);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.update-comment:hover {
+    font-weight: bold;
+}

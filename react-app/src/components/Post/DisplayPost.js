@@ -34,6 +34,7 @@ const DisplayPost = ({ post, comments }) => {
     const showEditCaption = () => {
         setEditCaptionDisplay(true)
         setCaptionDisplay(false)
+        setEditedCaption(post.caption)
     }
 
 
