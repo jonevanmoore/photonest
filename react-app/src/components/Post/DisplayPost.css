@@ -18,8 +18,11 @@
     left: 10px;
 }
 
+.img-link {}
+
 .profile-pic-home {
     border-radius: 100%;
+    object-fit: cover;
 }
 
 .username-display {

@@ -38,7 +38,6 @@ def create_post(user_id):
 
     # uploading to amazon and their response is an obj with url
     upload = upload_file_to_s3(image)
-    print("==================================================", upload)
 
     if "url" not in upload:
         # if the dictionary doesn't have a url key
