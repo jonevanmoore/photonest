@@ -2,10 +2,12 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import './FullPostModal.css'
 
-const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost }) => {
+const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
+
+    const user = useSelector(state => state.users[post.user_id])
 
 
 
@@ -71,6 +73,78 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             )
                         }
                     })}
+                </div>
+                <div className="comment-section-div">
+                    {post.caption && captionDisplay && (
+                        <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px' }}>
+                            <Link to={`/${user.username}`} className='img-link'>
+                                <img src={user.profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
+                            </Link>
+                            <div className='caption-display' style={{ marginTop: '7px' }}>
+                                <span className="caption-text"><Link to={`/${user.username}`} className="username-on-caption">{user.username}</Link>{`${post.caption}`}</span>
+                            </div>
+                        </div>
+
+                    )}
+                    {sessionUser.id === post.user_id && editCaptionDisplay && (
+                        <>
+                            <div className="edit-post-div">
+                                <textarea
+                                    value={editedCaption}
+                                    onChange={e => setEditedCaption(e.target.value)}
+                                    maxLength={200}
+                                    className='edit-cap-input-modal'
+                                >
+                                </textarea>
+                                <div className="below-edit-div">
+                                    <div className="char-count">
+                                        <span>{`${editedCaption.length}/200`}</span>
+                                    </div>
+                                    <div className="update-btn-divs">
+                                        <span onClick={closeEditCaption}>Cancel</span>
+                                        <span onClick={handleUpdate}>Update</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </>
+
+                    )}
+
+                    {comments.map(comment => {
+
+                        return (
+                            <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <Link>
+                                        <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
+                                    </Link>
+                                    <Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px', marginLeft: '10px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>
+                                    <span className="caption-text" style={{ marginTop: '7px', paddingLeft: '0px' }}>{comment.content}</span>
+                                </div>
+                                <div >
+                                    <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }}></i>
+                                </div>
+                            </div>
+                        )
+
+
+                    })}
+                </div>
+                <div className="comment-section-bottom-div">
+                    <div className="icon-caption-div">
+                        <div className="edit-cap-div">
+                            <div className="icon-btns">
+                                <i className="fa-solid fa-heart"></i>
+
+                                {sessionUser.id === post.user_id && captionDisplay && (
+                                    <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
+                                )}
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

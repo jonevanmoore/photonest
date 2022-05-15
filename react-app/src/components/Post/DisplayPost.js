@@ -194,7 +194,7 @@ const DisplayPost = ({ post, comments }) => {
                 <div className="edit-cap-div">
                     <div className="icon-btns">
                         <i className="fa-solid fa-heart"></i>
-                        <i className="fa-solid fa-comment"></i>
+                        <i className="fa-solid fa-comment" onClick={showFullPostModalFunc}></i>
                         {sessionUser.id === post.user_id && captionDisplay && (
                             <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
                         )}
@@ -276,6 +276,15 @@ const DisplayPost = ({ post, comments }) => {
                         showModal={showModal}
                         Modal={Modal}
                         deletePost={deletePost}
+                        setCaptionDisplay={setCaptionDisplay}
+                        showEditCaption={showEditCaption}
+                        editCaptionDisplay={editCaptionDisplay}
+
+                        captionDisplay={captionDisplay}
+                        setEditedCaption={setEditedCaption}
+                        editedCaption={editedCaption}
+                        closeEditCaption={closeEditCaption}
+                        handleUpdate={handleUpdate}
                     />
                 </Modal>
             )}

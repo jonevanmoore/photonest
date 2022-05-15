@@ -52,3 +52,25 @@
     position: relative;
     top: 5px;
 }
+
+.comment-section-div {
+    border-bottom: 1px solid lightgray;
+    height: 540px;
+}
+
+.edit-post-div {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn .5s;
+}
+
+.edit-cap-input-modal {
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+    border-radius: 10px;
+    resize: none;
+    border: 1px solid lightgray;
+}
