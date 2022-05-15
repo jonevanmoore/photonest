@@ -4,15 +4,17 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        first_name='Doug', last_name='Demodome', username='DougDemodome', bio='Owner of the Dimmsdale Dimmadome!', profile_image='/default_pi.png', email='demo@aa.io', password='password')
+        first_name='Doug', last_name='Demodome', username='DougDemodome', bio='Owner of the Dimmsdale Dimmadome!', profile_image='https://myphotonestbucket.s3.us-east-2.amazonaws.com/default_pi.png', email='demo@aa.io', password='password')
     marnie = User(
-        first_name='marnie', last_name='cuddles', username='marniecuddles', bio='', profile_image='/default_pi.png', email='marnie@aa.io', password='password')
+        first_name='marnie', last_name='cuddles', username='marniecuddles', bio='', profile_image='https://myphotonestbucket.s3.us-east-2.amazonaws.com/default_pi.png', email='marnie@aa.io', password='password')
     bobbie = User(
-        first_name='bobbie', last_name='young', username='bobbieyoung', bio='Bobbie was here', profile_image='/default_pi.png', email='bobbie@aa.io', password='password')
+        first_name='bobbie', last_name='young', username='bobbieyoung', bio='Bobbie was here', profile_image='https://myphotonestbucket.s3.us-east-2.amazonaws.com/default_pi.png', email='bobbie@aa.io', password='password')
+    jon = User(first_name='Jon', last_name='Moore', username='jonevanmoore', bio='CEO of Photonest',
+               profile_image='https://myphotonestbucket.s3.us-east-2.amazonaws.com/IMG_1211.jpg', email='jon@jon.jon', password='pass')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    users = [demo, marnie, bobbie, jon]
+    for user in users:
+        db.session.add(user)
 
     db.session.commit()
 

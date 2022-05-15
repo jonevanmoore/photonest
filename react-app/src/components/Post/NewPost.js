@@ -10,22 +10,21 @@ const NewPost = ({ closeModalFunc }) => {
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
 
-    const [postImage, setPostImage] = useState('')
-    const [accepted, setAccepted] = useState('')
+    const [image, setImage] = useState('')
     const [caption, setCaption] = useState('')
+    const [imageLoading, setImageLoading] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const post = {
-            post_image: postImage,
-            caption,
-            user_id: userId
-        }
-        const data = await dispatch(postCreate(post))
-        if (data) {
-            console.log("caught it")
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("caption", caption);
+
+        setImageLoading(true);
+
+        if (await dispatch(postCreate(formData, userId))) {
         } else {
-            console.log(":(")
+            setImageLoading(false);
         }
         closeModalFunc()
     }
@@ -34,23 +33,24 @@ const NewPost = ({ closeModalFunc }) => {
     return (
         <div className="new-post-div" style={{ border: '1px solid white' }}>
             <div className="img-preview">
-                {!postImage && (
+                {!image && (
                     <div className="img-preview">
                         <img src='https://www.wolflair.com/wp-content/uploads/2017/02/placeholder.jpg' style={{ maxWidth: '400px' }} alt='preview' id='image-preview' />
                     </div>
 
                 )}
-                {postImage && (
+                {image && (
                     <>
-                        <img src={postImage} style={{ maxHeight: '500px', maxWidth: '600px' }} alt='preview' id='image-preview' />
+                        <img src={URL.createObjectURL(image)} style={{ maxHeight: '500px', maxWidth: '600px' }} alt='preview' id='image-preview' />
                         {/* <span>{accepted}</span> */}
                     </>
                 )}
             </div>
             <div className="img-upload">
                 <input
-                    type='text'
-                    onChange={e => setPostImage(e.target.value)}
+                    type='file'
+                    onChange={e => setImage(e.target.files[0])}
+                    accept="image/*"
                     placeholder='Enter your URL image'
                     required
                     className="url-input"

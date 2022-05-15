@@ -146,7 +146,7 @@ const DisplayPost = ({ post, comments }) => {
                     return (
                         <div className="username-post-display">
                             <Link to={`/${user.username}`}>
-                                <img src={`./static${user.profile_image}`} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
+                                <img src={user.profile_image} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
                             </Link>
                             <Link to={`/${user.username}`} className='username-display'>
                                 <span>{user.username}</span>
