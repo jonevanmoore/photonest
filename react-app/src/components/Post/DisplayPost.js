@@ -83,10 +83,10 @@ const DisplayPost = ({ post, comments }) => {
     //
     function timeSince(date) {
 
-        var seconds = Math.floor((new Date() - date) / 1000);
+        let seconds = Math.floor((new Date() - date) / 1000);
 
         //YEARS
-        var interval = seconds / 31536000;
+        let interval = seconds / 31536000;
         if (Math.floor(interval) === 1) {
             return Math.floor(interval) + " YEAR AGO";
         }
@@ -146,7 +146,7 @@ const DisplayPost = ({ post, comments }) => {
                     return (
                         <div className="username-post-display">
                             <Link to={`/${user.username}`} className='img-link'>
-                                <img src={user.profile_image} key={user.id} style={{ width: '28px' }} className='profile-pic-home' />
+                                <img src={user.profile_image} key={user.id} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
                             </Link>
                             <Link to={`/${user.username}`} className='username-display'>
                                 <span>{user.username}</span>
@@ -170,7 +170,6 @@ const DisplayPost = ({ post, comments }) => {
                                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                                         <button onClick={deletePost} className='delete-btn'>Delete</button>
                                                         <button onClick={closeModalFunc} className='cancel-btn'>Cancel</button>
-
                                                     </div>
                                                 </div>
                                             </div>

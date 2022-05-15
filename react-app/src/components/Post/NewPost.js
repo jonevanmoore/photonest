@@ -47,14 +47,19 @@ const NewPost = ({ closeModalFunc }) => {
                 )}
             </div>
             <div className="img-upload">
-                <input
-                    type='file'
-                    onChange={e => setImage(e.target.files[0])}
-                    accept="image/*"
-                    placeholder='Enter your URL image'
-                    required
-                    className="url-input"
-                />
+                <label className="img-file">
+                    <label htmlFor='img-upload' id='select-file-button'>Choose an image from your computer...</label>
+                    <input
+                        type='file'
+                        onChange={e => setImage(e.target.files[0])}
+                        accept="image/*"
+                        placeholder='Enter your URL image'
+                        id='img-upload'
+                        name='img-upload'
+                        required
+                        hidden
+                    />
+                </label>
             </div>
             <div className="caption-div">
                 <textarea
@@ -65,7 +70,7 @@ const NewPost = ({ closeModalFunc }) => {
                     className="caption-textarea">
                 </textarea>
                 <div>
-                    <span>{`${caption.length}/200`}</span>
+                    <span style={{ float: 'left', marginLeft: '10px', fontSize: '12px' }}>{`${caption.length}/200`}</span>
                 </div>
             </div>
             <div className="new-post-btn-div">

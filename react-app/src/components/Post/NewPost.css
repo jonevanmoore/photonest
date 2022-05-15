@@ -21,10 +21,11 @@
     text-align: center;
 }
 
-.url-input {
+.img-file {
     width: 95%;
     height: 30px;
     border-radius: 10px;
+    color: rgb(0, 145, 255);
 }
 
 .caption-textarea {
