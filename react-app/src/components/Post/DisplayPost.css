@@ -163,6 +163,11 @@
     float: left;
     margin-top: 10px;
     padding-left: 10px;
+    cursor: pointer;
+}
+
+.view-comment:hover {
+    color: rgb(157, 157, 157);
 }
 
 .leave-comment-div {

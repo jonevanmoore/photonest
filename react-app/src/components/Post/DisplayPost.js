@@ -5,6 +5,7 @@ import { editPost, destroyPost } from "../../store/post"
 import { fetchUsers } from "../../store/user"
 import Modal from "../Modal/Modal"
 import { postComment } from "../../store/comment"
+import FullPostModal from "./FullPostModal"
 import './DisplayPost.css'
 
 const DisplayPost = ({ post, comments }) => {
@@ -39,6 +40,10 @@ const DisplayPost = ({ post, comments }) => {
     const [showModal, setShowModal] = useState(false);
     const closeModalFunc = () => setShowModal(false);
     const showModalFunc = () => setShowModal(true);
+
+    const [showFullPostModal, setShowFullPostModal] = useState(false);
+    const closeFullPostModalFunc = () => setShowFullPostModal(false);
+    const showFullPostModalFunc = () => setShowFullPostModal(true)
 
     const stopTheProp = e => e.stopPropagation();
 
@@ -231,10 +236,10 @@ const DisplayPost = ({ post, comments }) => {
                 <div className="view-comment-div">
 
                     {postComments.length === 1 && (
-                        <span className="view-comment">View 1 comment</span>
+                        <span className="view-comment" onClick={showFullPostModalFunc}>View 1 comment</span>
                     )}
                     {postComments.length > 1 && (
-                        <span className="view-comment">{`View all ${postComments.length} comments`}</span>
+                        <span className="view-comment" onClick={showFullPostModalFunc}>{`View all ${postComments.length} comments`}</span>
                     )}
                 </div>
                 <div className="created-at-div">
@@ -258,14 +263,25 @@ const DisplayPost = ({ post, comments }) => {
                     </div>
                 </div>
             </div>
+            {showFullPostModal && (
+                <Modal closeModalFunc={closeFullPostModalFunc}>
+                    <FullPostModal
+                        stopTheProp={stopTheProp}
+                        closeModalFunc={closeModalFunc}
+                        post={post}
+                        comments={postComments}
+                        postId={postId}
+                        createComment={createComment}
+                        showModalFunc={showModalFunc}
+                        showModal={showModal}
+                        Modal={Modal}
+                        deletePost={deletePost}
+                    />
+                </Modal>
+            )}
         </div>
     )
 
 }
 
-//post.created_at.slice(0, 17)
-
-// {postComments.map(comment => (
-//     <span><Link to={`/${users[comment.user_id - 1].username}`}>{users[comment.user_id - 1].username}</Link>{comment.content}</span>
-// ))}
 export default DisplayPost;

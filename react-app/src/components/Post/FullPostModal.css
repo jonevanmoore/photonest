@@ -1,0 +1,54 @@
+.full-post-body {
+    width: 85vw;
+}
+
+.img-left {
+    height: 95vh;
+    background-color: black;
+    vertical-align: middle;
+    display: table;
+    overflow: hidden;
+}
+
+.img-left-div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.img-info-right {
+    background-color: white;
+    width: 550px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.top-display {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-top: 5px;
+}
+
+.pp-and-username {
+    display: flex;
+}
+
+.pp-and-username>* {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.username-modal-display {
+    font-size: 12px;
+    position: relative;
+    top: 4px;
+    color: var(--blue-theme);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.fa-trash-modal {
+    position: relative;
+    top: 5px;
+}
