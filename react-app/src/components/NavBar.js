@@ -33,7 +33,11 @@ const NavBar = () => {
           <div
             onClick={stopTheProp}
             onMouseDown={stopTheProp}
-            style={{ backgroundColor: 'white', borderRadius: '10px', animation: 'animation: slideIn .5s, fadeIn .1s' }}>
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              animation: 'animation: slideIn .5s, fadeIn .1s',
+            }}>
             <NewPost closeModalFunc={closeModalFunc} />
           </div>
         </Modal>

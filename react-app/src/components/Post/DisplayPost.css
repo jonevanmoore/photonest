@@ -205,9 +205,9 @@
     font-weight: bold;
 }
 
-.disabled {
-    opacity: 50%;
-    transition: .3s;
+.post-disabled {
+    color: #7474748e;
+    transition: .2s;
 }
 
 .created-at-div {

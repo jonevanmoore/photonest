@@ -22,7 +22,7 @@ const DisplayPost = ({ post, comments }) => {
     })
     const [editedCaption, setEditedCaption] = useState(post.caption)
     const [newComment, setNewComment] = useState('')
-    const [postDisabled, setPostDisabled] = useState('disabled')
+    const [postDisabled, setPostDisabled] = useState('post-disabled')
 
     const [captionDisplay, setCaptionDisplay] = useState(true)
     const [editCaptionDisplay, setEditCaptionDisplay] = useState(false)
@@ -56,7 +56,7 @@ const DisplayPost = ({ post, comments }) => {
         if (newComment.length > 0) {
             setPostDisabled('able')
         } else {
-            setPostDisabled('disabled')
+            setPostDisabled('post-disabled')
         }
     }, [newComment])
 
