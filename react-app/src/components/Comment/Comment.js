@@ -81,9 +81,16 @@ const Comment = ({ comment, users, post }) => {
                     >
                     </textarea>
                     <div>
-                        <span style={{ float: 'left', marginLeft: '10px' }}>{`${editedComment.length}/200`}</span>
+                        <span style={{ float: 'left', marginLeft: '10px', fontSize: '12px' }}>{`${editedComment.length}/200`}</span>
+                        {editedComment.length < 1 && (
+                            <span style={{ float: 'left', marginLeft: '10px', fontSize: '12px', color: 'red' }}>Cannot leave comment blank</span>
+                        )}
                         <div className='edit-comment-btns-div' style={{ float: 'right' }}>
-                            <span onClick={editComment}>update</span>
+                            <button onClick={editComment}
+                                disabled={editedComment.length < 1}
+                                style={{ backgroundColor: 'transparent', border: 'none', fontFamily: 'Raleway', fontSize: '15px' }}
+                                className={editedComment.length < 1 ? 'post-disabled' : 'update-btn'}
+                            >update</button>
                             <span onClick={showCommentInfo}>cancel</span>
                         </div>
                     </div>

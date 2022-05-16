@@ -25,6 +25,10 @@ input:focus {
     transition: .2s;
 }
 
+textarea:focus {
+    outline: none;
+}
+
 .valid {
     color: #2274c6;
     transition: .2s;

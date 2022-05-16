@@ -4,7 +4,7 @@
     border: 1px lightgray solid;
     background-color: white;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
     padding-bottom: 15px;
     animation: fadeIn .3s;
@@ -208,6 +208,10 @@
 .post-disabled {
     color: #7474748e;
     transition: .2s;
+}
+
+.post-disabled:hover {
+    color: #7474748e;
 }
 
 .created-at-div {
