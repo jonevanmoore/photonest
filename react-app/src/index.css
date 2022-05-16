@@ -20,6 +20,16 @@ input:focus {
     outline: none;
 }
 
+.invalid {
+    color: lightgray;
+    transition: .2s;
+}
+
+.valid {
+    color: #2274c6;
+    transition: .2s;
+}
+
 @font-face {
     font-family: 'Raleway', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600&display=swap');

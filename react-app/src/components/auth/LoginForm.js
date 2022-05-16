@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = ({ formDisplay }) => {
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+  const [loginDisabled, setLoginDisabled] = useState('disabled')
+  const [customError, setCustomError] = useState('')
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -26,9 +30,17 @@ const LoginForm = ({ formDisplay }) => {
     setPassword(e.target.value);
   };
 
-  // if (user) {
-  //   return <Redirect to='/' />;
-  // }
+  useEffect(() => {
+    if (email.length > 0 && password.length > 0) {
+      setLoginDisabled('enabled')
+    } else {
+      setLoginDisabled('disabled')
+    }
+
+    if (errors.length > 0) {
+      setCustomError('email or password is incorrect')
+    }
+  }, [email, password, errors])
 
   return (
     <>
@@ -36,9 +48,7 @@ const LoginForm = ({ formDisplay }) => {
         <label className='photonest-label'>photonest</label>
         <form onSubmit={onLogin}>
           <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
+            <span style={{ color: 'darkred' }}>{customError}</span>
           </div>
           <div className='splash-input-div'>
             <input
@@ -48,6 +58,7 @@ const LoginForm = ({ formDisplay }) => {
               value={email}
               onChange={updateEmail}
               className="splash-input"
+              maxLength={255}
             />
           </div>
           <div className='splash-input-div'>
@@ -58,13 +69,18 @@ const LoginForm = ({ formDisplay }) => {
               value={password}
               onChange={updatePassword}
               className="splash-input"
+              maxLength={255}
             />
           </div>
-          <button type='submit' className='login-btn form-btn'>Login</button>
+          <button
+            type='submit'
+            className={`login-btn form-btn ${loginDisabled}`}
+            disabled={loginDisabled === 'disabled'}
+          >Login</button>
         </form>
       </div>
       <div className='switch-form-btn-div'>
-        <labe className="bottom-q">Not a member yet?</labe>
+        <label className="bottom-q">Not a member yet?</label>
         <button onClick={formDisplay} className='switch-form-btn'>Sign up</button>
       </div>
     </>

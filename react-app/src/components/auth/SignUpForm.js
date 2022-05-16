@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { fetchUsers } from '../../store/user';
 
 const SignUpForm = ({ formDisplay }) => {
   const [errors, setErrors] = useState([]);
@@ -11,7 +12,28 @@ const SignUpForm = ({ formDisplay }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [signUpDisabled, setSignUpDisabled] = useState('disabled')
+
+  const [firstNameValid, setFirstNameValid] = useState('invalid')
+  const [lastNameValid, setLastNameValid] = useState('invalid')
+  const [usernameValid, setUsernameValid] = useState('invalid')
+  const [emailValid, setEmailValid] = useState('invalid')
+  const [passwordValid, setPasswordValid] = useState('invalid')
+  const [repeatPasswordValid, setRepeatPasswordValid] = useState('invalid')
+
+
   const user = useSelector(state => state.session.user);
+  const users = Object.values(useSelector(state => state.users))
+
+  const usernameList = []
+  users.forEach(user => {
+    usernameList.push(user.username)
+  })
+  const emailList = []
+  users.forEach(user => {
+    emailList.push(user.email)
+  })
+
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -23,6 +45,73 @@ const SignUpForm = ({ formDisplay }) => {
       }
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [dispatch])
+
+
+
+  useEffect(() => {
+    //FIRST NAME
+    if (firstName.length > 0) {
+      setFirstNameValid('valid')
+    } else {
+      setFirstNameValid('invalid')
+    }
+
+    //LAST NAME
+    if (lastName.length > 0) {
+      setLastNameValid('valid')
+    } else {
+      setLastNameValid('invalid')
+    }
+
+    //USERNAME
+    if (username.length > 0 && !usernameList.includes(username)) {
+      setUsernameValid('valid')
+    } else {
+      setUsernameValid('invalid')
+    }
+
+    //EMAIL
+    if (email.length > 0 && !emailList.includes(email)) {
+      setEmailValid('valid')
+    } else {
+      setEmailValid('invalid')
+    }
+
+    //PASSWORD
+    if (password.length > 0) {
+      setPasswordValid('valid')
+    } else {
+      setPasswordValid('invalid')
+    }
+
+    //CONFIRM PASS
+    if (repeatPassword === password) {
+      setRepeatPasswordValid('valid')
+    } else {
+      setRepeatPasswordValid('invalid')
+    }
+
+
+    //SIGNUP BTN
+    if (
+      firstName.length > 0 &&
+      lastName.length > 0 &&
+      username.length > 0 && !usernameList.includes(username) &&
+      email.length > 0 && !emailList.includes(email) &&
+      password.length > 0 &&
+      repeatPassword === password
+    ) {
+      setSignUpDisabled('enabled')
+    } else {
+      setSignUpDisabled('disabled')
+    }
+  }, [firstName, lastName, username, usernameList, email, emailList, password, repeatPassword])
+
+
 
   const randomizeColor = () => {
     const colorClasses = [
@@ -86,6 +175,9 @@ const SignUpForm = ({ formDisplay }) => {
               value={firstName}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${firstNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -97,6 +189,9 @@ const SignUpForm = ({ formDisplay }) => {
               value={lastName}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${lastNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -108,6 +203,9 @@ const SignUpForm = ({ formDisplay }) => {
               value={username}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${usernameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -119,6 +217,9 @@ const SignUpForm = ({ formDisplay }) => {
               value={email}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${emailValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -130,6 +231,9 @@ const SignUpForm = ({ formDisplay }) => {
               value={password}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${passwordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -142,9 +246,16 @@ const SignUpForm = ({ formDisplay }) => {
               required={true}
               className={`splash-input ${randomizeColor()}`}
             ></input>
+            <div style={{ position: 'absolute' }}>
+              <i className={`fa-solid fa-circle-check ${repeatPasswordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
+            </div>
           </div>
 
-          <button type='submit' className='sign-up-btn form-btn'>Sign Up</button>
+          <button
+            type='submit'
+            className={`sign-up-btn form-btn ${signUpDisabled}`}
+            disabled={signUpDisabled === 'disabled'}
+          >Sign Up</button>
         </form>
       </div>
       <div className='switch-form-btn-div'>
