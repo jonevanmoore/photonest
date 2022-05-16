@@ -6,6 +6,8 @@ import { fetchUsers } from "../../store/user"
 import Modal from "../Modal/Modal"
 import { postComment } from "../../store/comment"
 import FullPostModal from "./FullPostModal"
+import { updateLike, fetchLikes } from "../../store/like"
+
 import './DisplayPost.css'
 
 const DisplayPost = ({ post, comments }) => {
@@ -13,11 +15,18 @@ const DisplayPost = ({ post, comments }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
+    const likes = Object.values(useSelector(state => state.likes))
     const postId = post.id
     const postComments = []
     comments.map(comment => {
         if (postId === comment.post_id) {
             postComments.push(comment)
+        }
+    })
+    let postLikes = 0;
+    likes.forEach(like => {
+        if (like.post_id === postId) {
+            postLikes += 1
         }
     })
     const [editedCaption, setEditedCaption] = useState(post.caption)
@@ -50,6 +59,7 @@ const DisplayPost = ({ post, comments }) => {
 
     useEffect(() => {
         dispatch(fetchUsers())
+        dispatch(fetchLikes(postId))
     }, [dispatch])
 
     useEffect(() => {
@@ -84,6 +94,10 @@ const DisplayPost = ({ post, comments }) => {
 
         await dispatch(postComment(commentBody))
         setNewComment('')
+    }
+
+    const updateLikePost = async () => {
+        await dispatch(updateLike(postId))
     }
 
     //
@@ -194,12 +208,13 @@ const DisplayPost = ({ post, comments }) => {
             <div className="icon-caption-div">
                 <div className="edit-cap-div">
                     <div className="icon-btns">
-                        <i className="fa-solid fa-heart"></i>
+                        <i className="fa-solid fa-heart" onClick={updateLikePost}></i>
                         <i className="fa-solid fa-comment" onClick={showFullPostModalFunc}></i>
                         {sessionUser.id === post.user_id && captionDisplay && (
                             <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
                         )}
                     </div>
+                    <span>{`${postLikes} likes`}</span>
 
                 </div>
                 {post.caption && captionDisplay && (
