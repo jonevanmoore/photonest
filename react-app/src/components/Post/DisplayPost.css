@@ -3,17 +3,14 @@
     flex-direction: column;
     border: 1px lightgray solid;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 15px;
     animation: fadeIn .3s;
 }
 
-.username-post-display {
-    border-bottom: 1px solid lightgray;
 
-}
 
 .username-post-display>* {
     float: left;
