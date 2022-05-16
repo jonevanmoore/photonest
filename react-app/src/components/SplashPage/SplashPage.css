@@ -147,6 +147,16 @@
     background-color: #2274c6;
 }
 
+.btn-disabled {
+    background-color: lightgray;
+    color: rgb(158, 158, 158);
+}
+
+.btn-disabled:hover {
+    background-color: lightgray;
+    color: rgb(158, 158, 158);
+}
+
 .switch-form-btn-div {
     background-color: rgba(255, 255, 255, 0.500);
     border-radius: 3px;

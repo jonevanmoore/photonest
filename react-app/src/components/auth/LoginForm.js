@@ -11,7 +11,7 @@ const LoginForm = ({ formDisplay }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginDisabled, setLoginDisabled] = useState('disabled')
+  const [loginDisabled, setLoginDisabled] = useState('btn-disabled')
   const [customError, setCustomError] = useState('')
 
   const onLogin = async (e) => {
@@ -34,7 +34,7 @@ const LoginForm = ({ formDisplay }) => {
     if (email.length > 0 && password.length > 0) {
       setLoginDisabled('enabled')
     } else {
-      setLoginDisabled('disabled')
+      setLoginDisabled('btn-disabled')
     }
 
     if (errors.length > 0) {
@@ -75,7 +75,7 @@ const LoginForm = ({ formDisplay }) => {
           <button
             type='submit'
             className={`login-btn form-btn ${loginDisabled}`}
-            disabled={loginDisabled === 'disabled'}
+            disabled={loginDisabled === 'btn-disabled'}
           >Login</button>
         </form>
       </div>

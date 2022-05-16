@@ -12,7 +12,7 @@ const SignUpForm = ({ formDisplay }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [signUpDisabled, setSignUpDisabled] = useState('disabled')
+  const [signUpDisabled, setSignUpDisabled] = useState('btn-disabled')
 
   const [firstNameValid, setFirstNameValid] = useState('invalid')
   const [lastNameValid, setLastNameValid] = useState('invalid')
@@ -68,7 +68,7 @@ const SignUpForm = ({ formDisplay }) => {
     }
 
     //USERNAME
-    if (username.length > 0 && !usernameList.includes(username)) {
+    if (username.length > 4 && !usernameList.includes(username)) {
       setUsernameValid('valid')
     } else {
       setUsernameValid('invalid')
@@ -82,14 +82,14 @@ const SignUpForm = ({ formDisplay }) => {
     }
 
     //PASSWORD
-    if (password.length > 0) {
+    if (password.length > 7) {
       setPasswordValid('valid')
     } else {
       setPasswordValid('invalid')
     }
 
     //CONFIRM PASS
-    if (repeatPassword === password) {
+    if (repeatPassword === password && repeatPassword.length > 0) {
       setRepeatPasswordValid('valid')
     } else {
       setRepeatPasswordValid('invalid')
@@ -107,7 +107,7 @@ const SignUpForm = ({ formDisplay }) => {
     ) {
       setSignUpDisabled('enabled')
     } else {
-      setSignUpDisabled('disabled')
+      setSignUpDisabled('btn-disabled')
     }
   }, [firstName, lastName, username, usernameList, email, emailList, password, repeatPassword])
 
@@ -174,6 +174,7 @@ const SignUpForm = ({ formDisplay }) => {
               onChange={updateFirstName}
               value={firstName}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={100}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${firstNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -188,6 +189,7 @@ const SignUpForm = ({ formDisplay }) => {
               onChange={updateLastName}
               value={lastName}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={100}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${lastNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -198,10 +200,11 @@ const SignUpForm = ({ formDisplay }) => {
             <input
               type='text'
               name='username'
-              placeholder='username'
+              placeholder='username (5 character min.)'
               onChange={updateUsername}
               value={username}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={40}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${usernameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -216,6 +219,7 @@ const SignUpForm = ({ formDisplay }) => {
               onChange={updateEmail}
               value={email}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={255}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${emailValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -226,10 +230,11 @@ const SignUpForm = ({ formDisplay }) => {
             <input
               type='password'
               name='password'
-              placeholder='password'
+              placeholder='password (8 character min.)'
               onChange={updatePassword}
               value={password}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={255}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${passwordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -245,6 +250,7 @@ const SignUpForm = ({ formDisplay }) => {
               value={repeatPassword}
               required={true}
               className={`splash-input ${randomizeColor()}`}
+              maxLength={255}
             ></input>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${repeatPasswordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
@@ -254,7 +260,7 @@ const SignUpForm = ({ formDisplay }) => {
           <button
             type='submit'
             className={`sign-up-btn form-btn ${signUpDisabled}`}
-            disabled={signUpDisabled === 'disabled'}
+            disabled={signUpDisabled === 'btn-disabled'}
           >Sign Up</button>
         </form>
       </div>

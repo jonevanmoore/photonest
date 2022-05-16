@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import Home from './components/Home/Home'
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import SplashPage from './components/SplashPage/SplashPage'
-import NewPost from './components/Post/NewPost';
 import { authenticate } from './store/session';
 import { Redirect } from 'react-router-dom';
 import Profile from './components/Profile/Profile';
@@ -39,7 +32,7 @@ function App() {
           <SplashPage />
         </Route>
         <Route path='/:username' exact={true} >
-          <Profile />
+          {sessionUser ? <Profile /> : <Redirect to='/' />}
         </Route>
       </Switch>
     </BrowserRouter>
