@@ -20,14 +20,16 @@ const Home = () => {
 
     return (
         <div className="home-page-div" >
-            <div className="posts-suggestions-div">
+            <div className="posts-suggestions-div" style={{ marginRight: '150px' }}>
                 <div className="posts-div" style={{ marginTop: '90px' }}>
                     {posts.map(post => (
                         <DisplayPost post={post} key={post.id} comments={comments} />
                     ))}
                 </div>
-                <div className="suggestions-div" style={{ marginTop: '90px' }}>
-                    <span>suggestions for you</span>
+                <div className="suggestions-div" style={{ marginTop: '100px', position: 'fixed' }}>
+                    <div className="suggestions-scroll-div">
+                        <span>suggestions for you</span>
+                    </div>
                 </div>
             </div>
         </div>
