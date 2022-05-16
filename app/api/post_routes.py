@@ -3,11 +3,6 @@ from flask_login import current_user, login_required
 from app.models import db, User, Post
 from app.forms import NewPost, EditPost
 from .aws import allowed_file, get_unique_filename, upload_file_to_s3
-import boto3
-import botocore
-import os
-import uuid
-
 
 post_routes = Blueprint('posts', __name__)
 
