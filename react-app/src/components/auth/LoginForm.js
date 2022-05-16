@@ -51,26 +51,34 @@ const LoginForm = ({ formDisplay }) => {
             <span style={{ color: 'darkred' }}>{customError}</span>
           </div>
           <div className='splash-input-div'>
-            <input
-              name='email'
-              type='text'
-              placeholder='email'
-              value={email}
-              onChange={updateEmail}
-              className="splash-input"
-              maxLength={255}
-            />
+            <label className='label-input' style={{ width: '90%' }}>
+
+              <input
+                name='email'
+                type='text'
+                placeholder=' '
+                value={email}
+                onChange={updateEmail}
+                className="splash-input"
+                maxLength={255}
+              />
+              <span className='short-span-input'>email</span>
+            </label>
           </div>
           <div className='splash-input-div'>
-            <input
-              name='password'
-              type='password'
-              placeholder='password'
-              value={password}
-              onChange={updatePassword}
-              className="splash-input"
-              maxLength={255}
-            />
+            <label className='label-input' style={{ width: '90%' }}>
+
+              <input
+                name='password'
+                type='password'
+                placeholder=' '
+                value={password}
+                onChange={updatePassword}
+                className="splash-input"
+                maxLength={255}
+              />
+              <span className='span-input'>password</span>
+            </label>
           </div>
           <button
             type='submit'

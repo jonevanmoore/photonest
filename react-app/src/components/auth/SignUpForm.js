@@ -160,98 +160,114 @@ const SignUpForm = ({ formDisplay }) => {
       <div className='form-div'>
         <label className='photonest-label'>photonest</label>
         <form onSubmit={onSignUp}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
 
           <div className={`splash-input-div`}>
-            <input
-              type='text'
-              name='firstName'
-              placeholder='first name'
-              onChange={updateFirstName}
-              value={firstName}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={100}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+              <input
+                type='text'
+                name='firstName'
+                placeholder=' '
+                onChange={updateFirstName}
+                value={firstName}
+                className={`splash-input`}
+                maxLength={100}
+              ></input>
+              <span className='span-input'>first name</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${firstNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
           </div>
 
           <div className='splash-input-div'>
-            <input
-              type='text'
-              name='lastName'
-              placeholder='last name'
-              onChange={updateLastName}
-              value={lastName}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={100}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+
+              <input
+                type='text'
+                name='lastName'
+                placeholder=' '
+                onChange={updateLastName}
+                value={lastName}
+                className={`splash-input ${randomizeColor()}`}
+                maxLength={100}
+              ></input>
+              <span className='span-input'>last name</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${lastNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
           </div>
 
           <div className='splash-input-div'>
-            <input
-              type='text'
-              name='username'
-              placeholder='username (5 character min.)'
-              onChange={updateUsername}
-              value={username}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={40}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+              <input
+                type='text'
+                name='username'
+                placeholder=' '
+                onChange={updateUsername}
+                value={username}
+                className={`splash-input ${randomizeColor()}`}
+                maxLength={40}
+              ></input>
+              <span className='long-span-input'>{'username (5 character min.)'}</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${usernameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
           </div>
 
           <div className='splash-input-div'>
-            <input
-              type='text'
-              name='email'
-              placeholder='email'
-              onChange={updateEmail}
-              value={email}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={255}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+              <input
+                type='text'
+                name='email'
+                placeholder=' '
+                onChange={updateEmail}
+                value={email}
+                className={`splash-input ${randomizeColor()}`}
+                maxLength={255}
+              ></input>
+              <span className='short-span-input'>email</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${emailValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
           </div>
 
           <div className='splash-input-div'>
-            <input
-              type='password'
-              name='password'
-              placeholder='password (8 character min.)'
-              onChange={updatePassword}
-              value={password}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={255}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+
+              <input
+                type='password'
+                name='password'
+                placeholder=' '
+                onChange={updatePassword}
+                value={password}
+                className={`splash-input ${randomizeColor()}`}
+                maxLength={255}
+              ></input>
+              <span className='long-span-input'>{'password (8 character min.)'}</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${passwordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
           </div>
 
           <div className='splash-input-div'>
-            <input
-              type='password'
-              name='repeat_password'
-              placeholder='confirm password'
-              onChange={updateRepeatPassword}
-              value={repeatPassword}
-              required={true}
-              className={`splash-input ${randomizeColor()}`}
-              maxLength={255}
-            ></input>
+            <label className='label-input' style={{ width: '90%' }}>
+
+              <input
+                type='password'
+                name='repeat_password'
+                placeholder=' '
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+                className={`splash-input ${randomizeColor()}`}
+                maxLength={255}
+              ></input>
+              <span className='mid-span-input'>confirm password</span>
+            </label>
             <div style={{ position: 'absolute' }}>
               <i className={`fa-solid fa-circle-check ${repeatPasswordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
             </div>
