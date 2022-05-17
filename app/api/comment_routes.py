@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
 from app.forms import CreateCommentForm, EditCommentForm
 from app.models import db, Comment
+from datetime import datetime
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -36,6 +37,7 @@ def update_comment(id):
 
     comment = Comment.query.get(id)
     comment.content = request.json['content']
+    comment.updated_at = datetime.now()
 
     db.session.commit()
     return comment.to_dict()

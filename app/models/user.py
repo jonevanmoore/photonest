@@ -30,6 +30,8 @@ class User(db.Model, UserMixin):
         "PostLike", back_populates="user", cascade="all, delete")
     comments = relationship(
         "Comment", back_populates="user", cascade="all, delete")
+    comment_likes = relationship(
+        "CommentLike", back_populates="user", cascade="all, delete")
 
     @property
     def password(self):

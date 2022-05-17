@@ -46,7 +46,6 @@ const NewPost = ({ closeModalFunc }) => {
                     <div className="img-preview">
                         <img src='https://myphotonestbucket.s3.amazonaws.com/cdfce7339ee14eb08d01803527adb774.jpeg' style={{ width: '400px', height: '45vh' }} alt='preview' id='image-preview' />
                     </div>
-
                 )}
                 {image && (
                     <>

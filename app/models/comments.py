@@ -12,10 +12,12 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime(timezone=True),
-                           server_onupdate=func.now(), server_default=func.now())
+                           server_default=func.now(), nullable=False)
 
     user = db.relationship('User', back_populates='comments')
     post = db.relationship('Post', back_populates='comments')
+    comment_likes = db.relationship(
+        'CommentLike', back_populates='comment', cascade="all, delete")
 
     def to_dict(self):
         return {
