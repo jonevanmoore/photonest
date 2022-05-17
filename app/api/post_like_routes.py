@@ -6,7 +6,7 @@ post_like_routes = Blueprint('post_likes', __name__)
 
 
 @post_like_routes.route('/<int:post_id>')
-def get_postLikes(post_id):
+def get_post_likes(post_id):
 
     all_likes = PostLike.query.filter(PostLike.post_id == post_id).all()
     post_likes = [like.to_dict() for like in all_likes]
