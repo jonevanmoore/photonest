@@ -14,21 +14,18 @@ const DisplayPost = ({ post, comments }) => {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
+    const userId = sessionUser.id
+    const postId = post.id
     const users = Object.values(useSelector(state => state.users))
     const likes = Object.values(useSelector(state => state.likes))
-    const postId = post.id
+    let postLikes = likes.filter(like => like.post_id === postId).length
     const postComments = []
     comments.map(comment => {
         if (postId === comment.post_id) {
             postComments.push(comment)
         }
     })
-    let postLikes = 0;
-    likes.forEach(like => {
-        if (like.post_id === postId) {
-            postLikes += 1
-        }
-    })
+
     const [editedCaption, setEditedCaption] = useState(post.caption)
     const [newComment, setNewComment] = useState('')
     const [postDisabled, setPostDisabled] = useState('post-disabled')

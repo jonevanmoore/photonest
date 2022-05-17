@@ -5,7 +5,15 @@ from flask_login import current_user, login_required
 post_like_routes = Blueprint('post_likes', __name__)
 
 
-@post_like_routes.route('/<int:post_id>', methods=['POST'])
+@post_like_routes.route('/<int:post_id>')
+def get_postLikes(post_id):
+
+    all_likes = PostLike.query.filter(PostLike.post_id == post_id).all()
+    post_likes = [like.to_dict() for like in all_likes]
+    return jsonify(post_likes)
+
+
+@post_like_routes.route('/<int:post_id>', methods=['PUT'])
 @login_required
 def toggle_likes(post_id):
     user_id = current_user.id
@@ -27,11 +35,3 @@ def toggle_likes(post_id):
         db.session.add(like)
         db.session.commit()
         return jsonify(like.to_dict())
-
-
-@post_like_routes.route('/<int:post_id>')
-def get_postLikes(post_id):
-
-    all_likes = PostLike.query.filter(PostLike.post_id == post_id).all()
-    post_likes = [like.to_dict() for like in all_likes]
-    return jsonify(post_likes)

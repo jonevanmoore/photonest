@@ -1,14 +1,19 @@
 const GET_LIKES = 'post/GET_LIKES'
-const UPDATE_LIKE = 'post/UPDATE_LIKE'
+const ADD_LIKE = 'post/ADD_LIKE'
+const REMOVE_LIKE = 'post/REMOVE_LIKE'
 
 const getLikes = (likes) => ({
     type: GET_LIKES,
     likes
 })
 
-const updatedLike = (data) => ({
-    type: UPDATE_LIKE,
-    data
+const addLike = (like) => ({
+    type: ADD_LIKE,
+    like
+})
+const removeLike = (id) => ({
+    type: REMOVE_LIKE,
+    id
 })
 
 export const fetchLikes = (id) => async (dispatch) => {
@@ -22,9 +27,9 @@ export const fetchLikes = (id) => async (dispatch) => {
     }
 }
 
-export const updateLike = (id) => async (dispatch) => {
-    const response = await fetch(`/api/post_likes/${id}`, {
-        method: 'POST',
+export const updateLike = (postId) => async (dispatch) => {
+    const response = await fetch(`/api/post_likes/${postId}`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         }
@@ -32,8 +37,12 @@ export const updateLike = (id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(updatedLike(data))
-        return response
+        if (data.status === 'deleted') {
+            dispatch(removeLike(data.like_id));
+        } else {
+            dispatch(addLike(data));
+        }
+        return data;
     }
 }
 
@@ -49,20 +58,21 @@ const likeReducer = (state = {}, action) => {
             return newState;
         }
 
-        case UPDATE_LIKE: {
-            if (newState[action.data.id]) {
-                delete newState[action.data.id]
-                return newState
-            } else {
-                newState[action.data.id] = action.data
-                return newState;
-            }
+        case ADD_LIKE: {
+            newState[action.like.id] = action.like;
+            return newState;
+        }
+
+        case REMOVE_LIKE: {
+            delete newState[action.id];
+            return newState;
+
         }
         default: {
-            return state
+            return state;
         }
     }
 
-}
+};
 
 export default likeReducer
