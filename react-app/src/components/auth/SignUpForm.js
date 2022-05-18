@@ -25,14 +25,14 @@ const SignUpForm = ({ formDisplay }) => {
   const user = useSelector(state => state.session.user);
   const users = Object.values(useSelector(state => state.users))
 
-  const usernameList = []
-  users.forEach(user => {
-    usernameList.push(user.username)
-  })
-  const emailList = []
-  users.forEach(user => {
-    emailList.push(user.email)
-  })
+  // const usernameList = []
+  // users.forEach(user => {
+  //   usernameList.push(user.username)
+  // })
+  // const emailList = []
+  // users.forEach(user => {
+  //   emailList.push(user.email)
+  // })
 
   const dispatch = useDispatch();
 
@@ -68,14 +68,14 @@ const SignUpForm = ({ formDisplay }) => {
     }
 
     //USERNAME
-    if (username.length > 4 && !usernameList.includes(username)) {
+    if (username.length > 4) {
       setUsernameValid('valid')
     } else {
       setUsernameValid('invalid')
     }
 
     //EMAIL
-    if (email.length > 0 && !emailList.includes(email)) {
+    if (email.length > 0) {
       setEmailValid('valid')
     } else {
       setEmailValid('invalid')
@@ -100,8 +100,8 @@ const SignUpForm = ({ formDisplay }) => {
     if (
       firstName.length > 0 &&
       lastName.length > 0 &&
-      username.length > 0 && !usernameList.includes(username) &&
-      email.length > 0 && !emailList.includes(email) &&
+      username.length > 0 &&
+      email.length > 0 &&
       password.length > 0 &&
       repeatPassword === password
     ) {
@@ -109,7 +109,7 @@ const SignUpForm = ({ formDisplay }) => {
     } else {
       setSignUpDisabled('btn-disabled')
     }
-  }, [firstName, lastName, username, usernameList, email, emailList, password, repeatPassword])
+  }, [firstName, lastName, username, email, password, repeatPassword])
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value)
@@ -143,6 +143,11 @@ const SignUpForm = ({ formDisplay }) => {
     <>
       <div className='form-div'>
         <label className='photonest-label'>photonest</label>
+        {errors.map((error, i) => (
+          <div>
+            <span key={i} style={{ color: 'darkred' }}>{error.split(': ')[1]}</span>
+          </div>
+        ))}
         <form onSubmit={onSignUp}>
 
           <div className={`splash-input-div`}>
