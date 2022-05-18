@@ -6,7 +6,7 @@ const getFollowing = (following) => ({
 })
 
 export const loadfollowing = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/follow/following/${userId}`)
+    const response = await fetch(`/api/follows/following/${userId}`)
 
     if (response.ok) {
         const data = await response.json();
