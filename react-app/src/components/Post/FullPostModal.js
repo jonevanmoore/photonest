@@ -33,14 +33,14 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                                 <div className="top-display" key={i}>
                                     <div className="pp-and-username">
                                         <div>
-                                            <Link to={`/${user.username}`} className='img-link'>
+                                            <span style={{ cursor: 'text' }} className='img-link'>
                                                 <img src={user.profile_image} key={user.id} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
-                                            </Link>
+                                            </span>
                                         </div>
                                         <div>
-                                            <Link to={`/${user.username}`} className='username-modal-display'>
+                                            <span style={{ cursor: 'text' }} className='username-modal-display'>
                                                 <span style={{ marginLeft: '-5px' }}>{user.username}</span>
-                                            </Link>
+                                            </span>
                                         </div>
                                     </div>
                                     {/* DELETE POST MODAL */}
@@ -78,12 +78,12 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                 <div className="comment-section-div">
                     {post.caption && captionDisplay && (
                         <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px' }}>
-                            <Link to={`/${user.username}`} className='img-link'>
+                            <span style={{ cursor: 'text' }} className='img-link'>
                                 <img src={user.profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
-                            </Link>
+                            </span>
                             <div className='caption-display' style={{ marginTop: '7px', display: 'flex', flexDirection: 'column' }}>
                                 <div>
-                                    <span className="caption-text" style={{ marginLeft: '-5px' }}><Link to={`/${user.username}`} className="username-on-caption">{user.username}</Link>{`${post.caption}`}</span>
+                                    <span className="caption-text" style={{ marginLeft: '-5px' }}><span style={{ cursor: 'text' }} className="username-on-caption">{user.username}</span>{`${post.caption}`}</span>
                                 </div>
                                 <div>
 

@@ -124,10 +124,10 @@ const Comment = ({ comment, users, post }) => {
                 <div style={{ display: 'flex', marginLeft: '10px', marginTop: '10px', justifyContent: 'space-between', animation: 'fadeIn .3s' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex' }}>
-                            <Link>
+                            <span>
                                 <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
-                            </Link>
-                            <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>{comment.content}</span>
+                            </span>
+                            <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><span style={{ marginTop: '7px', cursor: 'text' }} className="username-on-caption">{users[comment.user_id - 1].username}</span>{comment.content}</span>
                         </div>
                         <div className="comment-info">
                             {comment.created_at !== comment.updated_at && (

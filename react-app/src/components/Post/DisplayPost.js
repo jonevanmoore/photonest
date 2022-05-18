@@ -238,7 +238,7 @@ const DisplayPost = ({ post, comments }) => {
                 </div>
                 {post.caption && captionDisplay && (
                     <div className='caption-display'>
-                        <span className="caption-text"><Link to={`/${users[post.user_id - 1]?.username}`} className="username-on-caption">{users[post.user_id - 1]?.username}</Link>{`${post.caption}`}</span>
+                        <span className="caption-text"><span style={{ cursor: 'text' }} className="username-on-caption">{users[post.user_id - 1]?.username}</span>{`${post.caption}`}</span>
                     </div>
 
                 )}
