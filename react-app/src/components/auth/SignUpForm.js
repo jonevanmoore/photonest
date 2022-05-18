@@ -143,6 +143,9 @@ const SignUpForm = ({ formDisplay }) => {
     <>
       <div className='form-div'>
         <label className='photonest-label'>photonest</label>
+        {errors.map((error, i) => (
+          <span key={i} style={{ color: 'darkred' }}>{error.split(': ')[1]}</span>
+        ))}
         <form onSubmit={onSignUp}>
 
           <div className={`splash-input-div`}>

@@ -30,6 +30,7 @@ psycopg2 = "*"
 requests = "*"
 botocore = "*"
 uuid = "*"
+email-validator = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
