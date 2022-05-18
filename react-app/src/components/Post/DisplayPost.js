@@ -20,7 +20,7 @@ const DisplayPost = ({ post, comments }) => {
     const likes = Object.values(useSelector(state => state.likes))
     let postLikes = likes.filter(like => like.post_id === postId).length
     const postComments = []
-    comments.map(comment => {
+    comments.forEach(comment => {
         if (postId === comment.post_id) {
             postComments.push(comment)
         }
@@ -158,12 +158,12 @@ const DisplayPost = ({ post, comments }) => {
 
     return (
         <div className="indie-post-div">
-            {users.map(user => {
+            {users.map((user, i) => {
                 if (user.id === post.user_id) {
                     return (
-                        <div className="username-post-display">
+                        <div className="username-post-display" key={i}>
                             <Link to={`/${user.username}`} className='img-link'>
-                                <img src={user.profile_image} key={user.id} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
+                                <img src={user.profile_image} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
                             </Link>
                             <Link to={`/${user.username}`} className='username-display'>
                                 <span>{user.username}</span>

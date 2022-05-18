@@ -26,10 +26,10 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
             </div>
             <div className='img-info-right'>
                 <div className='username-top'>
-                    {users.map(user => {
+                    {users.map((user, i) => {
                         if (user.id === post.user_id) {
                             return (
-                                <div className="top-display">
+                                <div className="top-display" key={i}>
                                     <div className="pp-and-username">
                                         <div>
                                             <Link to={`/${user.username}`} className='img-link'>

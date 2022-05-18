@@ -64,7 +64,12 @@ const Comment = ({ comment, users, post }) => {
                                 <span>edited</span>
                             )}
                             <span>1h</span>
-                            <span>{`${commentLikes} likes`}</span>
+                            {commentLikes === 1 && (
+                                <span>{`${commentLikes} like`}</span>
+                            )}
+                            {commentLikes > 1 && (
+                                <span>{`${commentLikes} likes`}</span>
+                            )}
                             {sessionUser.id === comment.user_id && (
                                 <>
                                     <span className='update-comment' onClick={showEditComment}>edit</span>
