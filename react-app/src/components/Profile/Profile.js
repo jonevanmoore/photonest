@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllPosts } from "../../store/post";
-import { fetchUsers } from "../../store/user";
+import { fetchUsers, fetchUser } from "../../store/user";
 import { followUnfollow, loadfollowers } from "../../store/follow";
 import { loadfollowing } from "../../store/following";
 import './Profile.css'
@@ -14,26 +14,26 @@ const Profile = () => {
 
     const sessionUser = useSelector(state => state?.session?.user)
 
-    const users = Object.values(useSelector(state => state?.users))
-    const profileUser = users.filter(user => user?.username === username)[0]
+    const user = useSelector(state => state?.users)
+
+    const userId = user?.id
 
     const posts = Object.values(useSelector(state => state?.posts))
-    const userPosts = posts.filter(post => post?.user_id === profileUser?.id)
+    const userPosts = posts.filter(post => post?.username === user.username)
 
     const followers = Object.values(useSelector(state => state.follows))
     const following = Object.values(useSelector(state => state.followings))
-    console.log(following)
 
     useEffect(() => {
         dispatch(fetchAllPosts())
-        dispatch(fetchUsers())
-        dispatch(loadfollowers(profileUser?.id))
-        dispatch(loadfollowing(profileUser?.id))
+        dispatch(fetchUser(username))
+        dispatch(loadfollowers(userId))
+        dispatch(loadfollowing(userId))
     }, [dispatch])
 
 
     const updateFollowStatus = async () => {
-        await dispatch(followUnfollow(profileUser?.id))
+        await dispatch(followUnfollow(user?.id))
     }
 
     return (
@@ -42,15 +42,15 @@ const Profile = () => {
                 <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center', }}>
                     <div style={{ marginTop: '80px', display: 'flex' }}>
                         <div className="profile-pic-div" >
-                            <img src={profileUser?.profile_image} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
+                            <img src={user?.profile_image} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
                         </div>
                         <div className="profile-info">
                             <div>
-                                <span style={{ fontSize: '20px', float: 'left' }}>{profileUser?.username}</span>
-                                {sessionUser?.id === profileUser?.id && (
+                                <span style={{ fontSize: '20px', float: 'left' }}>{user?.username}</span>
+                                {sessionUser?.id === user?.id && (
                                     <button>Edit Profile</button>
                                 )}
-                                {sessionUser?.id !== profileUser?.id && (
+                                {sessionUser?.id !== user?.id && (
                                     <button onClick={updateFollowStatus}>Following</button>
                                 )}
                             </div>

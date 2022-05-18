@@ -9,7 +9,7 @@ import NewPost from './Post/NewPost';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
-  const username = sessionUser.username
+  const userId = sessionUser.id
   const [showModal, setShowModal] = useState(false);
   const closeModalFunc = () => setShowModal(false);
   const showModalFunc = () => setShowModal(true);
@@ -24,7 +24,7 @@ const NavBar = () => {
       <div className='right-side-nav'>
         <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink>
         <span onClick={showModalFunc}><i className="fa-solid fa-square-plus fa-navbar"></i></span>
-        <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar"></i></NavLink>
+        <NavLink to={`/${sessionUser.username}`}><i className="fa-solid fa-user fa-navbar"></i></NavLink>
         <LogoutButton />
       </div>
 

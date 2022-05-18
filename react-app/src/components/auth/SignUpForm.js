@@ -111,22 +111,6 @@ const SignUpForm = ({ formDisplay }) => {
     }
   }, [firstName, lastName, username, usernameList, email, emailList, password, repeatPassword])
 
-
-
-  const randomizeColor = () => {
-    const colorClasses = [
-      'blue-hover',
-      'green-hover',
-      'purple-hover',
-      'true-purple-hover',
-      'lime-green-hover',
-      'aqua-hover',
-      'white-hover'
-    ]
-
-    return colorClasses[Math.floor(Math.random() * colorClasses.length)];
-  }
-
   const updateFirstName = (e) => {
     setFirstName(e.target.value)
   }
@@ -188,7 +172,7 @@ const SignUpForm = ({ formDisplay }) => {
                 placeholder=' '
                 onChange={updateLastName}
                 value={lastName}
-                className={`splash-input ${randomizeColor()}`}
+                className={`splash-input`}
                 maxLength={100}
               ></input>
               <span className='span-input'>last name</span>
@@ -206,7 +190,7 @@ const SignUpForm = ({ formDisplay }) => {
                 placeholder=' '
                 onChange={updateUsername}
                 value={username}
-                className={`splash-input ${randomizeColor()}`}
+                className={`splash-input`}
                 maxLength={40}
               ></input>
               <span className='long-span-input'>{'username (5 character min.)'}</span>
@@ -224,7 +208,7 @@ const SignUpForm = ({ formDisplay }) => {
                 placeholder=' '
                 onChange={updateEmail}
                 value={email}
-                className={`splash-input ${randomizeColor()}`}
+                className={`splash-input`}
                 maxLength={255}
               ></input>
               <span className='short-span-input'>email</span>
@@ -243,7 +227,7 @@ const SignUpForm = ({ formDisplay }) => {
                 placeholder=' '
                 onChange={updatePassword}
                 value={password}
-                className={`splash-input ${randomizeColor()}`}
+                className={`splash-input`}
                 maxLength={255}
               ></input>
               <span className='long-span-input'>{'password (8 character min.)'}</span>
@@ -263,7 +247,7 @@ const SignUpForm = ({ formDisplay }) => {
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
-                className={`splash-input ${randomizeColor()}`}
+                className={`splash-input`}
                 maxLength={255}
               ></input>
               <span className='mid-span-input'>confirm password</span>

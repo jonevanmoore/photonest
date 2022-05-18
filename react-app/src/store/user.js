@@ -5,7 +5,7 @@ const fetchAllUsers = (users) => ({
     users
 })
 
-const ONE_USER = 'session/ALL_USERS'
+const ONE_USER = 'session/ONE_USER'
 
 const fetchOneUser = (user) => ({
     type: ONE_USER,
@@ -47,9 +47,7 @@ const usersReducer = (state = initialState, action) => {
             })
             return newState;
         case ONE_USER:
-            newState = {};
-            newState[action.user.id] = action.user
-            return newState
+            return action.user
         default:
             return state;
     }

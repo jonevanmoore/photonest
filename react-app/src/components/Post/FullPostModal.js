@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 import Comment from "../Comment/Comment";
 import './FullPostModal.css'
+import { fetchPostLikes } from "../../store/like";
 
-const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled }) => {
+const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled, sessionUserLikes, updateLikePost, postLikes }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
@@ -133,9 +134,29 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                     <div className="icon-caption-div">
                         <div className="edit-cap-div">
                             <div className="icon-btns">
-                                <i className="fa-solid fa-heart"></i>
+                                <i className={`fa-solid fa-heart ${sessionUserLikes}`} onClick={updateLikePost}></i>
                             </div>
-
+                            {postLikes?.length === 1 && (
+                                <div>
+                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} like`}</span>
+                                </div>
+                            )}
+                            {postLikes?.length > 1 && (
+                                <div>
+                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} likes`}</span>
+                                </div>
+                            )}
+                            <div>
+                                <span style={{
+                                    fontSize: '14px',
+                                    color: 'gray',
+                                    float: 'left',
+                                    marginBottom: '13px',
+                                    paddingLeft: '10px',
+                                    cursor: 'text'
+                                }}
+                                >{post.created_at.slice(0, 17)}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

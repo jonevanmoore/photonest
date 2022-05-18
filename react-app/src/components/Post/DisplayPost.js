@@ -17,8 +17,21 @@ const DisplayPost = ({ post, comments }) => {
     const userId = sessionUser.id
     const postId = post.id
     const users = Object.values(useSelector(state => state.users))
+
     const likes = Object.values(useSelector(state => state.likes))
-    let postLikes = likes.filter(like => like.post_id === postId).length
+    const postLikes = likes.filter(like => like.post_id === postId)
+    const userLiked = postLikes.filter(like => like.user_id === userId).length
+    const [sessionUserLikes, setSessionUserLikes] = useState('')
+
+    useEffect(() => {
+        if (userLiked > 0) {
+            setSessionUserLikes('liked-blue')
+        } else {
+            setSessionUserLikes('')
+        }
+
+    }, [userLiked])
+
     const postComments = []
     comments.forEach(comment => {
         if (postId === comment.post_id) {
@@ -205,13 +218,22 @@ const DisplayPost = ({ post, comments }) => {
             <div className="icon-caption-div">
                 <div className="edit-cap-div">
                     <div className="icon-btns">
-                        <i className="fa-solid fa-heart" onClick={updateLikePost}></i>
+                        <i className={`fa-solid fa-heart ${sessionUserLikes}`} onClick={updateLikePost}></i>
                         <i className="fa-solid fa-comment" onClick={showFullPostModalFunc}></i>
                         {sessionUser.id === post.user_id && captionDisplay && (
                             <span className="edit-cap-btn" onClick={showEditCaption}>edit caption</span>
                         )}
                     </div>
-                    <span>{`${postLikes} likes`}</span>
+                    {postLikes?.length === 1 && (
+                        <div>
+                            <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} like`}</span>
+                        </div>
+                    )}
+                    {postLikes?.length > 1 && (
+                        <div>
+                            <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} likes`}</span>
+                        </div>
+                    )}
 
                 </div>
                 {post.caption && captionDisplay && (
@@ -292,7 +314,6 @@ const DisplayPost = ({ post, comments }) => {
                         setCaptionDisplay={setCaptionDisplay}
                         showEditCaption={showEditCaption}
                         editCaptionDisplay={editCaptionDisplay}
-
                         captionDisplay={captionDisplay}
                         setEditedCaption={setEditedCaption}
                         editedCaption={editedCaption}
@@ -301,6 +322,9 @@ const DisplayPost = ({ post, comments }) => {
                         newComment={newComment}
                         setNewComment={setNewComment}
                         postDisabled={postDisabled}
+                        sessionUserLikes={sessionUserLikes}
+                        updateLikePost={updateLikePost}
+                        postLikes={postLikes}
                     />
                 </Modal>
             )}

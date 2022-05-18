@@ -5,7 +5,7 @@
     background-color: white;
     border-radius: 10px;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding-bottom: 15px;
     animation: fadeIn .3s;
 }
@@ -88,6 +88,31 @@
 .fa-comment:hover {
     -webkit-text-stroke: 2px rgb(125, 125, 125);
 }
+
+/* random liked colors */
+@keyframes like {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.liked-blue {
+    background: -webkit-linear-gradient(#4a85c0, #c6ddf3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #6699cc;
+    animation: like 0.5s 1;
+}
+
+
 
 .edit-cap-btn {
     font-size: 12px;

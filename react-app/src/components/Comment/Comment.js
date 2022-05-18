@@ -10,8 +10,20 @@ const Comment = ({ comment, users, post }) => {
     const dispatch = useDispatch()
     const commentId = comment.id
     const sessionUser = useSelector(state => state.session.user)
+    const userId = sessionUser?.id
     const likes = Object.values(useSelector(state => state.likes))
-    let commentLikes = likes.filter(like => like.comment_id === commentId).length
+    let commentLikes = likes.filter(like => like.comment_id === commentId)
+    const userLiked = commentLikes.filter(like => like.user_id === userId).length
+    const [sessionUserLikes, setSessionUserLikes] = useState('')
+
+    useEffect(() => {
+        if (userLiked > 0) {
+            setSessionUserLikes('liked-blue')
+        } else {
+            setSessionUserLikes('')
+        }
+
+    }, [userLiked])
 
     const [editedComment, setEditedComment] = useState(comment.content)
 
@@ -48,6 +60,64 @@ const Comment = ({ comment, users, post }) => {
         await dispatch(destroyComment(comment.id))
     }
 
+    function timeSince(date) {
+
+        let seconds = Math.floor((new Date() - date) / 1000);
+
+        //YEARS
+        let interval = seconds / 31536000;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + "y";
+        }
+        if (interval > 1) {
+            return Math.floor(interval) + "y";
+        }
+
+        //MONTHS
+        interval = seconds / 2592000;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + "m";
+        }
+        if (interval > 1) {
+            return Math.floor(interval) + "m";
+        }
+
+        //DAYS
+        interval = seconds / 86400;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + "d";
+        }
+        if (interval > 1) {
+            return Math.floor(interval) + "d";
+        }
+
+        //HOURS
+        interval = seconds / 3600;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + "h";
+        }
+        if (interval > 1) {
+            return Math.floor(interval) + "h";
+        }
+
+        // MINUTES
+        interval = seconds / 60;
+        if (Math.floor(interval) === 1) {
+            return Math.floor(interval) + "m";
+        }
+        if (interval > 1) {
+            return Math.floor(interval) + "m";
+        }
+
+        if (Math.floor(seconds) === 1) {
+            return Math.floor(seconds) + "s";
+        }
+        return Math.floor(seconds) + "s";
+    }
+
+    const date_posted = new Date(comment.created_at).toUTCString()
+    const [realTime, setRealTime] = useState(timeSince(new Date(date_posted)))
+
     return (
         <>
             {commentInfoDisplay && (
@@ -63,12 +133,12 @@ const Comment = ({ comment, users, post }) => {
                             {comment.created_at !== comment.updated_at && (
                                 <span>edited</span>
                             )}
-                            <span>1h</span>
-                            {commentLikes === 1 && (
-                                <span>{`${commentLikes} like`}</span>
+                            <span>{realTime}</span>
+                            {commentLikes?.length === 1 && (
+                                <span>{`${commentLikes?.length} like`}</span>
                             )}
-                            {commentLikes > 1 && (
-                                <span>{`${commentLikes} likes`}</span>
+                            {commentLikes?.length > 1 && (
+                                <span>{`${commentLikes?.length} likes`}</span>
                             )}
                             {sessionUser.id === comment.user_id && (
                                 <>
@@ -85,7 +155,7 @@ const Comment = ({ comment, users, post }) => {
                         </div>
                     </div>
                     <div >
-                        <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }} onClick={updateLikeComment}></i>
+                        <i className={`fa-solid fa-heart ${sessionUserLikes}`} style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }} onClick={updateLikeComment}></i>
                     </div>
                 </div>
             )}
