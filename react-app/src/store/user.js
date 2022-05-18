@@ -18,7 +18,6 @@ export const fetchUsers = () => async (dispatch) => {
     }
 }
 
-
 const initialState = {};
 const usersReducer = (state = initialState, action) => {
     let newState = { ...state }

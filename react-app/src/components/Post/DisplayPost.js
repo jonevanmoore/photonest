@@ -6,7 +6,7 @@ import { fetchUsers } from "../../store/user"
 import Modal from "../Modal/Modal"
 import { postComment } from "../../store/comment"
 import FullPostModal from "./FullPostModal"
-import { updateLike, fetchLikes } from "../../store/like"
+import { updatePostLike, fetchPostLikes } from "../../store/like"
 
 import './DisplayPost.css'
 
@@ -56,7 +56,7 @@ const DisplayPost = ({ post, comments }) => {
 
     useEffect(() => {
         dispatch(fetchUsers())
-        dispatch(fetchLikes(postId))
+        dispatch(fetchPostLikes(postId))
     }, [dispatch])
 
     useEffect(() => {
@@ -94,7 +94,7 @@ const DisplayPost = ({ post, comments }) => {
     }
 
     const updateLikePost = async () => {
-        await dispatch(updateLike(postId))
+        await dispatch(updatePostLike(postId))
     }
 
     //

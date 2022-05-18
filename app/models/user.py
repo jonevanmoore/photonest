@@ -4,8 +4,7 @@ from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.sql import func
-from .post import Post
-from .post_likes import PostLike
+from .follow import Follow
 
 
 class User(db.Model, UserMixin):
@@ -32,6 +31,10 @@ class User(db.Model, UserMixin):
         "Comment", back_populates="user", cascade="all, delete")
     comment_likes = relationship(
         "CommentLike", back_populates="user", cascade="all, delete")
+    following = db.relationship('Follow', foreign_keys=[
+                                Follow.follower_id], back_populates='follower')
+    followers = db.relationship('Follow', foreign_keys=[
+                                Follow.followed_id], back_populates='followed')
 
     @property
     def password(self):

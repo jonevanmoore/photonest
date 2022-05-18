@@ -2,16 +2,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { updateComment, destroyComment } from "../../store/comment";
+import { fetchCommentLikes, updateCommentLike } from "../../store/like";
 
 import './Comment.css'
 
 const Comment = ({ comment, users, post }) => {
     const dispatch = useDispatch()
-
+    const commentId = comment.id
     const sessionUser = useSelector(state => state.session.user)
+    const likes = Object.values(useSelector(state => state.likes))
+    let commentLikes = likes.filter(like => like.comment_id === commentId).length
 
     const [editedComment, setEditedComment] = useState(comment.content)
 
+    useEffect(() => {
+        dispatch(fetchCommentLikes(commentId))
+    }, [dispatch])
+
+    const updateLikeComment = async () => {
+        dispatch(updateCommentLike(commentId))
+    }
 
     const [commentInfoDisplay, setCommentInfoDisplay] = useState(true)
     const [editCommentDisplay, setEditCommentDisplay] = useState(false)
@@ -50,8 +60,11 @@ const Comment = ({ comment, users, post }) => {
                             <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><Link to={`/${users[comment.user_id - 1].username}`} style={{ marginTop: '7px' }} className="username-on-caption">{users[comment.user_id - 1].username}</Link>{comment.content}</span>
                         </div>
                         <div className="comment-info">
+                            {comment.created_at !== comment.updated_at && (
+                                <span>edited</span>
+                            )}
                             <span>1h</span>
-                            <span>2 likes</span>
+                            <span>{`${commentLikes} likes`}</span>
                             {sessionUser.id === comment.user_id && (
                                 <>
                                     <span className='update-comment' onClick={showEditComment}>edit</span>
@@ -67,7 +80,7 @@ const Comment = ({ comment, users, post }) => {
                         </div>
                     </div>
                     <div >
-                        <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }}></i>
+                        <i className="fa-solid fa-heart" style={{ marginRight: '10px', marginTop: '10px', fontSize: '12px' }} onClick={updateLikeComment}></i>
                     </div>
                 </div>
             )}

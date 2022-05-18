@@ -1,4 +1,3 @@
-
 const ALL_POSTS = 'posts/ALL_POSTS'
 const CREATE_POST = 'post/CREATE_POST'
 const UPDATE_POST = 'post/UPDATE_POST'

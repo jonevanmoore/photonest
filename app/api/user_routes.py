@@ -11,8 +11,7 @@ def users():
     return jsonify([user.to_dict() for user in users])
 
 
-@user_routes.route('/<int:id>')
-@login_required
-def user(id):
-    user = User.query.get(id)
+@user_routes.route('/<int:username>')
+def user(username):
+    user = User.query.get(username)
     return user.to_dict()
