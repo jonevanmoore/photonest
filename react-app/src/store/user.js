@@ -5,6 +5,13 @@ const fetchAllUsers = (users) => ({
     users
 })
 
+const ONE_USER = 'session/ALL_USERS'
+
+const fetchOneUser = (user) => ({
+    type: ONE_USER,
+    user
+})
+
 
 export const fetchUsers = () => async (dispatch) => {
     const response = await fetch('/api/users/', {
@@ -18,6 +25,18 @@ export const fetchUsers = () => async (dispatch) => {
     }
 }
 
+export const fetchUser = (username) => async (dispatch) => {
+    const response = await fetch(`/api/users/${username}`, {
+        method: 'GET'
+    })
+    if (response.ok) {
+        const user = await response.json()
+
+        dispatch(fetchOneUser(user))
+        return user
+    }
+}
+
 const initialState = {};
 const usersReducer = (state = initialState, action) => {
     let newState = { ...state }
@@ -27,6 +46,10 @@ const usersReducer = (state = initialState, action) => {
                 return newState[user.id] = user
             })
             return newState;
+        case ONE_USER:
+            newState = {};
+            newState[action.user.id] = action.user
+            return newState
         default:
             return state;
     }

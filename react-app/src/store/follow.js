@@ -14,7 +14,7 @@ const getFollowers = (followers) => ({
 
 
 export const followUnfollow = (followedId) => async (dispatch) => {
-    const response = await fetch(`/api/follow/${followedId}`, {
+    const response = await fetch(`/api/follows/${followedId}`, {
         method: 'POST'
     })
 
@@ -27,7 +27,7 @@ export const followUnfollow = (followedId) => async (dispatch) => {
 }
 
 export const loadfollowers = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/follow/followers/${userId}`)
+    const response = await fetch(`/api/follows/followers/${userId}`)
 
     if (response.ok) {
         const data = await response.json();
@@ -42,7 +42,6 @@ const followReducer = (state = {}, action) => {
     switch (action.type) {
         case UPDATE_FOLLOW: {
             if (Object.keys(newState).includes(`${action.follow.id}`)) {
-
                 delete newState[action.follow.id]
                 return newState
             } else {
