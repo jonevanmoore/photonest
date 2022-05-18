@@ -27,8 +27,18 @@ const Home = () => {
                     ))}
                 </div>
                 <div className="suggestions-div" style={{ marginTop: '100px', position: 'fixed' }}>
-                    <div className="suggestions-scroll-div">
-                        <span>suggestions for you</span>
+                    <div className="suggestions-scroll-div" style={{ display: 'flex', paddingLeft: '50px' }}>
+                        <div>
+                            <img src={sessionUser.profile_image} style={{ borderRadius: '50%', height: '50px', width: '50px' }} />
+                        </div>
+                        <div style={{ paddingLeft: '10px', marginTop: '5px' }}>
+                            <div style={{ maxWidth: '100px' }}>
+                                <span style={{ fontSize: '15px', fontWeight: 'bold' }}>{sessionUser.username}</span>
+                            </div>
+                            <div className="full-name" style={{ maxWidth: '100px' }}>
+                                <span style={{ fontSize: '12px', float: 'left', color: 'gray', overflowY: 'break-line' }}>{`${sessionUser.first_name} ${sessionUser.last_name}`}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

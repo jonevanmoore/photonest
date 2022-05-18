@@ -175,12 +175,12 @@ const DisplayPost = ({ post, comments }) => {
                 if (user.id === post.user_id) {
                     return (
                         <div className="username-post-display" key={i}>
-                            <Link to={`/${user.username}`} className='img-link'>
-                                <img src={user.profile_image} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
-                            </Link>
-                            <Link to={`/${user.username}`} className='username-display'>
-                                <span>{user.username}</span>
-                            </Link>
+                            <span className='img-link'>
+                                <img src={user?.profile_image} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
+                            </span>
+                            <span style={{ cursor: 'text' }} className='username-display'>
+                                <span>{user?.username}</span>
+                            </span>
                             {/* DELETE POST MODAL */}
                             {sessionUser.id === post.user_id && (
                                 < div className="delete-post-div">

@@ -5,7 +5,8 @@ import NavBar from './components/NavBar';
 import SplashPage from './components/SplashPage/SplashPage'
 import { authenticate } from './store/session';
 import { Redirect } from 'react-router-dom';
-import Profile from './components/Profile/Profile';
+// import Profile from './components/Profile/Profile';
+import About from './components/About/About';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,10 +32,11 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        <Route path='/:username' exact={true} >
+        {/* <Route path='/:username' exact={true} >
           {sessionUser ? <Profile /> : <Redirect to='/' />}
-        </Route>
+        </Route> */}
       </Switch>
+      <About />
     </BrowserRouter>
   );
 }
