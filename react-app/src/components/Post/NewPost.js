@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { postCreate } from "../../store/post"
 import './NewPost.css'
@@ -6,6 +6,7 @@ import './NewPost.css'
 const NewPost = ({ closeModalFunc }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+    const [errors, setErrors] = useState('')
     const userId = sessionUser.id
     const [image, setImage] = useState('')
     const [caption, setCaption] = useState('')
@@ -20,14 +21,24 @@ const NewPost = ({ closeModalFunc }) => {
 
         setImageLoading(true);
 
-        if (await dispatch(postCreate(formData, userId))) {
+        const data = await dispatch(postCreate(formData, userId))
+        if (data.status === 200) {
             setImageLoading(true)
+            closeModalFunc()
         }
         else {
+            setCustError('Image file not supported')
+            setImage('')
             setImageLoading(false);
         }
-        closeModalFunc()
     }
+
+    useEffect(() => {
+        if (image.type === ("image/svg+xml" || "image/webp" || "image/avif" || "image/apng")) {
+            setImage('')
+            setCustError('Image file not supported')
+        }
+    })
 
     const displayError = () => {
         setCustError('Please provide an image')
@@ -59,7 +70,7 @@ const NewPost = ({ closeModalFunc }) => {
                     <input
                         type='file'
                         onChange={setTheImage}
-                        accept="image/png, image/gif, image/jpeg, image/jpg, image/gif, image/pdf"
+                        accept="image/*"
                         placeholder='Enter your URL image'
                         id='img-upload'
                         name='img-upload'

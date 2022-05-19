@@ -60,6 +60,12 @@ export const editPost = (post) => async (dispatch) => {
         const updatedPost = await response.json();
         dispatch(updatePost(updatedPost));
         return updatedPost
+    } else {
+        const data = await response.json()
+        if (data.errors) {
+            console.log(data.errors)
+            return data.errors
+        }
     }
 }
 
