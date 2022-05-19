@@ -28,8 +28,8 @@ const SignUpForm = ({ formDisplay }) => {
       if (data) {
         setErrors(data)
       }
-    } else {
-      setErrors(['Passwords must match'])
+    } else if (password !== repeatPassword) {
+      setErrors(['errors: Passwords must match'])
     }
   };
 
