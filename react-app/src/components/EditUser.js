@@ -67,20 +67,25 @@ const EditUser = ({ sessionUser }) => {
                 </label>
             </div>
             <div>
-                <input
-                    value={formerUsername}
-                    onChange={e => setFormerUsername(e.target.value)}></input>
-                <div>
-                </div>
+                <div style={{ display: 'grid' }}>
 
-                <input
-                    value={formerFirst}
-                    onChange={e => setFormerFirst(e.target.value)}
-                ></input>
-                <input
-                    value={formerLast}
-                    onChange={e => setFormerLast(e.target.value)}
-                ></input>
+                    <label>Username</label>
+                    <input
+                        value={formerUsername}
+                        onChange={e => setFormerUsername(e.target.value)}></input>
+                </div>
+                <div style={{ display: 'grid' }}>
+                    <label>First Name</label>
+                    <input
+                        value={formerFirst}
+                        onChange={e => setFormerFirst(e.target.value)}
+                    ></input>
+                    <label>Last Name</label>
+                    <input
+                        value={formerLast}
+                        onChange={e => setFormerLast(e.target.value)}
+                    ></input>
+                </div>
             </div>
             <button onClick={handleUpdate}>Update</button>
             <Link to='/' >cancel</Link>
