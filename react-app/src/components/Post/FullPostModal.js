@@ -1,9 +1,10 @@
-import { useSelector, useDispatch } from "react-redux"
-import { useState } from "react";
-import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useState } from 'react'
 import Comment from "../Comment/Comment";
+import Modal from "../Modal/Modal";
+import LikesModal from "../Modal/LikesModal";
 import './FullPostModal.css'
-import { fetchPostLikes } from "../../store/like";
+
 
 const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled, sessionUserLikes, updateLikePost, postLikes }) => {
 
@@ -11,6 +12,12 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
     const users = Object.values(useSelector(state => state.users))
 
     const user = useSelector(state => state.users[post.user_id])
+
+    const [likesDisplay, setLikesDisplay] = useState(false)
+
+    const showLikesModal = () => setLikesDisplay(true)
+    const closeLikesModal = () => setLikesDisplay(false)
+
 
 
     return (
@@ -138,13 +145,18 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             </div>
                             {postLikes?.length === 1 && (
                                 <div>
-                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} like`}</span>
+                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s', cursor: 'pointer' }} onClick={showLikesModal}>{`${postLikes?.length} like`}</span>
                                 </div>
                             )}
                             {postLikes?.length > 1 && (
                                 <div>
-                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s' }}>{`${postLikes?.length} likes`}</span>
+                                    <span style={{ float: 'left', marginLeft: '10px', marginBottom: '10px', fontWeight: 'bold', fontSize: '14px', color: 'var(--blue-theme)', transition: '.2s', cursor: 'pointer' }} onClick={showLikesModal}>{`${postLikes?.length} likes`}</span>
                                 </div>
+                            )}
+                            {likesDisplay && (
+                                <Modal closeModalFunc={closeLikesModal}>
+                                    <LikesModal closeLikesModal={closeLikesModal} stopTheProp={stopTheProp} likes={postLikes} />
+                                </Modal>
                             )}
                             <div>
                                 <span style={{
