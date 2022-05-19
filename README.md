@@ -62,17 +62,21 @@ To run Photonest locally, please follow these steps:
 <li>Create a database and database user. If using psql, the commands would be:</li>
 
   ```psql```
+  <br>
   ```CREATE USER photonest_app WITH PASSWORD <password> CREATEDB;```
+  <br>
   ```CREATE DATABASE photonest_dev WITH OWNER photonest_app;```
 
 <li>Navigate to the backend folder and install python packages:</li>
 
   ```pipenv install```
+  <br>
   ```pipenv shell```
 
 <li>Create and seed database with: </li>
 
   ```flask db upgrade```
+  <br>
   ```flask seed all```
 
 <li>Start the server with:</li>
