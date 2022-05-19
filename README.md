@@ -49,7 +49,8 @@ Photonest is a social-media platform where users can share and comment on images
 
 ### Comment Likes
 * Users can like and unlike each other's comments
-<img width="600" alt="Screen Shot 2022-05-19 at 3 12 27 PM" src="https://user-images.githubusercontent.com/64309316/169396710-621a26af-d703-418c-90ae-627891767ea7.png">
+<img width="600" alt="Screen Shot 2022-05-19 at 3 18 49 PM" src="https://user-images.githubusercontent.com/64309316/169397494-f7762983-5b4c-43ee-b129-2c9b8213dda5.png">
+
 
 
 
