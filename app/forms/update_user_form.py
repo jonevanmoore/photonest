@@ -3,6 +3,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 class UpdateUserForm(FlaskForm):
+    username = StringField('username', validators=[DataRequired()])
     first_name = StringField('first_name', validators=[DataRequired()])
     last_name = StringField('lastName', validators=[DataRequired()])
     bio = StringField('bio', validators=[DataRequired()])
