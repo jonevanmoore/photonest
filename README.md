@@ -37,7 +37,7 @@ Photonest is a social-media platform where users can share and comment on images
 * Users can create a new post with an image and a caption.
 * Users can edit and delete posts
 
-### Likes
+### Post Likes
 * Users can like and unlike each other's posts
 
 ### Comments
@@ -45,7 +45,7 @@ Photonest is a social-media platform where users can share and comment on images
 * Users can update comments on posts
 * Users can delete comments
 
-###Comment Likes
+### Comment Likes
 * Users can like and unlike each other's comments
 
 
