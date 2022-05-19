@@ -20,12 +20,6 @@ class Follow(db.Model):
             'id': self.id,
             'follower_id': self.follower_id,
             'followed_id': self.followed_id,
-            'follower_profile_pic': self.follower.profile_image,
-            'followed_profile_pic': self.followed.profile_image,
             'follower_username': self.follower.username,
-            'followed_username': self.followed.username,
-            'follower_firstname': self.follower.first_name,
-            'followed_firstname': self.followed.first_name,
-            'follower_lastname': self.follower.last_name,
-            'followed_lastname': self.followed.last_name
+            'followed_username': self.followed.username
         }
