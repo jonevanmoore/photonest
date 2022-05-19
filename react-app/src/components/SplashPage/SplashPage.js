@@ -38,8 +38,8 @@ const SplashPage = () => {
 
                 <div className="splash-left-right-div">
 
-                    <div className="splash-left">
-                        <img src="./static/splash_page.PNG" style={{ width: '325px' }}></img>
+                    <div className="splash-left" style={{ width: '20vw', height: '60vh' }}>
+
                     </div>
                     <div>
                         <div className={`${loginDisplay} login-form`}>

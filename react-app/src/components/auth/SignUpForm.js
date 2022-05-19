@@ -6,33 +6,17 @@ import { fetchUsers } from '../../store/user';
 
 const SignUpForm = ({ formDisplay }) => {
   const [errors, setErrors] = useState([]);
+  const [customErrs, setCustomErrs] = useState([])
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [signUpDisabled, setSignUpDisabled] = useState('btn-disabled')
-
-  const [firstNameValid, setFirstNameValid] = useState('invalid')
-  const [lastNameValid, setLastNameValid] = useState('invalid')
-  const [usernameValid, setUsernameValid] = useState('invalid')
-  const [emailValid, setEmailValid] = useState('invalid')
-  const [passwordValid, setPasswordValid] = useState('invalid')
-  const [repeatPasswordValid, setRepeatPasswordValid] = useState('invalid')
 
 
   const user = useSelector(state => state.session.user);
   const users = Object.values(useSelector(state => state.users))
-
-  // const usernameList = []
-  // users.forEach(user => {
-  //   usernameList.push(user.username)
-  // })
-  // const emailList = []
-  // users.forEach(user => {
-  //   emailList.push(user.email)
-  // })
 
   const dispatch = useDispatch();
 
@@ -43,6 +27,8 @@ const SignUpForm = ({ formDisplay }) => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Passwords must match'])
     }
   };
 
@@ -53,62 +39,30 @@ const SignUpForm = ({ formDisplay }) => {
 
 
   useEffect(() => {
+    const customErrors = []
     //FIRST NAME
-    if (firstName.length > 0) {
-      setFirstNameValid('valid')
-    } else {
-      setFirstNameValid('invalid')
+    if (firstName.length < 1) {
+      customErrors.push('Please enter a first name')
     }
 
     //LAST NAME
-    if (lastName.length > 0) {
-      setLastNameValid('valid')
-    } else {
-      setLastNameValid('invalid')
-    }
+    if (lastName.length < 1) { customErrors.push('Please enter a last name') }
+
 
     //USERNAME
-    if (username.length > 4) {
-      setUsernameValid('valid')
-    } else {
-      setUsernameValid('invalid')
-    }
+    if (username.length < 1) { customErrors.push('Please enter a username') }
 
     //EMAIL
-    if (email.length > 0) {
-      setEmailValid('valid')
-    } else {
-      setEmailValid('invalid')
-    }
+    if (email.length < 1) { customErrors.push('Please enter an email') }
 
     //PASSWORD
-    if (password.length > 7) {
-      setPasswordValid('valid')
-    } else {
-      setPasswordValid('invalid')
-    }
+    if (password.length < 1) { customErrors.push('Please enter a password') }
 
     //CONFIRM PASS
-    if (repeatPassword === password && repeatPassword.length > 0) {
-      setRepeatPasswordValid('valid')
-    } else {
-      setRepeatPasswordValid('invalid')
-    }
+    if (repeatPassword !== password) { customErrors.push('Passwords must match') }
 
+    setCustomErrs(customErrors)
 
-    //SIGNUP BTN
-    if (
-      firstName.length > 0 &&
-      lastName.length > 0 &&
-      username.length > 0 &&
-      email.length > 0 &&
-      password.length > 0 &&
-      repeatPassword === password
-    ) {
-      setSignUpDisabled('enabled')
-    } else {
-      setSignUpDisabled('btn-disabled')
-    }
   }, [firstName, lastName, username, email, password, repeatPassword])
 
   const updateFirstName = (e) => {
@@ -120,7 +74,7 @@ const SignUpForm = ({ formDisplay }) => {
   }
 
   const updateUsername = (e) => {
-    setUsername(`${e.target.value}`.toLocaleLowerCase());
+    setUsername(`${e.target.value}`);
   };
 
   const updateEmail = (e) => {
@@ -145,7 +99,7 @@ const SignUpForm = ({ formDisplay }) => {
         <label className='photonest-label'>photonest</label>
         {errors.map((error, i) => (
           <div>
-            <span key={i} style={{ color: 'darkred' }}>{error.split(': ')[1]}</span>
+            <span key={i} style={{ color: 'darkred' }}>{error}</span>
           </div>
         ))}
         <form onSubmit={onSignUp}>
@@ -163,9 +117,6 @@ const SignUpForm = ({ formDisplay }) => {
               ></input>
               <span className='span-input'>first name</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${firstNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -182,9 +133,6 @@ const SignUpForm = ({ formDisplay }) => {
               ></input>
               <span className='span-input'>last name</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${lastNameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -198,11 +146,8 @@ const SignUpForm = ({ formDisplay }) => {
                 className={`splash-input`}
                 maxLength={40}
               ></input>
-              <span className='long-span-input'>{'username (5 character min.)'}</span>
+              <span className='span-input'>username</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${usernameValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -218,9 +163,6 @@ const SignUpForm = ({ formDisplay }) => {
               ></input>
               <span className='short-span-input'>email</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${emailValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -235,11 +177,8 @@ const SignUpForm = ({ formDisplay }) => {
                 className={`splash-input`}
                 maxLength={255}
               ></input>
-              <span className='long-span-input'>{'password (8 character min.)'}</span>
+              <span className='span-input'>password</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${passwordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <div className='splash-input-div'>
@@ -247,25 +186,20 @@ const SignUpForm = ({ formDisplay }) => {
 
               <input
                 type='password'
-                name='repeat_password'
+                name='repeatPassword'
                 placeholder=' '
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
-                required={true}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
               <span className='mid-span-input'>confirm password</span>
             </label>
-            <div style={{ position: 'absolute' }}>
-              <i className={`fa-solid fa-circle-check ${repeatPasswordValid}`} style={{ position: 'relative', left: '290px', top: '18px' }}></i>
-            </div>
           </div>
 
           <button
             type='submit'
-            className={`sign-up-btn form-btn ${signUpDisabled}`}
-            disabled={signUpDisabled === 'btn-disabled'}
+            className={`sign-up-btn form-btn`}
           >Sign Up</button>
         </form>
       </div>
