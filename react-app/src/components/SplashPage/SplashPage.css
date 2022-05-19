@@ -188,44 +188,44 @@
 
 @keyframes imageSlide {
     0% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap1.png");
     }
 
     10% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap2.png");
     }
 
     20% {
-        background-image: url("./Photoleap2.png");
+        background-image: url("./Photoleap3.png");
     }
 
     30% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap1.png");
     }
 
     40% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap2.png");
     }
 
     50% {
-        background-image: url("./Photoleap2.png");
+        background-image: url("./Photoleap3.png");
     }
 
     60% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap1.png");
     }
 
     70% {
-        background-image: url("./Photoleap.png");
+        background-image: url("./Photoleap2.png");
     }
 
     80% {
-        background-image: url("./Photoleap2.png");
+        background-image: url("./Photoleap3.png");
     }
 }
 
 .splash-left {
-    background-image: url("./Photoleap.png");
+    background-image: url("./Photoleap1.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
