@@ -67,7 +67,7 @@ const Home = () => {
                 </div>
                 <div className="suggestions-div" style={{ marginTop: '100px', position: 'fixed' }}>
                     <div className="suggestions-scroll-div" style={{ display: 'flex', paddingLeft: '50px' }}>
-                        <DisplayUserInfo sessionUser={sessionUser} showModal={showModal} />
+                        <DisplayUserInfo sessionUser={sessionUser} />
                     </div>
                 </div>
             </div>
