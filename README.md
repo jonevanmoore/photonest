@@ -53,7 +53,7 @@ Photonest is a social-media platform where users can share and comment on images
 
 To run Photonest locally, please follow these steps:
 
-* DISCLAIMER: you must be able to create an AWS S3 bucket in order to properly store image files that are uploaded to the site. Upload functionality will not work without it
+### DISCLAIMER: you must be able to create an AWS S3 bucket in order to properly store image files that are uploaded to the site. Upload functionality will not work without it
 
 <li>Clone the repository with:</li> 
 
