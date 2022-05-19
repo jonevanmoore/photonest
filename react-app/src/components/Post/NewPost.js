@@ -8,7 +8,6 @@ const NewPost = ({ closeModalFunc }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-    const [errors, setErrors] = useState([])
     const [image, setImage] = useState('')
     const [caption, setCaption] = useState('')
     const [imageLoading, setImageLoading] = useState(false);
@@ -22,15 +21,13 @@ const NewPost = ({ closeModalFunc }) => {
 
         setImageLoading(true);
 
-        const data = await dispatch(postCreate(formData, userId))
-        if (data) {
-            setErrors(data)
-            console.log(errors)
+        if (await dispatch(postCreate(formData, userId))) {
+            setImageLoading(true)
         }
         else {
             setImageLoading(false);
         }
-        // closeModalFunc()
+        closeModalFunc()
     }
 
     const displayError = () => {
