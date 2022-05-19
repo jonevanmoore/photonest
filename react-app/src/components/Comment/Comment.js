@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import Modal from "../Modal/Modal";
+import LikesModal from "../Modal/LikesModal";
 import { useState, useEffect } from "react"
 import { updateComment, destroyComment } from "../../store/comment";
 import { fetchCommentLikes, updateCommentLike } from "../../store/like";
@@ -15,6 +16,13 @@ const Comment = ({ comment, users, post }) => {
     let commentLikes = likes.filter(like => like.comment_id === commentId)
     const userLiked = commentLikes.filter(like => like.user_id === userId).length
     const [sessionUserLikes, setSessionUserLikes] = useState('')
+
+    const [likesDisplay, setLikesDisplay] = useState(false)
+
+    const showLikesModal = () => setLikesDisplay(true)
+    const closeLikesModal = () => setLikesDisplay(false)
+
+    const stopTheProp = e => e.stopPropagation();
 
     useEffect(() => {
         if (userLiked > 0) {
@@ -135,10 +143,15 @@ const Comment = ({ comment, users, post }) => {
                             )}
                             <span>{realTime}</span>
                             {commentLikes?.length === 1 && (
-                                <span>{`${commentLikes?.length} like`}</span>
+                                <span style={{ cursor: 'pointer' }} onClick={showLikesModal}>{`${commentLikes?.length} like`}</span>
                             )}
                             {commentLikes?.length > 1 && (
-                                <span>{`${commentLikes?.length} likes`}</span>
+                                <span style={{ cursor: 'pointer' }} onClick={showLikesModal}>{`${commentLikes?.length} likes`}</span>
+                            )}
+                            {likesDisplay && (
+                                <Modal closeModalFunc={closeLikesModal}>
+                                    <LikesModal closeLikesModal={closeLikesModal} stopTheProp={stopTheProp} likes={commentLikes} />
+                                </Modal>
                             )}
                             {sessionUser.id === comment.user_id && (
                                 <>
