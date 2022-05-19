@@ -86,6 +86,7 @@ const SignUpForm = ({ formDisplay }) => {
                 value={firstName}
                 className={`splash-input`}
                 maxLength={100}
+                required={true}
               ></input>
               {/* <span className='span-input'>first name</span> */}
             </label>
@@ -102,6 +103,7 @@ const SignUpForm = ({ formDisplay }) => {
                 value={lastName}
                 className={`splash-input`}
                 maxLength={100}
+                required={true}
               ></input>
               {/* <span className='span-input'>last name</span> */}
             </label>
@@ -117,6 +119,7 @@ const SignUpForm = ({ formDisplay }) => {
                 value={username}
                 className={`splash-input`}
                 maxLength={40}
+                required={true}
               ></input>
               {/* <span className='span-input'>username</span> */}
             </label>
@@ -132,6 +135,7 @@ const SignUpForm = ({ formDisplay }) => {
                 value={email}
                 className={`splash-input`}
                 maxLength={255}
+                required={true}
               ></input>
               {/* <span className='short-span-input'>email</span> */}
             </label>
@@ -148,6 +152,7 @@ const SignUpForm = ({ formDisplay }) => {
                 value={password}
                 className={`splash-input`}
                 maxLength={255}
+                required={true}
               ></input>
               {/* <span className='span-input'>password</span> */}
             </label>
@@ -162,6 +167,7 @@ const SignUpForm = ({ formDisplay }) => {
                 placeholder='confirm password'
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
+                required={true}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
