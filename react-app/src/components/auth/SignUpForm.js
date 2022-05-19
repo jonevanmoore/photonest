@@ -38,33 +38,6 @@ const SignUpForm = ({ formDisplay }) => {
 
 
 
-  useEffect(() => {
-    const customErrors = []
-    //FIRST NAME
-    if (firstName.length < 1) {
-      customErrors.push('Please enter a first name')
-    }
-
-    //LAST NAME
-    if (lastName.length < 1) { customErrors.push('Please enter a last name') }
-
-
-    //USERNAME
-    if (username.length < 1) { customErrors.push('Please enter a username') }
-
-    //EMAIL
-    if (email.length < 1) { customErrors.push('Please enter an email') }
-
-    //PASSWORD
-    if (password.length < 1) { customErrors.push('Please enter a password') }
-
-    //CONFIRM PASS
-    if (repeatPassword !== password) { customErrors.push('Passwords must match') }
-
-    setCustomErrs(customErrors)
-
-  }, [firstName, lastName, username, email, password, repeatPassword])
-
   const updateFirstName = (e) => {
     setFirstName(e.target.value)
   }
@@ -99,7 +72,7 @@ const SignUpForm = ({ formDisplay }) => {
         <label className='photonest-label'>photonest</label>
         {errors.map((error, i) => (
           <div>
-            <span key={i} style={{ color: 'darkred' }}>{error}</span>
+            <span key={i} style={{ color: 'darkred' }}>{error.split(': ')[1]}</span>
           </div>
         ))}
         <form onSubmit={onSignUp}>
@@ -109,13 +82,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='firstName'
-                placeholder=' '
+                placeholder='first name'
                 onChange={updateFirstName}
                 value={firstName}
                 className={`splash-input`}
                 maxLength={100}
               ></input>
-              <span className='span-input'>first name</span>
+              {/* <span className='span-input'>first name</span> */}
             </label>
           </div>
 
@@ -125,13 +98,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='lastName'
-                placeholder=' '
+                placeholder='last name'
                 onChange={updateLastName}
                 value={lastName}
                 className={`splash-input`}
                 maxLength={100}
               ></input>
-              <span className='span-input'>last name</span>
+              {/* <span className='span-input'>last name</span> */}
             </label>
           </div>
 
@@ -140,13 +113,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='username'
-                placeholder=' '
+                placeholder='username'
                 onChange={updateUsername}
                 value={username}
                 className={`splash-input`}
                 maxLength={40}
               ></input>
-              <span className='span-input'>username</span>
+              {/* <span className='span-input'>username</span> */}
             </label>
           </div>
 
@@ -155,13 +128,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='email'
-                placeholder=' '
+                placeholder='email'
                 onChange={updateEmail}
                 value={email}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
-              <span className='short-span-input'>email</span>
+              {/* <span className='short-span-input'>email</span> */}
             </label>
           </div>
 
@@ -171,13 +144,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='password'
-                placeholder=' '
+                placeholder='password'
                 onChange={updatePassword}
                 value={password}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
-              <span className='span-input'>password</span>
+              {/* <span className='span-input'>password</span> */}
             </label>
           </div>
 
@@ -187,13 +160,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='repeatPassword'
-                placeholder=' '
+                placeholder='confirm password'
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
-              <span className='mid-span-input'>confirm password</span>
+              {/* <span className='mid-span-input'>confirm password</span> */}
             </label>
           </div>
 

@@ -11,8 +11,6 @@ const LoginForm = ({ formDisplay }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginDisabled, setLoginDisabled] = useState('btn-disabled')
-  const [customError, setCustomError] = useState('')
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -30,39 +28,29 @@ const LoginForm = ({ formDisplay }) => {
     setPassword(e.target.value);
   };
 
-  useEffect(() => {
-    if (email.length > 0 && password.length > 0) {
-      setLoginDisabled('enabled')
-    } else {
-      setLoginDisabled('btn-disabled')
-    }
-
-    if (errors.length > 0) {
-      setCustomError('email or password is incorrect')
-    }
-  }, [email, password, errors])
-
   return (
     <>
       <div className='form-div'>
         <label className='photonest-label'>photonest</label>
-        <form onSubmit={onLogin}>
+        {errors.map((error, i) => (
           <div>
-            <span style={{ color: 'darkred' }}>{customError}</span>
+            <span key={i} style={{ color: 'darkred' }}>{error.split(': ')[1]}</span>
           </div>
+        ))}
+        <form onSubmit={onLogin}>
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
 
               <input
                 name='email'
                 type='text'
-                placeholder=' '
+                placeholder='email'
                 value={email}
                 onChange={updateEmail}
                 className="splash-input"
                 maxLength={255}
               />
-              <span className='short-span-input'>email</span>
+              {/* <span className='short-span-input'>email</span> */}
             </label>
           </div>
           <div className='splash-input-div'>
@@ -71,19 +59,18 @@ const LoginForm = ({ formDisplay }) => {
               <input
                 name='password'
                 type='password'
-                placeholder=' '
+                placeholder='password'
                 value={password}
                 onChange={updatePassword}
                 className="splash-input"
                 maxLength={255}
               />
-              <span className='span-input'>password</span>
+              {/* <span className='span-input'>password</span> */}
             </label>
           </div>
           <button
             type='submit'
-            className={`login-btn form-btn ${loginDisabled}`}
-            disabled={loginDisabled === 'btn-disabled'}
+            className={`login-btn form-btn`}
           >Login</button>
         </form>
       </div>
