@@ -7,6 +7,7 @@ import { authenticate } from './store/session';
 import { Redirect } from 'react-router-dom';
 // import Profile from './components/Profile/Profile';
 import About from './components/About/About';
+import EditUser from './components/EditUser';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,9 +33,15 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
+        <Route path='/edit_info'>
+          <EditUser sessionUser={sessionUser} />
+        </Route>
         {/* <Route path='/:username' exact={true} >
           {sessionUser ? <Profile /> : <Redirect to='/' />}
         </Route> */}
+        <Route>
+          <Redirect to='/' />
+        </Route>
       </Switch>
       <About />
     </BrowserRouter>
