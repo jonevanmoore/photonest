@@ -8,7 +8,7 @@ const NewPost = ({ closeModalFunc }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const userId = sessionUser.id
-
+    const [errors, setErrors] = useState([])
     const [image, setImage] = useState('')
     const [caption, setCaption] = useState('')
     const [imageLoading, setImageLoading] = useState(false);
@@ -22,11 +22,15 @@ const NewPost = ({ closeModalFunc }) => {
 
         setImageLoading(true);
 
-        if (await dispatch(postCreate(formData, userId))) {
-        } else {
+        const data = await dispatch(postCreate(formData, userId))
+        if (data) {
+            setErrors(data)
+            console.log(errors)
+        }
+        else {
             setImageLoading(false);
         }
-        closeModalFunc()
+        // closeModalFunc()
     }
 
     const displayError = () => {
@@ -59,7 +63,7 @@ const NewPost = ({ closeModalFunc }) => {
                     <input
                         type='file'
                         onChange={setTheImage}
-                        accept="image/*"
+                        accept="image/png, image/gif, image/jpeg, image/jpg, image/gif, image/pdf"
                         placeholder='Enter your URL image'
                         id='img-upload'
                         name='img-upload'

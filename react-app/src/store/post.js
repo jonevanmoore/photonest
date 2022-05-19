@@ -45,8 +45,15 @@ export const postCreate = (post, userId) => async (dispatch) => {
     if (response.ok) {
         const newPost = await response.json();
         dispatch(createPost(newPost));
+        return response;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     }
-    return response;
+
+
 }
 
 export const editPost = (post) => async (dispatch) => {
