@@ -5,8 +5,6 @@ import userPostsReducer from './post'
 import userCommentsReducer from './comment';
 import usersReducer from './user';
 import likeReducer from './like';
-import followReducer from './follow';
-import followingReducer from './following';
 
 const rootReducer = combineReducers({
   session,
@@ -14,8 +12,6 @@ const rootReducer = combineReducers({
   comments: userCommentsReducer,
   users: usersReducer,
   likes: likeReducer,
-  follows: followReducer,
-  followings: followingReducer
 });
 
 

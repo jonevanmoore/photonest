@@ -172,7 +172,7 @@ const DisplayPost = ({ post, comments }) => {
     return (
         <div className="indie-post-div">
             {users.map((user, i) => {
-                if (user.id === post.user_id) {
+                if (user?.id === post?.user_id) {
                     return (
                         <div className="username-post-display" key={i}>
                             <span className='img-link'>
