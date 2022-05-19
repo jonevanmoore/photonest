@@ -49,6 +49,7 @@ const LoginForm = ({ formDisplay }) => {
                 onChange={updateEmail}
                 className="splash-input"
                 maxLength={255}
+                required={true}
               />
               {/* <span className='short-span-input'>email</span> */}
             </label>
@@ -64,6 +65,7 @@ const LoginForm = ({ formDisplay }) => {
                 onChange={updatePassword}
                 className="splash-input"
                 maxLength={255}
+                required={true}
               />
               {/* <span className='span-input'>password</span> */}
             </label>
