@@ -55,37 +55,37 @@ To run Photonest locally, please follow these steps:
 
 * DISCLAIMER: you must be able to create an AWS S3 bucket in order to properly store image files that are uploaded to the site. Upload functionality will not work without it
 
-<li>Clone the repository with  </li> 
+<li>Clone the repository with:</li> 
 
-  git clone https://github.com/jonevanmoore/photonest.git
+  ```git clone https://github.com/jonevanmoore/photonest.git```
 
-<li>Create a database and database user. If using psql, the commands would be</li>
+<li>Create a database and database user. If using psql, the commands would be:</li>
 
-  psql
-  CREATE USER photonest_app WITH PASSWORD <password> CREATEDB;
-  CREATE DATABASE photonest_dev WITH OWNER photonest_app;
+  ```psql```
+  ```CREATE USER photonest_app WITH PASSWORD <password> CREATEDB;```
+  ```CREATE DATABASE photonest_dev WITH OWNER photonest_app;```
 
-<li>Navigate to the backend folder and install python packages </li>
+<li>Navigate to the backend folder and install python packages:</li>
 
-  pipenv install
-  pipenv shell
+  ```pipenv install```
+  ```pipenv shell```
 
-<li>Create and seed database with </li>
+<li>Create and seed database with: </li>
 
-  flask db upgrade
-  flask seed all
+  ```flask db upgrade```
+  ```flask seed all```
 
-<li>Start the server with </li>
+<li>Start the server with:</li>
 
-  flask run
+  ```flask run```
 
-<li>Next, navigate to the react-app folder and run </li>
+<li>Next, navigate to the react-app folder and run: </li>
 
-  npm install
+  ```npm install```
 
-<li>Start the app with </li>
+<li>Start the app with: </li>
 
-  npm start
+  ```npm start```
 
 <li>You should now have Photonest running locally!</li>
 
