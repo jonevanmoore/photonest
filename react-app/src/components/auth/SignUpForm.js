@@ -22,6 +22,7 @@ const SignUpForm = ({ formDisplay }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, username, email, password));
       if (data) {
@@ -35,8 +36,6 @@ const SignUpForm = ({ formDisplay }) => {
   useEffect(() => {
     dispatch(fetchUsers())
   }, [dispatch])
-
-
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value)

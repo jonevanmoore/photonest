@@ -82,7 +82,7 @@ const NewPost = ({ closeModalFunc }) => {
             <div className="caption-div">
                 <textarea
                     type="text"
-                    placeholder="Caption here..."
+                    placeholder="Caption here... (optional)"
                     onChange={e => setCaption(e.target.value)}
                     maxLength={200}
                     className="caption-textarea">
