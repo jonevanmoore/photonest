@@ -9,7 +9,7 @@ Hosted on Heroku: [Photonest](https://photonest.herokuapp.com/)
 Photonest is a social-media platform where users can share, like and comment on images. It is a clone of Instagram.
 
 ## Index
-| [Features List](https://github.com/jonevanmoore/photonest/wiki/Features-List) | [Database Schema](https://github.com/jonevanmoore/photonest/wiki/Database-Schema) | [User Stories](https://github.com/jonevanmoore/photonest/wiki/User-Stories) | [Wireframes](https://github.com/jonevanmoore/photonest/wiki/Wireframes) |
+| [Features List](https://github.com/jonevanmoore/photonest/wiki/Features-List) | [Database Schema](https://github.com/jonevanmoore/photonest/wiki/Database-Schema) | [User Stories](https://github.com/jonevanmoore/photonest/wiki/User-Stories) | [Wireframes](https://github.com/jonevanmoore/photonest/wiki/Wireframes) | [API Routes](https://github.com/jonevanmoore/photonest/wiki/API-Routes)
 
 
 ## Technologies
