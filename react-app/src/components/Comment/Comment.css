@@ -8,3 +8,13 @@
 .edit-comment-btns-div>*:hover {
     color: var(--splash-purple);
 }
+
+.comment-text {
+    font-size: 12px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: start;
+    max-width: 32vw;
+    overflow-wrap: break-word;
+}

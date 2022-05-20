@@ -135,7 +135,10 @@ const Comment = ({ comment, users, post }) => {
                             <span>
                                 <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
                             </span>
-                            <span className="caption-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><span style={{ marginTop: '7px', cursor: 'text' }} className="username-on-caption">{users[comment.user_id - 1].username}</span>{comment.content}</span>
+                            <div >
+                                <span className="comment-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><span style={{ marginTop: '7px', cursor: 'text' }} className="username-on-caption">{users[comment.user_id - 1].username}</span>{comment.content}</span>
+
+                            </div>
                         </div>
                         <div className="comment-info">
                             {comment.created_at !== comment.updated_at && (
