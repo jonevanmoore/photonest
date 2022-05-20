@@ -17,13 +17,15 @@ const NavBar = () => {
   const stopTheProp = e => e.stopPropagation();
 
   return (
-    <nav className='navbar'>
+    <nav className='navbar' style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div className='left-side-nav'>
         <NavLink to='/' exact={true} className='active photonest-nav-label'>photonest</NavLink>
       </div>
+      <div className='add-btn-div'>
+        <span onClick={showModalFunc}><i className="fa-solid fa-circle-plus fa-navbar"></i></span>
+      </div>
       <div className='right-side-nav'>
-        <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink>
-        <span onClick={showModalFunc}><i className="fa-solid fa-square-plus fa-navbar"></i></span>
+        {/* <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink> */}
         {/* <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar"></i></NavLink> */}
         <LogoutButton />
       </div>

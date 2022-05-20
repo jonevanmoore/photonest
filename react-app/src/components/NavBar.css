@@ -1,6 +1,7 @@
 nav {
     position: fixed;
     width: 100vw;
+    height: 3.1vh;
     background-color: white;
     box-shadow: 1px 1px 20px -5px rgb(0, 0, 0);
     z-index: 1;
@@ -26,10 +27,11 @@ nav {
     text-decoration: none;
 }
 
+
 .fa-navbar {
     color: white;
-    margin-left: 8px;
-    margin-right: 8px;
+    /* margin-left: 8px;
+    margin-right: 8px; */
     font-size: 20px;
     /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
     transition: .3s;
@@ -39,12 +41,32 @@ nav {
 .fa-navbar:hover {
     color: var(--blue-theme);
     -webkit-text-stroke: 1px white;
+}
+
+.fa-circle-plus {
+    font-size: 30px;
+    position: relative;
+    top: 30px;
+    color: rgba(0, 0, 0, 0.774);
+
+    background-color: rgb(255, 255, 255);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    border: 1px solid white;
+    border-radius: 50%;
 
 }
 
 .logout-btn {
     background-color: transparent;
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.561);
     border-radius: 10px;
     color: white;
+    position: relative;
+    right: 5vw;
+    transition: .3s;
+}
+
+.logout-btn:hover {
+    background-color: white;
+    color: darkred;
 }
