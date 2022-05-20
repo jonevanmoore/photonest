@@ -36,7 +36,7 @@ const NewPost = ({ closeModalFunc }) => {
 
     useEffect(() => {
         if (image) {
-            if (image.type === ("image/svg+xml" || "image/webp" || "image/avif" || "image/apng")) {
+            if (image.type === ("image/svg+xml" || "image/webp" || "image/avif" || "image/apng" || "image/tiff")) {
                 setImage('')
                 setCustError('Image file not supported')
             }
