@@ -1,4 +1,4 @@
-const LikesModal = ({ closeLikesModal, stopTheProp, likes }) => {
+const LikesModal = ({ stopTheProp, likes }) => {
     return (
         <div
             onClick={stopTheProp}
@@ -9,22 +9,25 @@ const LikesModal = ({ closeLikesModal, stopTheProp, likes }) => {
                     <span >Likes</span>
 
                 </div>
-                {likes.map((like, i) => (
-                    <div key={i} style={{ display: 'flex', margin: '10px', paddingBottom: '5px' }}>
-                        <div>
-                            <img src={like?.user?.profile_image} style={{ borderRadius: '50%', width: '50px', height: '50px', marginRight: '10px', float: 'left' }} />
-                        </div>
-                        <div style={{ display: 'grid' }}>
+                <div>
+
+                    {likes.map((like, i) => (
+                        <div key={i} style={{ display: 'flex', margin: '10px', paddingBottom: '5px' }}>
                             <div>
-                                <span style={{ fontSize: '15px', float: 'left' }}>{`${like?.user?.first_name} ${like?.user?.last_name}`}</span>
+                                <img src={like?.user?.profile_image} style={{ borderRadius: '50%', width: '50px', height: '50px', marginRight: '10px', float: 'left' }} />
                             </div>
-                            <div>
-                                <span style={{ fontSize: '12px', float: 'left', marginBottom: '10px' }}>{like?.user?.username}</span>
+                            <div style={{ display: 'grid' }}>
+                                <div>
+                                    <span style={{ fontSize: '15px', float: 'left' }}>{`${like?.user?.first_name} ${like?.user?.last_name}`}</span>
+                                </div>
+                                <div>
+                                    <span style={{ fontSize: '12px', float: 'left', marginBottom: '10px' }}>{like?.user?.username}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-                }
+                    ))
+                    }
+                </div>
             </div >
 
 

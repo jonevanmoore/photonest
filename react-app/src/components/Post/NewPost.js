@@ -9,6 +9,7 @@ const NewPost = ({ closeModalFunc }) => {
     const [errors, setErrors] = useState('')
     const userId = sessionUser.id
     const [image, setImage] = useState('')
+    console.log(image)
     const [caption, setCaption] = useState('')
     const [imageLoading, setImageLoading] = useState(false);
     const [custError, setCustError] = useState('')
@@ -34,11 +35,13 @@ const NewPost = ({ closeModalFunc }) => {
     }
 
     useEffect(() => {
-        if (image.type === ("image/svg+xml" || "image/webp" || "image/avif" || "image/apng")) {
-            setImage('')
-            setCustError('Image file not supported')
+        if (image) {
+            if (image.type === ("image/svg+xml" || "image/webp" || "image/avif" || "image/apng" || "image/tiff")) {
+                setImage('')
+                setCustError('Image file not supported')
+            }
         }
-    })
+    }, [image])
 
     const displayError = () => {
         setCustError('Please provide an image')
