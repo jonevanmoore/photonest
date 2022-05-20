@@ -79,5 +79,9 @@
     margin-bottom: 20px;
 }
 
+.new-post-btn:hover {
+    background-color: #0867c6
+}
+
 
 /* LOADING BAR */
