@@ -14,7 +14,7 @@ nav {
     justify-content: space-around;
     /* background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, rgba(61, 241, 254, 0.509) 90%, rgba(254, 211, 252, 0.517) 99.7%); */
     background-color: rgba(0, 0, 0, 0.77);
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
 }
 
 .photonest-nav-label {
@@ -45,15 +45,19 @@ nav {
 
 .fa-circle-plus {
     font-size: 30px;
-    position: relative;
-    top: 30px;
     color: rgba(0, 0, 0, 0.774);
-
+    margin: 0;
+    padding: 0;
     background-color: rgb(255, 255, 255);
     -webkit-text-stroke: 1px rgb(255, 255, 255);
     border: 1px solid white;
     border-radius: 50%;
+    transition: .3s;
+}
 
+.fa-circle-plus:hover {
+    font-size: 35px;
+    color: var(--splash-blue);
 }
 
 .logout-btn {
