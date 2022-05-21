@@ -37,12 +37,13 @@ const SplashPage = () => {
             <div className="login-signup-div">
 
                 <div className="splash-left-right-div">
-
-                    <div className="splash-left" style={{ width: '20vw', height: '60vh' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', float: 'left', alignItems: 'self-end' }}>
-                            <span style={{ position: 'relative', right: '6vw', color: 'white' }}>Share photos</span>
-                            <span style={{ position: 'relative', right: '6vw', color: 'white' }}>Like photos</span>
-                            <span style={{ position: 'relative', right: '6vw', color: 'white' }}>Discuss photos</span>
+                    <div>
+                        <div className="splash-left" style={{ width: '300px', height: '500px', padding: '20px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', float: 'left', alignItems: 'self-end' }}>
+                                <span style={{ position: 'relative', right: '7vw', color: 'white' }}>Share photos</span>
+                                <span style={{ position: 'relative', right: '7vw', color: 'white' }}>Like photos</span>
+                                <span style={{ position: 'relative', right: '7vw', color: 'white' }}>Discuss photos</span>
+                            </div>
                         </div>
                     </div>
                     <div>
