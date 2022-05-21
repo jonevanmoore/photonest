@@ -50,6 +50,11 @@ const NewPost = ({ closeModalFunc }) => {
         setImage(e.target.files[0])
     }
 
+    const manageImgError = () => {
+        setCustError('Nice try ;) Pictures only please')
+        setImage('')
+    }
+
     return (
         <div className="new-post-div" style={{ border: '1px solid white' }}>
             <span style={{ color: 'white', borderBottom: '1px lightgray solid', padding: '10px', fontWeight: 'bold' }}>Create new post</span>
@@ -61,7 +66,12 @@ const NewPost = ({ closeModalFunc }) => {
                 )}
                 {image && (
                     <>
-                        <img src={URL.createObjectURL(image)} alt='preview' id='actual-image-preview' />
+                        <img
+                            src={URL.createObjectURL(image)}
+                            alt='preview'
+                            id='actual-image-preview'
+                            onError={manageImgError}
+                        />
                     </>
                 )}
             </div>
