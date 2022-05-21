@@ -6,10 +6,8 @@ import './NewPost.css'
 const NewPost = ({ closeModalFunc }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-    const [errors, setErrors] = useState('')
     const userId = sessionUser.id
     const [image, setImage] = useState('')
-    console.log(image)
     const [caption, setCaption] = useState('')
     const [imageLoading, setImageLoading] = useState(false);
     const [custError, setCustError] = useState('')
