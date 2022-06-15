@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import SplashPage from './components/SplashPage/SplashPage'
 import { authenticate } from './store/session';
 import { Redirect } from 'react-router-dom';
-// import Profile from './components/Profile/Profile';
+import Profile from './components/Profile/Profile';
 import About from './components/About/About';
 import EditUser from './components/EditUser';
 
@@ -36,9 +36,9 @@ function App() {
         <Route path='/edit_info'>
           <EditUser sessionUser={sessionUser} />
         </Route>
-        {/* <Route path='/:username' exact={true} >
+        <Route path='/:username' exact={true} >
           {sessionUser ? <Profile /> : <Redirect to='/' />}
-        </Route> */}
+        </Route>
         <Route>
           <Redirect to='/' />
         </Route>

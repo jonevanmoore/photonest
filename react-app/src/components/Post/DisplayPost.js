@@ -184,7 +184,7 @@ const DisplayPost = ({ post, comments }) => {
                                 <img src={user?.profile_image} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
                             </span>
                             <span style={{ cursor: 'text' }} className='username-display'>
-                                <span>{user?.username}</span>
+                                <Link to={user?.username} className='username-display' style={{ position: 'relative', bottom: '10px' }}>{user?.username}</Link>
                             </span>
                             {/* DELETE POST MODAL */}
                             {sessionUser.id === post.user_id && (
