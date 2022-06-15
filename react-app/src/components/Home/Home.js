@@ -17,10 +17,6 @@ const Home = () => {
     const posts = Object.values(useSelector(state => state.posts)).reverse()
     const comments = Object.values(useSelector(state => state.comments))
 
-
-
-
-
     useEffect(() => {
         dispatch(fetchAllPosts())
         dispatch(fetchAllComments())
