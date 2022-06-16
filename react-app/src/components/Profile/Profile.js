@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllPosts } from "../../store/post";
@@ -34,12 +34,15 @@ const Profile = () => {
                             <div>
                                 <span style={{ fontSize: '20px', float: 'left' }}>{user?.username}</span>
                                 {sessionUser?.id === user?.id && (
-                                    <button>Edit Profile</button>
+                                    <Link to='edit_info'>Edit Profile</Link>
                                 )}
                             </div>
                             <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
                                 <span>{userPosts?.length} posts</span>
                             </div>
+                        </div>
+                        <div>
+                            <span>{sessionUser?.bio}</span>
                         </div>
                     </div>
                 </div>

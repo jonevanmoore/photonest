@@ -2,6 +2,7 @@ import { useState } from "react"
 import { editUser } from "../store/user"
 import { Redirect, Link, useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import './EditUser.css'
 
 const EditUser = ({ sessionUser }) => {
     const userId = sessionUser?.id
@@ -14,6 +15,7 @@ const EditUser = ({ sessionUser }) => {
     const [formerUsername, setFormerUsername] = useState(sessionUser?.username)
     const [formerFirst, setFormerFirst] = useState(sessionUser?.first_name)
     const [formerLast, setFormerLast] = useState(sessionUser?.last_name)
+    const [formerBio, setFormerBio] = useState(sessionUser?.bio)
     const [imageLoading, setImageLoading] = useState(false)
 
     const setImages = (e) => {
@@ -25,9 +27,10 @@ const EditUser = ({ sessionUser }) => {
     const handleUpdate = async () => {
         const formData = new FormData();
         formData.append("image", newImage);
-        formData.append("username", formerUsername)
+        formData.append("username", formerUsername);
         formData.append("first_name", formerFirst);
         formData.append("last_name", formerLast);
+        formData.append("bio", formerBio);
 
         setImageLoading(true);
 
@@ -35,14 +38,13 @@ const EditUser = ({ sessionUser }) => {
         } else {
             setImageLoading(false);
         }
-        history.push('/')
+        // history.push('/')
     }
 
     return (
-
-
         <div
             style={{ backgroundColor: 'white' }}
+            className='edit-body'
         >
             <div style={{ display: 'flex' }}>
                 {!imgPreview && (
@@ -66,15 +68,13 @@ const EditUser = ({ sessionUser }) => {
                     />
                 </label>
             </div>
-            <div>
-                <div style={{ display: 'grid' }}>
-
+            <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <label>Username</label>
                     <input
                         value={formerUsername}
                         onChange={e => setFormerUsername(e.target.value)}></input>
-                </div>
-                <div style={{ display: 'grid' }}>
+
                     <label>First Name</label>
                     <input
                         value={formerFirst}
@@ -86,9 +86,17 @@ const EditUser = ({ sessionUser }) => {
                         onChange={e => setFormerLast(e.target.value)}
                     ></input>
                 </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <label>Bio</label>
+                    <textarea
+                        value={formerBio}
+                        onChange={e => setFormerBio(e.target.value)}
+                    >
+                    </textarea>
+                </div>
             </div>
             <button onClick={handleUpdate}>Update</button>
-            <Link to='/' >cancel</Link>
+            <Link to='/'>cancel</Link>
         </div>
     )
 }
