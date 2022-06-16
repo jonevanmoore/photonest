@@ -183,9 +183,7 @@ const DisplayPost = ({ post, comments }) => {
                             <span className='img-link'>
                                 <img src={user?.profile_image} style={{ width: '28px', height: '28px' }} className='profile-pic-home' />
                             </span>
-                            <span style={{ cursor: 'text' }} className='username-display'>
-                                <span>{user?.username}</span>
-                            </span>
+                            <Link to={user?.username} className='username-display'>{user?.username}</Link>
                             {/* DELETE POST MODAL */}
                             {sessionUser.id === post.user_id && (
                                 < div className="delete-post-div">
@@ -249,7 +247,7 @@ const DisplayPost = ({ post, comments }) => {
                 </div>
                 {post.caption && captionDisplay && (
                     <div className='caption-display'>
-                        <span className="caption-text"><span style={{ cursor: 'text' }} className="username-on-caption">{users[post.user_id - 1]?.username}</span>{`${post.caption}`}</span>
+                        <span className="caption-text"><Link to={users[post.user_id - 1]?.username} className="username-on-caption">{users[post.user_id - 1]?.username}</Link>{`${post.caption}`}</span>
                     </div>
 
                 )}

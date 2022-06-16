@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "../Modal/Modal";
 import LikesModal from "../Modal/LikesModal";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { updateComment, destroyComment } from "../../store/comment";
 import { fetchCommentLikes, updateCommentLike } from "../../store/like";
@@ -136,7 +137,7 @@ const Comment = ({ comment, users, post }) => {
                                 <img src={users[comment.user_id - 1].profile_image} style={{ width: '30px', height: '30px' }} className='profile-pic-home' />
                             </span>
                             <div >
-                                <span className="comment-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px' }}><span style={{ marginTop: '7px', cursor: 'text' }} className="username-on-caption">{users[comment.user_id - 1].username}</span>{comment.content}</span>
+                                <span className="comment-text" style={{ marginTop: '7px', marginLeft: '5px', paddingLeft: '0px', cursor: 'text' }}><Link to={users[comment.user_id - 1].username} className="username-on-caption">{users[comment.user_id - 1].username}</Link>{comment.content}</span>
 
                             </div>
                         </div>

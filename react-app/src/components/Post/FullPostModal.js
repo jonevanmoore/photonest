@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
 import Modal from "../Modal/Modal";
 import LikesModal from "../Modal/LikesModal";
@@ -45,9 +46,7 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                                             </span>
                                         </div>
                                         <div>
-                                            <span style={{ cursor: 'text' }} className='username-modal-display'>
-                                                <span style={{ marginLeft: '-5px' }}>{user.username}</span>
-                                            </span>
+                                            <Link to={user.username} style={{ marginLeft: '-5px' }} className='username-modal-display'>{user.username}</Link>
                                         </div>
                                     </div>
                                     {/* DELETE POST MODAL */}
@@ -90,7 +89,7 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             </span>
                             <div className='caption-display' style={{ marginTop: '7px', display: 'flex', flexDirection: 'column' }}>
                                 <div>
-                                    <span className="caption-text" style={{ marginLeft: '-5px' }}><span style={{ cursor: 'text' }} className="username-on-caption">{user.username}</span>{`${post.caption}`}</span>
+                                    <span className="caption-text" style={{ marginLeft: '-5px' }}><Link to={user.username} className="username-on-caption">{user.username}</Link>{`${post.caption}`}</span>
                                 </div>
                                 <div>
 
