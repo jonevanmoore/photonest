@@ -28,6 +28,7 @@ def update_profile(user_id):
         username = request.values['username']
         first_name = request.values['first_name']
         last_name = request.values['last_name']
+        bio = request.values['bio']
 
 
         if not allowed_file(image.filename):
@@ -52,6 +53,7 @@ def update_profile(user_id):
 
         user.first_name = first_name
         user.last_name = last_name
+        user.bio = bio
         user.username = username
         user.profile_image = url
 
