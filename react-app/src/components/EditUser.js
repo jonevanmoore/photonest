@@ -38,7 +38,7 @@ const EditUser = ({ sessionUser }) => {
         } else {
             setImageLoading(false);
         }
-        history.push('/')
+        // history.push('/')
     }
 
     return (
