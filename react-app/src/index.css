@@ -36,6 +36,10 @@ footer>*:hover {
     -webkit-text-stroke: 1px rgb(255, 255, 255);
 }
 
+label {
+    cursor: text;
+}
+
 button,
 .fa-solid {
     cursor: pointer;
