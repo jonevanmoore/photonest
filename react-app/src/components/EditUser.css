@@ -16,7 +16,15 @@
     text-align: center;
 }
 
-.update-pic {}
+.update-pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.update-pic>* {
+    text-align: center;
+}
 
 .info-inputs {
     display: flex;

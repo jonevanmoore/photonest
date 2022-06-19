@@ -60,7 +60,7 @@ const EditUser = ({ sessionUser }) => {
                         <input
                             type='file'
                             onChange={e => setImages(e.target.files[0])}
-                            accept="image/*"
+                            accept="image/jpg, image/png, image/jpeg, image/gif"
                             placeholder='Enter your URL image'
                             id='img-upload'
                             name='img-upload'
