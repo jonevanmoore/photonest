@@ -3,3 +3,30 @@
     padding-left: 500px;
     padding-right: 500px;
 }
+
+.form-body {
+    border: 1px solid black;
+    position: relative;
+    top: 30vh;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form-body>* {
+    text-align: center;
+}
+
+.update-pic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.update-pic>* {
+    text-align: center;
+}
+
+.info-inputs {
+    display: flex;
+    justify-content: center;
+}

@@ -46,57 +46,60 @@ const EditUser = ({ sessionUser }) => {
             style={{ backgroundColor: 'white' }}
             className='edit-body'
         >
-            <div style={{ display: 'flex' }}>
-                {!imgPreview && (
-                    <img src={sessionUser?.profile_image} style={{ borderRadius: '50%', width: '100px', height: '100px', marginTop: '80px' }} />
-                )}
-                {imgPreview && (
-                    <img src={URL.createObjectURL(imgPreview)} style={{ borderRadius: '50%', width: '100px', height: '100px', marginTop: '80px' }} />
-                )}
-                <label className="img-file" style={{ marginTop: '100px' }}>
-                    <label htmlFor='img-upload'>Update profile pic</label>
-                    <input
-                        type='file'
-                        onChange={e => setImages(e.target.files[0])}
-                        accept="image/*"
-                        placeholder='Enter your URL image'
-                        id='img-upload'
-                        name='img-upload'
-                        required
-                        hidden
+            <div className="form-body">
 
-                    />
-                </label>
-            </div>
-            <div style={{ display: 'flex' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <label>Username</label>
-                    <input
-                        value={formerUsername}
-                        onChange={e => setFormerUsername(e.target.value)}></input>
+                <div className="update-pic">
+                    {!imgPreview && (
+                        <img src={sessionUser?.profile_image} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                    )}
+                    {imgPreview && (
+                        <img src={URL.createObjectURL(imgPreview)} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                    )}
+                    <label className="img-file">
+                        <label htmlFor='img-upload'>Update Profile Picture</label>
+                        <input
+                            type='file'
+                            onChange={e => setImages(e.target.files[0])}
+                            accept="image/jpg, image/png, image/jpeg, image/gif"
+                            placeholder='Enter your URL image'
+                            id='img-upload'
+                            name='img-upload'
+                            required
+                            hidden
 
-                    <label>First Name</label>
-                    <input
-                        value={formerFirst}
-                        onChange={e => setFormerFirst(e.target.value)}
-                    ></input>
-                    <label>Last Name</label>
-                    <input
-                        value={formerLast}
-                        onChange={e => setFormerLast(e.target.value)}
-                    ></input>
+                        />
+                    </label>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <label>Bio</label>
-                    <textarea
-                        value={formerBio}
-                        onChange={e => setFormerBio(e.target.value)}
-                    >
-                    </textarea>
+                <div style={{ display: 'flex' }} className="info-inputs">
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label>Username</label>
+                        <input
+                            value={formerUsername}
+                            onChange={e => setFormerUsername(e.target.value)}></input>
+
+                        <label>First Name</label>
+                        <input
+                            value={formerFirst}
+                            onChange={e => setFormerFirst(e.target.value)}
+                        ></input>
+                        <label>Last Name</label>
+                        <input
+                            value={formerLast}
+                            onChange={e => setFormerLast(e.target.value)}
+                        ></input>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <label>Bio</label>
+                            <textarea
+                                value={formerBio}
+                                onChange={e => setFormerBio(e.target.value)}
+                            >
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
+                <button onClick={handleUpdate}>Update</button>
+                <Link to='/'>cancel</Link>
             </div>
-            <button onClick={handleUpdate}>Update</button>
-            <Link to='/'>cancel</Link>
         </div>
     )
 }
