@@ -23,12 +23,12 @@ const Profile = () => {
     }, [dispatch])
 
     return (
-        <div className="profile-body" style={{ paddingLeft: '25vh', paddingRight: '25vh' }}>
+        <div className="profile-body" style={{ paddingLeft: '33vh', paddingRight: '25vh' }}>
             <div className="info-and-pics-div">
                 <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center', }}>
                     <div style={{ marginTop: '80px', display: 'flex' }}>
                         <div className="profile-pic-div" >
-                            <img src={user?.profile_image} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
+                            <img src={user?.profile_image} style={{ width: '150px', height: '150px', border: '1px lightgray solid', borderRadius: '50%' }} />
                         </div>
                         <div className="profile-info">
                             <div>
