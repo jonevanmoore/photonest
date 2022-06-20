@@ -30,7 +30,7 @@ const Profile = () => {
                         <div className="profile-pic-div" >
                             <img src={user?.profile_image} style={{ width: '150px', height: '150px', border: '1px lightgray solid', borderRadius: '50%' }} />
                         </div>
-                        <div className="profile-info">
+                        <div className="profile-info" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <span style={{ fontSize: '20px', float: 'left' }}>{user?.username}</span>
                                 {sessionUser?.id === user?.id && (
@@ -39,10 +39,17 @@ const Profile = () => {
                             </div>
                             <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
                                 <span>{userPosts?.length} posts</span>
+                                <span>* followers</span>
+                                <span>* following</span>
                             </div>
-                        </div>
-                        <div>
-                            <span>{sessionUser?.bio}</span>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <div>
+                                    <span style={{ fontWeight: 'bold', float: 'left' }}>{`${user?.first_name} ${user?.last_name}`}</span>
+                                </div>
+                                <div>
+                                    <span style={{ float: 'left', maxWidth: '30vw', textAlign: 'left' }}>{user?.bio}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
