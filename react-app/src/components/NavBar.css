@@ -43,12 +43,25 @@ nav {
     -webkit-text-stroke: 1px white;
 }
 
+.search-div {
+    position: relative;
+    left: 5vw;
+    bottom: 5px;
+}
+
+.search-bar {
+    width: 30vw;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
 .right-side-nav {
     margin-right: 10vw;
 }
 
 .right-side-nav>* {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .fa-circle-plus {
