@@ -16,3 +16,16 @@
 .profile-info>* {
     margin-bottom: 20px;
 }
+
+.edit-profile-btn {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+.edit-profile-btn:hover {
+    background-color: rgb(238, 238, 238);
+}
