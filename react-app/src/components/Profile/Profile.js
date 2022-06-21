@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllPosts } from "../../store/post";
 import { fetchUser } from "../../store/user";
+import Modal from "../Modal/Modal";
 import './Profile.css'
 
 const Profile = () => {
@@ -16,6 +17,15 @@ const Profile = () => {
 
     const posts = Object.values(useSelector(state => state?.posts))
     const userPosts = posts.filter(post => post?.username === user.username)
+    const [modalDisplay, setModalDisplay] = useState(false)
+
+    const modalDisplayFunc = () => {
+        if (modalDisplay === false) {
+            setModalDisplay(true)
+        } else {
+            setModalDisplay(false)
+        }
+    }
 
     useEffect(() => {
         dispatch(fetchAllPosts())
@@ -23,32 +33,40 @@ const Profile = () => {
     }, [dispatch])
 
     return (
-        <div className="profile-body" style={{ paddingLeft: '25vh', paddingRight: '25vh' }}>
+        <div className="profile-body" style={{ paddingLeft: '33vh', paddingRight: '25vh' }}>
             <div className="info-and-pics-div">
-                <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center', }}>
+                <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center' }}>
                     <div style={{ marginTop: '80px', display: 'flex' }}>
                         <div className="profile-pic-div" >
-                            <img src={user?.profile_image} style={{ width: '150px', height: '150px', borderRadius: '50%' }} />
+                            <img src={user?.profile_image} style={{ width: '150px', height: '150px', border: '1px lightgray solid', borderRadius: '50%' }} />
                         </div>
-                        <div className="profile-info">
+                        <div className="profile-info" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <span style={{ fontSize: '20px', float: 'left' }}>{user?.username}</span>
                                 {sessionUser?.id === user?.id && (
-                                    <Link to='edit_info'>Edit Profile</Link>
+                                    <Link to='edit_info' className="edit-profile-btn">Edit Profile</Link>
                                 )}
                             </div>
                             <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
                                 <span>{userPosts?.length} posts</span>
+                                <span>* followers</span>
+                                <span>* following</span>
                             </div>
-                        </div>
-                        <div>
-                            <span>{sessionUser?.bio}</span>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <div>
+                                    <span style={{ fontWeight: 'bold', float: 'left' }}>{`${user?.first_name} ${user?.last_name}`}</span>
+                                </div>
+                                <div>
+                                    <span style={{ float: 'left', maxWidth: '30vw', textAlign: 'left' }}>{user?.bio}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="img-gallery" >
                     {userPosts.map(post => (
                         <img src={post?.post_image} key={post?.id} style={{ width: '293px', height: '293px', margin: '5px', float: 'left' }} />
+
                     ))}
                 </div>
             </div>

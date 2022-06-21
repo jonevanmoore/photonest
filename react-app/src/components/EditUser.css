@@ -7,19 +7,26 @@
 .form-body {
     border: 1px solid black;
     position: relative;
-    top: 30vh;
+    top: 25vh;
     padding: 20px;
     border-radius: 20px;
-}
-
-.form-body>* {
-    text-align: center;
 }
 
 .update-pic {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.update-pic-btn {
+    color: rgb(88, 118, 255);
+    cursor: pointer;
+    transition: .3s;
+    text-align: center;
+}
+
+.update-pic-btn:hover {
+    color: darkblue;
 }
 
 .update-pic>* {
@@ -29,4 +36,26 @@
 .info-inputs {
     display: flex;
     justify-content: center;
+}
+
+.info-label {
+    float: left;
+}
+
+.edit-input {
+    width: 20vw;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.edit-input:hover {
+    border-color: lightgray;
+}
+
+.edit-bio {
+    height: 80px;
+    margin: 0;
 }

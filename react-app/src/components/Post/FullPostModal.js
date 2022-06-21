@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
-import Modal from "../Modal/Modal";
 import LikesModal from "../Modal/LikesModal";
 import './FullPostModal.css'
 

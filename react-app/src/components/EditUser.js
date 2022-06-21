@@ -38,7 +38,7 @@ const EditUser = ({ sessionUser }) => {
         } else {
             setImageLoading(false);
         }
-        // history.push('/')
+        history.push('/')
     }
 
     return (
@@ -50,13 +50,17 @@ const EditUser = ({ sessionUser }) => {
 
                 <div className="update-pic">
                     {!imgPreview && (
-                        <img src={sessionUser?.profile_image} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                        <div>
+                            <img src={sessionUser?.profile_image} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                        </div>
                     )}
                     {imgPreview && (
-                        <img src={URL.createObjectURL(imgPreview)} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                        <div>
+                            <img src={URL.createObjectURL(imgPreview)} style={{ borderRadius: '50%', width: '100px', height: '100px' }} />
+                        </div>
                     )}
                     <label className="img-file">
-                        <label htmlFor='img-upload'>Update Profile Picture</label>
+                        <label htmlFor='img-upload' className="update-pic-btn">Update Profile Picture</label>
                         <input
                             type='file'
                             onChange={e => setImages(e.target.files[0])}
@@ -72,33 +76,50 @@ const EditUser = ({ sessionUser }) => {
                 </div>
                 <div style={{ display: 'flex' }} className="info-inputs">
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label>Username</label>
+                        <div>
+                            <label className="info-label">Username</label>
+                        </div>
                         <input
+                            className="edit-input"
                             value={formerUsername}
                             onChange={e => setFormerUsername(e.target.value)}></input>
-
-                        <label>First Name</label>
+                        <div>
+                            <label className="info-label">First Name</label>
+                        </div>
                         <input
+                            className="edit-input"
                             value={formerFirst}
                             onChange={e => setFormerFirst(e.target.value)}
                         ></input>
-                        <label>Last Name</label>
+                        <div>
+                            <label className="info-label">Last Name</label>
+                        </div>
                         <input
+                            className="edit-input"
                             value={formerLast}
                             onChange={e => setFormerLast(e.target.value)}
                         ></input>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <label>Bio</label>
+                            <div>
+                                <label className="info-label">Bio</label>
+                            </div>
                             <textarea
+                                className="edit-input edit-bio"
                                 value={formerBio}
                                 onChange={e => setFormerBio(e.target.value)}
+                                maxLength={200}
                             >
                             </textarea>
+                            <div>
+                                <label style={{ float: 'left', color: 'gray' }}>{`${formerBio.length}/200`}</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button onClick={handleUpdate}>Update</button>
-                <Link to='/'>cancel</Link>
+                <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '10px' }}>
+                    <label onClick={handleUpdate} className="update-pic-btn">Update</label>
+                    <Link to='/' style={{ textDecoration: 'none', color: 'gray' }}>cancel</Link>
+                </div>
             </div>
         </div>
     )
