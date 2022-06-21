@@ -12,8 +12,8 @@ nav {
     padding: 20px;
     display: flex;
     justify-content: space-around;
-    /* background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, rgba(61, 241, 254, 0.509) 90%, rgba(254, 211, 252, 0.517) 99.7%); */
-    background-color: rgba(0, 0, 0, 0.77);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, var(--splash-green) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, rgba(61, 241, 254, 0.509) 90%, rgba(254, 211, 252, 0.517) 99.7%);
+    /* background-color: rgba(0, 0, 0, 0.77); */
     /* border-bottom: 1px solid white; */
 }
 
@@ -43,30 +43,32 @@ nav {
     -webkit-text-stroke: 1px white;
 }
 
+.right-side-nav {
+    margin-right: 10vw;
+}
+
+.right-side-nav>* {
+    margin-right: 10px;
+}
+
 .fa-circle-plus {
-    font-size: 30px;
-    color: rgba(0, 0, 0, 0.774);
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 255, 255);
-    -webkit-text-stroke: 1px rgb(255, 255, 255);
-    border: 1px solid white;
+    background-color: transparent;
+    -webkit-text-stroke: 1px transparent;
     border-radius: 50%;
     transition: .3s;
 }
 
 .fa-circle-plus:hover {
-    font-size: 35px;
     color: var(--splash-blue);
 }
 
 .logout-btn {
     background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.561);
+    border: 1px solid rgba(0, 0, 0, 0.561);
     border-radius: 10px;
-    color: white;
-    position: relative;
-    right: 5vw;
+    color: rgb(0, 0, 0);
     transition: .3s;
 }
 
