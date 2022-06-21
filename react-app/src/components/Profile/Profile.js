@@ -48,9 +48,11 @@ const Profile = () => {
                                 )}
                             </div>
                             <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
+
                                 <span>{userPosts?.length} posts</span>
                                 <span>* followers</span>
                                 <span>* following</span>
+
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
