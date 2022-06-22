@@ -60,3 +60,15 @@ def update_profile(user_id):
         db.session.commit()
         # to_dict convert to python dictionary and gets packaged before sends to frontend as json
         return user.to_dict()
+
+@user_routes.route('/<int:user_id>/no_pic', methods=['PUT'])
+@login_required
+def update_profile(user_id):
+    user = User.query.filter(User.id == user_id).first()
+    user.first_name = request.json['first_name']
+    user.last_name = request.json['last_name']
+    user.bio = request.json['bio']
+    user.username = request.json['username']
+
+    db.session.commit()
+    return user.to_dict()
