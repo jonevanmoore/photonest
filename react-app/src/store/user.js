@@ -65,7 +65,8 @@ export const editUser = (formData, userId) => async (dispatch) => {
 export const editUserWithoutPic = (formData, userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}/no_pic`, {
         method: "PUT",
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
     });
 
 

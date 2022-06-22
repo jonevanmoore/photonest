@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
-import { fetchUser } from "../../store/user";
-import { useDispatch } from "react-redux";
+import { fetchUsers } from "../../store/user";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react'
 
 const DisplayUserInfo = ({ sessionUser, showModal }) => {
+    // const dispatch = useDispatch()
 
+    // const users = Object.values(useSelector(state => state.users))
+
+    // let userArr = [];
+    // users.forEach(user => {
+    //     if (user?.username === sessionUser?.username) {
+    //         userArr.push(user)
+    //     }
+    // })
+
+    // useEffect(() => {
+    //     dispatch(fetchUsers())
+    // }, [dispatch])
 
     return (
         <>

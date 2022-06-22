@@ -63,7 +63,7 @@ def update_profile(user_id):
 
 @user_routes.route('/<int:user_id>/no_pic', methods=['PUT'])
 @login_required
-def update_profile(user_id):
+def update_profile_without_pic(user_id):
     user = User.query.filter(User.id == user_id).first()
     user.first_name = request.json['first_name']
     user.last_name = request.json['last_name']

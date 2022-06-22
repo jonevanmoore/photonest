@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { editUser } from "../store/user"
+import { editUser, editUserWithoutPic } from "../store/user"
 import { Redirect, Link, useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import './EditUser.css'
@@ -25,18 +25,29 @@ const EditUser = ({ sessionUser }) => {
 
 
     const handleUpdate = async () => {
-        const formData = new FormData();
-        formData.append("image", newImage);
-        formData.append("username", formerUsername);
-        formData.append("first_name", formerFirst);
-        formData.append("last_name", formerLast);
-        formData.append("bio", formerBio);
+        if (newImage !== sessionUser?.profile_image) {
+            const formData = new FormData();
+            formData.append("image", newImage);
+            formData.append("username", formerUsername);
+            formData.append("first_name", formerFirst);
+            formData.append("last_name", formerLast);
+            formData.append("bio", formerBio);
 
-        setImageLoading(true);
+            setImageLoading(true);
 
-        if (await dispatch(editUser(formData, userId))) {
+            if (await dispatch(editUser(formData, userId))) {
+            } else {
+                setImageLoading(false);
+            }
         } else {
-            setImageLoading(false);
+            setImageLoading(true)
+            const updateUserNoPic = {
+                username: formerUsername,
+                first_name: formerFirst,
+                last_name: formerLast,
+                bio: formerBio
+            }
+            await dispatch(editUserWithoutPic(updateUserNoPic, userId))
         }
         history.push('/')
     }
@@ -111,7 +122,7 @@ const EditUser = ({ sessionUser }) => {
                             >
                             </textarea>
                             <div>
-                                <label style={{ float: 'left', color: 'gray' }}>{`${formerBio.length}/200`}</label>
+                                <label style={{ float: 'left', color: 'gray' }}>{`${formerBio?.length}/200`}</label>
                             </div>
                         </div>
                     </div>
