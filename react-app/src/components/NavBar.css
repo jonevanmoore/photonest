@@ -107,11 +107,6 @@ nav {
     text-indent: 1em;
 }  */
 
-.navBar__searchBar .navBar__searchIcon {
-    color: #5693db;
-    position: relative;
-}
-
 .navBar__searchBar>input::placeholder {
     color: lightgrey;
 }
@@ -122,7 +117,7 @@ nav {
     cursor: text;
     background-color: transparent;
     border: none;
-    /* margin-left: 10px; */
+    margin-left: 10px;
     /* font-family: poppins, sans-serif; */
 }
 
@@ -132,10 +127,10 @@ nav {
     width: 30vw;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(237, 242, 250);
+    background-color: rgb(244, 244, 244);
     align-items: center;
     height: fit-content;
-    row-gap: 5px;
+    /* row-gap: 5px; */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
@@ -143,6 +138,7 @@ nav {
 }
 
 .navBar__searchResults>a {
+    border-top: 1px solid lightgray;
     display: flex;
     justify-self: center;
     align-items: center;
@@ -150,7 +146,6 @@ nav {
     text-decoration: none;
     flex-direction: column;
     width: 100%;
-    border-top: 1px solid lightgray;
 }
 
 .navBar__users {
@@ -160,15 +155,16 @@ nav {
     align-items: center;
     width: 100%;
     column-gap: 1em;
-    height: 60px;
-    /* padding: 5px; */
+    height: 30px;
 }
 
 .navBar__user {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    width: 60%;
+}
+
+.navBar__user>* {
+    margin-right: 5px;
 }
 
 .navBar__user h5:first-child {
@@ -176,7 +172,7 @@ nav {
 }
 
 .navBar__user h5:nth-child(2) {
-    color: rgb(144, 144, 144);
+    color: rgb(91, 91, 91);
     font-weight: 300;
 }
 
@@ -185,7 +181,7 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: rgb(255, 240, 200);
+    background: rgb(252, 252, 252);
     margin-left: 1em;
     border-radius: 999px;
     width: 40px;
@@ -194,10 +190,8 @@ nav {
 
 .navBar__defaultPic {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     text-align: center;
-    background: rgb(255, 240, 200);
     margin-left: 1em;
     border-radius: 999px;
     width: 40px;
@@ -211,6 +205,6 @@ nav {
 }
 
 .navBar__searchResults>a:hover {
-    background-color: rgb(219, 214, 251);
+    background-color: rgb(227, 227, 227);
     font-weight: bold;
 }

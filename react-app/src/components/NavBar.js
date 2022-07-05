@@ -42,7 +42,7 @@ const NavBar = () => {
         <NavLink to='/' exact={true} className='active photonest-nav-label'>photonest</NavLink>
       </div>
 
-      <div>
+      <div className='search-div'>
         <div className="navBar__searchBar">
           <div className="navBar__searchInput">
             <input
