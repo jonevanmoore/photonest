@@ -80,15 +80,6 @@ const NavBar = () => {
         }
       </div>
 
-
-      {/* <div className='middle-nav'>
-        <div className='search-div'>
-          <input className='search-bar'
-            placeholder='Search users'
-            value={searchInput}
-            onChange={e => setSearchInput(e.target.value)}></input>
-        </div>
-      </div> */}
       <div className='right-side-nav'>
         <span onClick={showModalFunc}><i className="fa-solid fa-circle-plus fa-navbar"></i></span>
         <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink>
