@@ -179,3 +179,17 @@ input:not(:-ms-input-placeholder)+.span-input {
     transform: scale(0.75) translateY(-40%) translateX(-7px);
     font-size: smaller;
 }
+
+@media screen and (max-width: 800px) {
+    .splash-input-div {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        /* width: 104.5vw; */
+        margin-left: 20px;
+    }
+
+    footer {
+        display: none;
+    }
+}

@@ -6,7 +6,6 @@ import { fetchUsers } from '../../store/user';
 
 const SignUpForm = ({ formDisplay }) => {
   const [errors, setErrors] = useState([]);
-  const [customErrs, setCustomErrs] = useState([])
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [username, setUsername] = useState('');

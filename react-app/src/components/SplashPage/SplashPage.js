@@ -37,7 +37,7 @@ const SplashPage = () => {
             <div className="login-signup-div">
 
                 <div className="splash-left-right-div">
-                    <div>
+                    <div className="splash-left-div">
                         <div className="splash-left" style={{ width: '300px', height: '500px', padding: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', float: 'left', alignItems: 'self-end' }}>
                                 <span style={{ position: 'relative', right: '7vw', color: 'white' }}>Share photos</span>
@@ -46,7 +46,7 @@ const SplashPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="splash-right">
                         <div className={`${loginDisplay} login-form`}>
                             <div className="btn-div">
                                 <button onClick={demoLogin} className="demo-btn">Demo User</button>
