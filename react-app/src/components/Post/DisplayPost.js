@@ -216,7 +216,7 @@ const DisplayPost = ({ post, comments }) => {
                 }
             })}
             <div className="img-div">
-                <img key={post.id} src={post.post_image} style={{ maxHeight: '600px', maxWidth: '500px', minWidth: '500px', borderBottom: '1px solid lightgray', borderTop: '1px solid lightgray' }} alt='preview' />
+                <img key={post.id} src={post.post_image} className='user-post' alt='preview' />
             </div>
             <div className="icon-caption-div">
                 <div className="edit-cap-div">

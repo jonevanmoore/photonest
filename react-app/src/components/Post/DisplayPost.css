@@ -20,6 +20,13 @@
 }
 
 /* .img-link {} */
+.user-post {
+    max-height: 600px;
+    max-width: 500px;
+    min-width: 500px;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
 
 .profile-pic-home {
     border-radius: 100%;
@@ -374,6 +381,7 @@
         margin-bottom: 0;
         padding-bottom: 15px;
         animation: fadeIn .3s;
+        /* width: 100vw; */
     }
 
     .created-at-mobile {
@@ -398,5 +406,10 @@
 
     .mobile-photo-add-comment {
         display: block;
+    }
+
+    .user-post {
+        max-height: 100vh;
+        min-width: 100vw;
     }
 }
