@@ -43,6 +43,7 @@ const LoginForm = ({ formDisplay }) => {
               <input
                 name='email'
                 type='text'
+                placeholder=' '
                 value={email}
                 onChange={updateEmail}
                 className="splash-input"
@@ -58,6 +59,7 @@ const LoginForm = ({ formDisplay }) => {
               <input
                 name='password'
                 type='password'
+                placeholder=' '
                 value={password}
                 onChange={updatePassword}
                 className="splash-input"

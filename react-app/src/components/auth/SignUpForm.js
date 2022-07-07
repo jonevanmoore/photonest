@@ -80,6 +80,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='firstName'
+                placeholder=' '
                 onChange={updateFirstName}
                 value={firstName}
                 className={`splash-input`}
@@ -96,6 +97,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='lastName'
+                placeholder=' '
                 onChange={updateLastName}
                 value={lastName}
                 className={`splash-input`}
@@ -111,6 +113,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='username'
+                placeholder=' '
                 onChange={updateUsername}
                 value={username}
                 className={`splash-input`}
@@ -126,6 +129,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='email'
+                placeholder=' '
                 onChange={updateEmail}
                 value={email}
                 className={`splash-input`}
@@ -142,6 +146,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='password'
+                placeholder=' '
                 onChange={updatePassword}
                 value={password}
                 className={`splash-input`}
@@ -158,6 +163,7 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='repeatPassword'
+                placeholder=' '
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
