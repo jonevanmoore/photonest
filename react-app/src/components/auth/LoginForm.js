@@ -55,7 +55,6 @@ const LoginForm = ({ formDisplay }) => {
           </div>
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
-
               <input
                 name='password'
                 type='password'

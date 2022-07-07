@@ -93,7 +93,6 @@ const SignUpForm = ({ formDisplay }) => {
 
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
-
               <input
                 type='text'
                 name='lastName'
@@ -142,7 +141,6 @@ const SignUpForm = ({ formDisplay }) => {
 
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
-
               <input
                 type='password'
                 name='password'
@@ -159,7 +157,6 @@ const SignUpForm = ({ formDisplay }) => {
 
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
-
               <input
                 type='password'
                 name='repeatPassword'
