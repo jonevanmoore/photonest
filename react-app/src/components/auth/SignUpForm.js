@@ -80,14 +80,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='firstName'
-                placeholder='first name'
                 onChange={updateFirstName}
                 value={firstName}
                 className={`splash-input`}
                 maxLength={100}
                 required={true}
               ></input>
-              {/* <span className='span-input'>first name</span> */}
+              <span className='span-input'>first name</span>
             </label>
           </div>
 
@@ -97,14 +96,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='lastName'
-                placeholder='last name'
                 onChange={updateLastName}
                 value={lastName}
                 className={`splash-input`}
                 maxLength={100}
                 required={true}
               ></input>
-              {/* <span className='span-input'>last name</span> */}
+              <span className='span-input'>last name</span>
             </label>
           </div>
 
@@ -113,14 +111,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='username'
-                placeholder='username'
                 onChange={updateUsername}
                 value={username}
                 className={`splash-input`}
                 maxLength={40}
                 required={true}
               ></input>
-              {/* <span className='span-input'>username</span> */}
+              <span className='span-input'>username</span>
             </label>
           </div>
 
@@ -129,14 +126,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='text'
                 name='email'
-                placeholder='email'
                 onChange={updateEmail}
                 value={email}
                 className={`splash-input`}
                 maxLength={255}
                 required={true}
               ></input>
-              {/* <span className='short-span-input'>email</span> */}
+              <span className='short-span-input'>email</span>
             </label>
           </div>
 
@@ -146,14 +142,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='password'
-                placeholder='password'
                 onChange={updatePassword}
                 value={password}
                 className={`splash-input`}
                 maxLength={255}
                 required={true}
               ></input>
-              {/* <span className='span-input'>password</span> */}
+              <span className='span-input'>password</span>
             </label>
           </div>
 
@@ -163,14 +158,13 @@ const SignUpForm = ({ formDisplay }) => {
               <input
                 type='password'
                 name='repeatPassword'
-                placeholder='confirm password'
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
                 className={`splash-input`}
                 maxLength={255}
               ></input>
-              {/* <span className='mid-span-input'>confirm password</span> */}
+              <span className='mid-span-input'>confirm password</span>
             </label>
           </div>
 

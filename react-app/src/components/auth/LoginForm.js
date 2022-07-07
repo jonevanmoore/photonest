@@ -40,18 +40,16 @@ const LoginForm = ({ formDisplay }) => {
         <form onSubmit={onLogin}>
           <div className='splash-input-div'>
             <label className='label-input' style={{ width: '90%' }}>
-
               <input
                 name='email'
                 type='text'
-                placeholder='email'
                 value={email}
                 onChange={updateEmail}
                 className="splash-input"
                 maxLength={255}
                 required={true}
               />
-              {/* <span className='short-span-input'>email</span> */}
+              <span className='short-span-input'>email</span>
             </label>
           </div>
           <div className='splash-input-div'>
@@ -60,14 +58,13 @@ const LoginForm = ({ formDisplay }) => {
               <input
                 name='password'
                 type='password'
-                placeholder='password'
                 value={password}
                 onChange={updatePassword}
                 className="splash-input"
                 maxLength={255}
                 required={true}
               />
-              {/* <span className='span-input'>password</span> */}
+              <span className='span-input'>password</span>
             </label>
           </div>
           <button
