@@ -58,6 +58,7 @@ nav {
 
 .right-side-nav {
     margin-right: 10vw;
+    display: flex;
 }
 
 .right-side-nav>* {
@@ -214,4 +215,19 @@ nav {
     font-weight: bold;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .search-div,
+    .fa-house-chimney,
+    .fa-user,
+    .logout-div {
+        display: none;
+    }
+
+    .fa-circle-plus {
+        position: relative;
+        left: 50px;
+    }
 }

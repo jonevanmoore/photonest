@@ -84,7 +84,9 @@ const NavBar = () => {
         <span onClick={showModalFunc}><i className="fa-solid fa-circle-plus fa-navbar"></i></span>
         <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar"></i></NavLink>
         <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar"></i></NavLink>
-        <LogoutButton />
+        <div className='logout-div'>
+          <LogoutButton />
+        </div>
       </div>
 
       {showModal && (
