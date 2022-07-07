@@ -54,8 +54,8 @@
 
 .form-div {
     background-color: var(--transparent-white);
-    /* padding-left: 20px;
-    padding-right: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 3px;
     width: 320px;
     padding-bottom: 5px;
@@ -86,6 +86,7 @@
 
 .splash-input-div {
     display: flex;
+    margin: 0;
 }
 
 .splash-input {
@@ -119,7 +120,7 @@
     font-family: 'Raleway', 'sans-serif';
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
     background-color: #6699CC;
     color: #f1f1f1;
@@ -136,7 +137,7 @@
     font-family: 'Raleway', 'sans-serif';
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 95%;
+    width: 90%;
     margin-bottom: 10px;
     background-color: #6699CC;
     color: #f1f1f1;
@@ -175,7 +176,7 @@
 .switch-form-btn {
     background-color: transparent;
     border: none;
-    color: #f1f1f1;
+    color: #3469be;
     font-size: 15px;
     transition: .3s;
     /* font-weight: bold; */
@@ -237,30 +238,37 @@
 
 
 @media screen and (max-width: 800px) {
-    .splash-left {
-        display: none;
-    }
 
+    .splash-left,
     .splash-left-div {
         display: none;
     }
 
     .form-div {
         background-color: var(--transparent-white);
-        /* padding-left: 20px;
-        padding-right: 20px; */
+        padding-left: 20px;
+        padding-right: 20px;
         border-radius: 3px;
-        width: 100vw;
-        /* padding-bottom: 5px; */
+        width: 80vw;
+        padding-bottom: 5px;
         margin: 0 auto;
     }
 
+    .sign-up-form,
+    .login-form {
+        bottom: 90px;
+    }
+
     .login-btn {
-        width: 90%;
+        width: 100%;
     }
 
     .sign-up-btn {
-        width: 90%;
+        width: 100%;
+    }
+
+    .splash-input {
+        width: 103%;
     }
 
 }
