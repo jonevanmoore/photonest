@@ -10,8 +10,6 @@
     animation: fadeIn .3s;
 }
 
-
-
 .username-post-display>* {
     float: left;
     padding-top: 8px;
@@ -202,6 +200,7 @@
 .leave-comment-div {
     margin-top: 10px;
     padding-top: 10px;
+    border-top: 1px solid lightgray;
 }
 
 .leave-com-input-div {
@@ -244,12 +243,21 @@
     margin-top: 10px;
 }
 
-.created-at {
+.created-at-desktop {
     float: left;
     margin-left: 10px;
     font-size: 10px;
     font-weight: bold;
     color: rgb(166, 166, 166);
+}
+
+.created-at-mobile {
+    float: left;
+    margin-left: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    color: rgb(166, 166, 166);
+    display: none;
 }
 
 
@@ -339,8 +347,56 @@
     border-color: white;
 }
 
+.mobile-photo-add-comment {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: relative;
+    left: 8px;
+    display: none;
+}
+
 
 
 
 
 /*  */
+
+
+@media screen and (max-width: 800px) {
+    .indie-post-div {
+        display: flex;
+        flex-direction: column;
+        border: none;
+        background-color: transparent;
+        border-radius: 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 15px;
+        animation: fadeIn .3s;
+    }
+
+    .created-at-mobile {
+        margin-top: 5px;
+        display: block;
+        font-weight: 400;
+    }
+
+    .created-at-desktop {
+        display: none;
+    }
+
+    .leave-comment-div {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .leave-com-input {
+        font-size: 12px;
+    }
+
+    .mobile-photo-add-comment {
+        display: block;
+    }
+}

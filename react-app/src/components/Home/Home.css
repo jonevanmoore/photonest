@@ -12,3 +12,14 @@
     position: relative;
     left: 350px;
 }
+
+@media screen and (max-width: 800px) {
+    .suggestions-div {
+        display: none;
+    }
+
+    .posts-suggestions-div {
+        position: relative;
+        left: 15vw;
+    }
+}

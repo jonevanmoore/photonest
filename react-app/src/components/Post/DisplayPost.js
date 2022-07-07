@@ -287,10 +287,11 @@ const DisplayPost = ({ post, comments }) => {
                     )}
                 </div>
                 <div className="created-at-div">
-                    <span className="created-at">{realTime}</span>
+                    <span className="created-at-desktop">{realTime}</span>
                 </div>
-                <div className="leave-comment-div" style={{ borderTop: '1px solid lightgray' }}>
+                <div className="leave-comment-div">
                     <div className="leave-com-input-div">
+                        <img src={sessionUser?.profile_image} className='mobile-photo-add-comment'></img>
                         <input
                             value={newComment}
                             placeholder="Add a comment..."
@@ -305,6 +306,7 @@ const DisplayPost = ({ post, comments }) => {
                             onClick={createComment}
                         >Post</button>
                     </div>
+                    <span className="created-at-mobile">{realTime}</span>
                 </div>
             </div>
             {showFullPostModal && (
