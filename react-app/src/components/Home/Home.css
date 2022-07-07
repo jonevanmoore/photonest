@@ -1,7 +1,6 @@
-.home-page-div {
+/* .home-page-div {
     text-align: center;
-
-}
+} */
 
 .posts-suggestions-div {
     display: flex;
@@ -22,4 +21,6 @@
         position: relative;
         left: 15vw;
     }
+
+
 }

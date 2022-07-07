@@ -381,7 +381,7 @@
         margin-bottom: 0;
         padding-bottom: 15px;
         animation: fadeIn .3s;
-        /* width: 100vw; */
+        width: 100vw;
     }
 
     .created-at-mobile {
