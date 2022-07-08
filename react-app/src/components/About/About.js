@@ -29,7 +29,7 @@ const About = () => {
                             <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar foot-mobile"></i></NavLink>
                         </div>
                         <div className="footer-button">
-                            <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar foot-mobile"></i></NavLink>
+                            <NavLink to={`/${username}`}><img src={sessionUser?.profile_image} className='photo-footer' ></img></NavLink>
                         </div>
                         <div className="footer-button footer-logout">
                             <LogoutButton />
