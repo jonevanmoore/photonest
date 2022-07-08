@@ -116,7 +116,7 @@ const SignUpForm = ({ formDisplay }) => {
                 onChange={updateUsername}
                 value={username}
                 className={`splash-input`}
-                maxLength={40}
+                maxLength={20}
                 required={true}
               ></input>
               <span className='span-input'>username</span>

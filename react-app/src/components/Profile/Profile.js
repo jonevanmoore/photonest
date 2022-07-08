@@ -39,13 +39,12 @@ const Profile = () => {
             </div>
             <div className="mobile-el">
                 <nav className='navbar' style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <div>
-                        <span to='/' exact={true} className='active photonest-nav-label'>{username}</span>
+                    <div className='profile-label-div'>
+                        <span className='active photonest-nav-label-profile'>{username}</span>
                     </div>
                 </nav >
             </div>
             <div className="profile-body">
-                {/* {window.location.reload(true)} */}
                 <div className="info-and-pics-div">
                     <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center' }}>
                         <div style={{ marginTop: '80px', display: 'flex' }}>
@@ -55,7 +54,7 @@ const Profile = () => {
                             <div className="profile-pic-info-mobile">
                                 <div className="mob-pic-follow-info">
                                     <img src={user?.profile_image} className='profile-pic' />
-                                    <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
+                                    <div className="follow-info-mob" style={{ display: 'flex', float: 'left' }}>
                                         <div className="mob-info">
                                             <span id="num-info">{userPosts?.length}</span>
                                             <span>posts</span>
@@ -75,6 +74,9 @@ const Profile = () => {
                                 <div style={{ marginBottom: '10px' }}>
                                     {sessionUser?.id === user?.id && (
                                         <Link to='edit_info' className="edit-profile-btn-mobile">Edit Profile</Link>
+                                    )}
+                                    {sessionUser?.id !== user?.id && (
+                                        <Link to='edit_info' className="edit-profile-btn-mobile">Follow (tbd)</Link>
                                     )}
                                 </div>
                             </div>

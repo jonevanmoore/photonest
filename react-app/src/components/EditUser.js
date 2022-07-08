@@ -93,7 +93,10 @@ const EditUser = ({ sessionUser }) => {
                         <input
                             className="edit-input"
                             value={formerUsername}
-                            onChange={e => setFormerUsername(e.target.value)}></input>
+                            onChange={e => setFormerUsername(e.target.value)}
+                            maxLength={20}
+                        >
+                        </input>
                         <div>
                             <label className="info-label">First Name</label>
                         </div>

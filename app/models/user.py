@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
     bio = db.Column(db.String(200), nullable=True)
     profile_image = db.Column(
         db.String, nullable=False, default='https://myphotonestbucket.s3.amazonaws.com/e21dbcd4968346fabcde8731fb37b477.png')
