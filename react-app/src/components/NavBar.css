@@ -80,9 +80,10 @@ nav {
 
 .logout-btn {
     background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.561);
+    border: none;
     border-radius: 10px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
     transition: .3s;
 }
 
@@ -220,8 +221,7 @@ nav {
 @media screen and (max-width: 800px) {
 
     .search-div,
-    .fa-house-chimney,
-    .fa-user,
+    .fa-desktop,
     .logout-div {
         display: none;
     }
