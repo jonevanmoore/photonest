@@ -229,5 +229,9 @@ nav {
     .fa-circle-plus {
         position: relative;
         left: 50px;
+        bottom: 2px;
+        font-size: 25px;
     }
+
+
 }

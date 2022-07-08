@@ -215,8 +215,11 @@ const DisplayPost = ({ post, comments }) => {
                     )
                 }
             })}
-            <div className="img-div">
+            <div className="img-div-desktop">
                 <img key={post.id} src={post.post_image} className='user-post' alt='preview' />
+            </div>
+            <div className="img-div-mobile">
+                <img key={post.id} src={post.post_image} className='user-post-mobile' />
             </div>
             <div className="icon-caption-div">
                 <div className="edit-cap-div">
