@@ -19,11 +19,14 @@
 
     .posts-suggestions-div {
         position: relative;
-        left: 15vw;
+        /* left: 5vw; */
+        width: 100vw;
+        overflow-x: hidden;
     }
 
     .home-page-div {
         width: 50vw;
+
     }
 
     /* .posts-div {
