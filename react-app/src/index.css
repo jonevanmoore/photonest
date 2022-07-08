@@ -203,7 +203,7 @@ input:not(:-ms-input-placeholder)+.span-input {
     }
 
     .mobile-footer-div {
-        display: block;
+        display: block
     }
 
     .mobile-footer {
@@ -211,8 +211,6 @@ input:not(:-ms-input-placeholder)+.span-input {
         display: flex;
         justify-content: space-around;
         background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(61, 241, 254, 0.509) 0%, var(--splash-blue) 21.8%, var(--splash-purple) 35.6%, var(--splash-purple) 52.9%, var(--splash-blue) 66.8%, var(--splash-green) 90%, rgba(254, 211, 252, 0.517) 99.7%);
-        /* background-color: rgba(0, 0, 0, 0.77); */
-        /* border-bottom: 1px solid white; */
         position: fixed;
         width: 100vw;
         color: aliceblue;
@@ -223,7 +221,7 @@ input:not(:-ms-input-placeholder)+.span-input {
         padding-bottom: 5px;
         bottom: 0pt;
         left: 0pt;
-        height: 3rem;
+        height: 3.5rem;
     }
 
     .footer-button {
