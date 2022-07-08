@@ -34,6 +34,7 @@ const Profile = () => {
 
     return (
         <div className="profile-body">
+            {/* {window.location.reload(true)} */}
             <div className="info-and-pics-div">
                 <div className="user-info-div" style={{ display: 'flex', justifyContent: 'center' }}>
                     <div style={{ marginTop: '80px', display: 'flex' }}>
@@ -60,7 +61,7 @@ const Profile = () => {
                             </div>
                             <span className="mobile-el mobile-name">{`${user?.first_name} ${user?.last_name}`}</span>
                             <span className="mobile-el mobile-bio">{user?.bio}</span>
-                            <div>
+                            <div style={{ marginBottom: '10px' }}>
                                 {sessionUser?.id === user?.id && (
                                     <Link to='edit_info' className="edit-profile-btn-mobile">Edit Profile</Link>
                                 )}
@@ -91,10 +92,13 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="img-gallery" >
+                <div className="img-gallery">
                     {userPosts.map(post => (
-                        <img src={post?.post_image} key={post?.id} style={{ width: '293px', height: '293px', margin: '5px', float: 'left' }} />
+                        <>
+                            <img src={post?.post_image} key={post?.id} className='indie-img-desktop' />
 
+                            <img src={post?.post_image} key={post?.id} className='indie-img-mobile' />
+                        </>
                     ))}
                 </div>
             </div>
