@@ -22,20 +22,21 @@ const About = () => {
                     <a href="https://linkedin.com/in/jonevanmoore" target="_blank"><i className="fa-brands fa-linkedin-in"></i></a>
                 </footer>
             </div>
-
-            <div className="mobile-footer-div">
-                <footer className="mobile-footer">
-                    <div className="footer-button">
-                        <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar foot-mobile"></i></NavLink>
-                    </div>
-                    <div className="footer-button">
-                        <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar foot-mobile"></i></NavLink>
-                    </div>
-                    <div className="footer-button footer-logout">
-                        <LogoutButton />
-                    </div>
-                </footer>
-            </div>
+            {sessionUser && (
+                <div className="mobile-footer-div">
+                    <footer className="mobile-footer">
+                        <div className="footer-button">
+                            <NavLink to='/'><i className="fa-solid fa-house-chimney fa-navbar foot-mobile"></i></NavLink>
+                        </div>
+                        <div className="footer-button">
+                            <NavLink to={`/${username}`}><i className="fa-solid fa-user fa-navbar foot-mobile"></i></NavLink>
+                        </div>
+                        <div className="footer-button footer-logout">
+                            <LogoutButton />
+                        </div>
+                    </footer>
+                </div>
+            )}
         </>
     )
 }
