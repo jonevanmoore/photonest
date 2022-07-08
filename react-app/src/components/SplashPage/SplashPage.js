@@ -38,7 +38,7 @@ const SplashPage = () => {
 
                 <div className="splash-left-right-div">
                     <div className="splash-left-div">
-                        <div className="splash-left" style={{ width: '300px', height: '500px', padding: '20px' }}>
+                        <div className="splash-left">
                         </div>
                     </div>
                     <div className="splash-right">
