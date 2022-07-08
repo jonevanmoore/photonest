@@ -28,12 +28,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      {sessionUser && (<NavBar />)}
+      {/* {sessionUser && (<NavBar />)} */}
       <Switch>
         <Route path='/' exact={true} >
+          {sessionUser && (<NavBar />)}
           <SplashPage />
         </Route>
         <Route path='/edit_info'>
+          {sessionUser && (<NavBar />)}
           <EditUser sessionUser={sessionUser} />
         </Route>
         <Route path='/:username' exact={true} >

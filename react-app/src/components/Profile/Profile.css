@@ -1,6 +1,8 @@
 .profile-body {
     height: 100vh;
     animation: fadeIn .3s;
+    padding-left: 33vh;
+    padding-right: 25vh;
 }
 
 .user-info-div>*>* {
@@ -8,10 +10,22 @@
     margin-right: 50px;
 }
 
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border: 1px lightgray solid;
+    border-radius: 50%
+}
+
 
 .follow-info>* {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-info>* {
@@ -29,4 +43,91 @@
 
 .edit-profile-btn:hover {
     background-color: rgb(238, 238, 238);
+}
+
+.profile-pic-info-mobile {
+    display: none;
+}
+
+
+@media screen and (max-width: 800px) {
+    .profile-body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .profile-pic-div,
+    .profile-info {
+        display: none;
+    }
+
+
+    .profile-pic-info-mobile {
+        display: block;
+    }
+
+    .mob-pic-follow-info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mob-info {
+        display: flex;
+        flex-direction: column;
+        padding-right: 5vw;
+        position: relative;
+        top: 20px;
+    }
+
+    #num-info {
+        font-weight: bolder;
+    }
+
+    .user-info-div>*>* {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .profile-pic {
+        height: 100px;
+        width: 100px;
+        position: relative;
+        left: 2vw;
+    }
+
+    .mobile-name,
+    .mobile-bio {
+        max-width: 100vw;
+        text-align: start;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .mobile-name {
+        font-weight: bold;
+    }
+
+    .mobile-bio {
+        margin-bottom: 15px;
+    }
+
+    .edit-profile-btn-mobile {
+        background-color: rgb(226, 226, 226);
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding-left: 40vw;
+        padding-right: 40vw;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-top: 20px;
+
+    }
+
+    .edit-profile-btn-mobile:hover {
+        background-color: rgb(238, 238, 238);
+    }
+
 }

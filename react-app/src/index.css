@@ -5,6 +5,14 @@ body {
     text-align: center;
 }
 
+.mobile-el {
+    display: none;
+}
+
+.desktop-el {
+    display: block;
+}
+
 .desktop-footer {
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.36);
@@ -188,6 +196,14 @@ input:not(:-ms-input-placeholder)+.span-input {
     body {
         background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100.2%);
         text-align: center;
+    }
+
+    .mobile-el {
+        display: block;
+    }
+
+    .desktop-el {
+        display: none;
     }
 
     .splash-input-div {
