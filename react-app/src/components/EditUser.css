@@ -59,3 +59,19 @@
     height: 80px;
     margin: 0;
 }
+
+@media screen and (max-width: 800px) {
+    .edit-body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .form-body {
+        top: 11vh;
+        border: none;
+    }
+
+    .edit-input {
+        width: 80vw;
+    }
+}
