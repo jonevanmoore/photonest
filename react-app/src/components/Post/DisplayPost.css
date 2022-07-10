@@ -117,6 +117,7 @@
     }
 }
 
+/* HEART COLORS */
 .liked-blue {
     background: -webkit-linear-gradient(#4a85c0, #c6ddf3);
     -webkit-background-clip: text;
@@ -124,6 +125,64 @@
     -webkit-text-stroke: 1px #6699cc;
     animation: like 0.5s 1;
 }
+
+.liked-green {
+    background: -webkit-linear-gradient(#4ac06f, #c6f3dd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #66cca8;
+    animation: like 0.5s 1;
+}
+
+.liked-purple {
+    background: -webkit-linear-gradient(#8d4ac0, #e3c6f3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #a366cc;
+    animation: like 0.5s 1;
+}
+
+.liked-red {
+    background: -webkit-linear-gradient(#c04a4a, #f3c6c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #cc6666;
+    animation: like 0.5s 1;
+}
+
+.liked-yellow {
+    background: -webkit-linear-gradient(#c0c04a, #f3f3c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #ccca66;
+    animation: like 0.5s 1;
+}
+
+.liked-green-purple {
+    background: -webkit-linear-gradient(#4ac04e, #4e3eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #66b9cc;
+    animation: like 0.5s 1;
+}
+
+.liked-red-yellow {
+    background: -webkit-linear-gradient(#c04a4a, #ffef3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #cca066;
+    animation: like 0.5s 1;
+}
+
+.liked-blue-black {
+    background: -webkit-linear-gradient(#0073ff, #050400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #5e62ac;
+    animation: like 0.5s 1;
+}
+
+/* HEART COLORS END */
 
 
 

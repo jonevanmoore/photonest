@@ -28,9 +28,20 @@ const DisplayPost = ({ post, comments }) => {
     const showLikesModal = () => setLikesDisplay(true)
     const closeLikesModal = () => setLikesDisplay(false)
 
+    const heartColors = [
+        'liked-blue',
+        'liked-green',
+        'liked-purple',
+        'liked-red',
+        'liked-yellow',
+        'liked-green-purple',
+        'liked-red-yellow',
+        'liked-blue-black']
+    const likedColor = heartColors[Math.floor(Math.random() * heartColors.length)];
+
     useEffect(() => {
         if (userLiked > 0) {
-            setSessionUserLikes('liked-blue')
+            setSessionUserLikes(likedColor)
         } else {
             setSessionUserLikes('')
         }
