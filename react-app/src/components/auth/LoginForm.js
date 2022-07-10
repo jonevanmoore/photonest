@@ -76,7 +76,7 @@ const LoginForm = ({ formDisplay }) => {
       </div>
       <div className='switch-form-btn-div'>
         <label className="bottom-q">Not a member yet?</label>
-        <button onClick={formDisplay} className='switch-form-btn'>Sign up</button>
+        <button onClick={formDisplay} className='switch-form-btn' type='submit'>Sign up</button>
       </div>
     </>
   );

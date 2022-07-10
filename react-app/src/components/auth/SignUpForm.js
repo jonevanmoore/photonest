@@ -179,7 +179,7 @@ const SignUpForm = ({ formDisplay }) => {
       </div>
       <div className='switch-form-btn-div'>
         <label className="bottom-q">Already have an account?</label>
-        <button onClick={formDisplay} className='switch-form-btn'>Sign in</button>
+        <button onClick={formDisplay} className='switch-form-btn' type='submit'>Sign in</button>
       </div>
     </>
   );
