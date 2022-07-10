@@ -38,7 +38,7 @@ function App() {
           {sessionUser && (<NavBar />)}
           {sessionUser ? <EditUser sessionUser={sessionUser} /> : <Redirect to='/' />}
         </Route>
-        <Route path='/:username' exact={true} >
+        <Route path='/:username'>
           {sessionUser ? <Profile /> : <Redirect to='/' />}
         </Route>
         <Route>
