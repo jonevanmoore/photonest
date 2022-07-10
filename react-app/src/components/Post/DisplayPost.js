@@ -111,6 +111,13 @@ const DisplayPost = ({ post, comments }) => {
         setNewComment('')
     }
 
+    const handleKeypress = e => {
+        //it triggers by pressing the enter key
+        if (e.keyCode === 13) {
+            createComment();
+        }
+    };
+
     const updateLikePost = async () => {
         await dispatch(updatePostLike(postId))
     }
@@ -301,6 +308,7 @@ const DisplayPost = ({ post, comments }) => {
                             maxLength={200}
                             className='leave-com-input'
                             onChange={e => setNewComment(e.target.value)}
+                            onKeyUp={handleKeypress}
                         >
                         </input>
                         <button
@@ -339,6 +347,7 @@ const DisplayPost = ({ post, comments }) => {
                         sessionUserLikes={sessionUserLikes}
                         updateLikePost={updateLikePost}
                         postLikes={postLikes}
+                        handleKeypress={handleKeypress}
                     />
                 </Modal>
             )}

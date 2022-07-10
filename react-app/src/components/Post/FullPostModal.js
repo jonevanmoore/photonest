@@ -6,7 +6,7 @@ import LikesModal from "../Modal/LikesModal";
 import './FullPostModal.css'
 
 
-const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled, sessionUserLikes, updateLikePost, postLikes }) => {
+const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, createComment, showModalFunc, showModal, Modal, deletePost, setCaptionDisplay, showEditCaption, editCaptionDisplay, captionDisplay, setEditedCaption, editedCaption, closeEditCaption, handleUpdate, newComment, setNewComment, postDisabled, sessionUserLikes, updateLikePost, postLikes, handleKeypress }) => {
 
     const sessionUser = useSelector(state => state.session.user)
     const users = Object.values(useSelector(state => state.users))
@@ -179,6 +179,7 @@ const FullPostModal = ({ stopTheProp, closeModalFunc, post, comments, postId, cr
                             className='leave-com-input'
                             onChange={e => setNewComment(e.target.value)}
                             style={{ marginTop: '5px' }}
+                            onKeyUp={handleKeypress}
                         >
                         </input>
                         <button
