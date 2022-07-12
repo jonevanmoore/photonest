@@ -13,6 +13,7 @@ from .api.comment_routes import comment_routes
 from .api.post_like_routes import post_like_routes
 from .api.comment_like_routes import comment_like_routes
 from .api.search_routes import search_routes
+from .api.follow_routes import follow_routes
 
 from .seeds import seed_commands
 
@@ -41,6 +42,8 @@ app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(post_like_routes, url_prefix='/api/post_likes')
 app.register_blueprint(comment_like_routes, url_prefix='/api/comment_likes')
 app.register_blueprint(search_routes, url_prefix='/api/search')
+app.register_blueprint(follow_routes, url_prefixes='api/follows')
+
 db.init_app(app)
 Migrate(app, db)
 
