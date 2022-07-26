@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchAllPosts } from "../../store/post";
 import { fetchUser } from "../../store/user";
+import { followUnfollow, loadfollowers } from "../../store/follow";
+import { loadfollowing } from "../../store/following";
 import NavBar from "../NavBar";
 import './Profile.css'
 
@@ -14,10 +16,19 @@ const Profile = () => {
     const sessionUser = useSelector(state => state?.session?.user)
 
     const user = useSelector(state => state?.users)
+    const userId = user?.id
 
     const posts = Object.values(useSelector(state => state?.posts))
     const userPosts = posts.filter(post => post?.username === user.username)
     const [modalDisplay, setModalDisplay] = useState(false)
+
+    const userFollowers = Object.values(useSelector(state => state?.follows))
+    const userFollowings = Object.values(useSelector(state => state?.following))
+
+    const [showFollow, setShowFollow] = useState(false)
+    const [unfollowButton, setUnfollowButton] = useState(false)
+    const [showFollowersList, setShowFollowersList] = useState(false)
+    const [showFollowingList, setShowFollowingList] = useState(false)
 
     const modalDisplayFunc = () => {
         if (modalDisplay === false) {
@@ -31,6 +42,25 @@ const Profile = () => {
         dispatch(fetchAllPosts())
         dispatch(fetchUser(username))
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(loadfollowers(userId))
+    }, [userId, dispatch])
+
+    useEffect(() => {
+        dispatch(loadfollowing(userId))
+    }, [userId, dispatch])
+
+    const followHandler = async (e) => {
+        e.preventDefault();
+        const followeeId = +e.currentTarget.id;
+        await dispatch(followUnfollow(followeeId))
+        if (unfollowButton === true) {
+            setUnfollowButton(false)
+        } else {
+            setUnfollowButton(true)
+        }
+    }
 
     return (
         <>
@@ -68,6 +98,9 @@ const Profile = () => {
                                             <span>following</span>
                                         </div>
                                     </div>
+                                    <div className="follow-button-div">
+                                        <button>follow</button>
+                                    </div>
                                 </div>
                                 <span className="mobile-el mobile-name">{`${user?.first_name} ${user?.last_name}`}</span>
                                 <span className="mobile-el mobile-bio">{user?.bio}</span>
@@ -75,8 +108,8 @@ const Profile = () => {
                                     {sessionUser?.id === user?.id && (
                                         <Link to='edit_info' className="edit-profile-btn-mobile">Edit Profile</Link>
                                     )}
-                                    {sessionUser?.id !== user?.id && (
-                                        <Link to='edit_info' className="edit-profile-btn-mobile">Follow (tbd)</Link>
+                                    {sessionUser?.id !== userId && (
+                                        <Link to='edit_info' className="edit-profile-btn-mobile">Follow</Link>
                                     )}
                                 </div>
                             </div>
@@ -88,11 +121,14 @@ const Profile = () => {
                                     )}
                                 </div>
                                 <div className="follow-info" style={{ display: 'flex', float: 'left' }}>
-
                                     <span>{userPosts?.length} posts</span>
                                     <span>* followers</span>
                                     <span>* following</span>
-
+                                    {sessionUser?.id !== userId && (
+                                        <div>
+                                            <button>Follow</button>
+                                        </div>
+                                    )}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <div>
